@@ -1,9 +1,11 @@
+import { Link } from "react-router-dom";
+
 const countries = [
-  { name: "United Kingdom", code: "UK", flag: "🇬🇧" },
-  { name: "United States", code: "US", flag: "🇺🇸" },
-  { name: "India", code: "IN", flag: "🇮🇳" },
-  { name: "Egypt", code: "EG", flag: "🇪🇬" },
-  { name: "Europe", code: "EU", flag: "🇪🇺" },
+  { name: "United Kingdom", code: "uk", flag: "🇬🇧" },
+  { name: "United States", code: "us", flag: "🇺🇸" },
+  { name: "India", code: "india", flag: "🇮🇳" },
+  { name: "Egypt", code: "egypt", flag: "🇪🇬" },
+  { name: "Europe", code: "europe", flag: "🇪🇺" },
 ];
 
 const CountryCards = () => (
@@ -19,14 +21,14 @@ const CountryCards = () => (
       </div>
       <div className="flex flex-wrap justify-center gap-4">
         {countries.map((country) => (
-          <a
+          <Link
             key={country.code}
-            href={`#relocation-${country.code.toLowerCase()}`}
+            to={`/relocation/${country.code}`}
             className="flex items-center gap-3 bg-card border border-border rounded-lg px-6 py-4 hover:border-accent/40 hover:shadow-md transition-all min-w-[180px]"
           >
             <span className="text-2xl">{country.flag}</span>
             <span className="font-medium text-foreground">{country.name}</span>
-          </a>
+          </Link>
         ))}
       </div>
     </div>
