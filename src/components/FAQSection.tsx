@@ -7,24 +7,24 @@ import {
 
 const faqs = [
   {
-    q: "How much does it cost to set up a business in the UAE?",
-    a: "Costs vary significantly depending on whether you choose a free zone or mainland route, and which specific jurisdiction. Typical starting costs range from AED 10,000 to AED 50,000+ for the first year, excluding visas, office, and banking. Use our cost estimator for a tailored indicative breakdown.",
+    q: "What is the best free zone in the UAE?",
+    a: "There is no single best free zone for every business. The right choice depends on your activity, budget, visa needs, banking expectations, office requirements, and long-term operating plan.",
   },
   {
-    q: "Can I set up a UAE company remotely?",
-    a: "Many free zones now support remote or digital incorporation. However, banking, visa, and Emirates ID processes typically require at least one visit. Plan for 1–2 trips in most cases.",
+    q: "Is mainland better than free zone in the UAE?",
+    a: "Not always. Mainland may be better for some business models, but many founders are better served by a simpler free zone route early on. The better option depends on fit, not status.",
   },
   {
-    q: "What is the difference between a free zone and mainland company?",
-    a: "Free zone companies offer 100% foreign ownership and simplified setup, but are generally restricted to trading within their zone or internationally. Mainland companies can trade freely within the UAE but involve more compliance steps.",
+    q: "How much does it cost to set up a company in the UAE?",
+    a: "There is no one-size-fits-all number. Costs depend on jurisdiction, activity, visas, office requirements, support services, and renewal structure. Use our cost estimator for a tailored indicative breakdown.",
   },
   {
-    q: "Do I need a local sponsor or partner?",
-    a: "Since the 2020 Commercial Companies Law reforms, most business activities allow 100% foreign ownership on the mainland. However, certain regulated activities may still require a local service agent. Free zones have always allowed 100% ownership.",
+    q: "Can I choose a setup route based only on the cheapest package?",
+    a: "That is usually risky. A lower headline package can still become more expensive if activity fit, visa needs, renewals, or practical operating requirements are not considered properly.",
   },
   {
-    q: "How long does the setup process take?",
-    a: "Free zone setups can complete in 3–10 business days for the licence. Mainland setups typically take 2–4 weeks. Banking can add 2–8 weeks depending on the bank and your profile. Visa processing adds another 1–3 weeks.",
+    q: "Should I get a second opinion on a setup quote?",
+    a: "Yes, especially if the quote feels unclear, too broad, overly sales-led, or missing detail around real first-year cost, renewals, approvals, and business fit.",
   },
   {
     q: "Is the UAE really tax-free?",

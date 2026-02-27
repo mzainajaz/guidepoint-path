@@ -7,7 +7,7 @@ const navItems = [
     label: "Setup Options",
     children: [
       { label: "Free Zones", href: "/free-zones" },
-      { label: "Mainland", href: "#mainland" },
+      { label: "Mainland", href: "/mainland" },
       { label: "Business Activities", href: "#activities" },
     ],
   },

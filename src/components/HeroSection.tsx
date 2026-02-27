@@ -4,7 +4,6 @@ import heroBg from "@/assets/hero-dubai.webp";
 
 const HeroSection = () => (
   <section className="relative overflow-hidden">
-    {/* Background image with overlay */}
     <div className="absolute inset-0">
       <img
         src={heroBg}
@@ -18,13 +17,13 @@ const HeroSection = () => (
     <div className="container relative z-10 py-24 md:py-32 lg:py-40">
       <div className="max-w-2xl space-y-6">
         <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-semibold text-primary-foreground leading-[1.1] text-balance animate-fade-in-up">
-          The clearest path to setting up your business in the UAE
+          Business setup in the UAE, explained clearly
         </h1>
         <p
           className="text-lg md:text-xl text-primary-foreground/75 leading-relaxed max-w-xl animate-fade-in-up"
           style={{ animationDelay: "0.1s" }}
         >
-          Compare free zones, understand costs, avoid common mistakes — and get structured guidance before you commit.
+          Compare free zones, mainland routes, setup costs, visa implications, and founder trade-offs in one place — with transparent guidance built for international founders, operators, and growing businesses.
         </p>
         <div
           className="flex flex-col sm:flex-row gap-3 pt-2 animate-fade-in-up"
@@ -42,13 +41,12 @@ const HeroSection = () => (
             Speak to an Agent
           </Button>
         </div>
-        <a
-          href="#compare"
-          className="inline-block text-sm text-primary-foreground/50 hover:text-primary-foreground/80 transition-colors underline underline-offset-4 animate-fade-in-up"
+        <p
+          className="text-sm text-primary-foreground/50 animate-fade-in-up"
           style={{ animationDelay: "0.3s" }}
         >
-          Or compare setup routes →
-        </a>
+          Need a second opinion first? We can pressure-test advice or quotes you have already received.
+        </p>
       </div>
     </div>
   </section>

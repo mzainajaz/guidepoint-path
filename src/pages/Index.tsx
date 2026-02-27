@@ -11,6 +11,8 @@ import MistakesPrevention from "@/components/MistakesPrevention";
 import MethodologyTeaser from "@/components/MethodologyTeaser";
 import FAQSection from "@/components/FAQSection";
 import FinalCTA from "@/components/FinalCTA";
+import WhyFoundersSection from "@/components/WhyFoundersSection";
+import CompareListSection from "@/components/CompareListSection";
 
 const Index = () => (
   <div className="min-h-screen bg-background">
@@ -23,14 +25,16 @@ const Index = () => (
       {/* Best Answer */}
       <section className="container py-16">
         <BestAnswerBlock
-          title="What most founders need to know before choosing a UAE setup path"
-          content="The right setup route depends on your business activity, visa needs, banking requirements, and whether you need to trade within the UAE mainland. Most founders benefit from comparing at least two free zones and understanding the mainland alternative before committing."
+          title="Best answer"
+          content="The best UAE setup route is rarely the one with the loudest ad or the lowest headline package. It is the one that matches your activity, banking expectations, visa needs, office model, and long-term plans. IncorporateUAE helps you compare those trade-offs clearly before you commit."
           audience="First-time founders, relocating entrepreneurs, e-commerce sellers, consultants, and service businesses exploring UAE incorporation."
           caution="The cheapest option is rarely the best fit. Always verify activity coverage, banking realities, and renewal costs before signing."
         />
       </section>
 
       <RouteCards />
+      <WhyFoundersSection />
+      <CompareListSection />
       <SetupPathsOverview />
       <FeaturedTools />
       <MistakesPrevention />
