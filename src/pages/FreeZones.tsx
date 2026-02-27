@@ -1,4 +1,5 @@
 import { useState, useMemo } from "react";
+import { Link } from "react-router-dom";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import BestAnswerBlock from "@/components/BestAnswerBlock";
@@ -23,155 +24,7 @@ import {
   Landmark,
   ChevronRight,
 } from "lucide-react";
-
-/* ── sample data ── */
-interface FreeZone {
-  id: string;
-  name: string;
-  idealFor: string;
-  startingCost: string;
-  costNum: number;
-  visaSummary: string;
-  officeSummary: string;
-  bankingNote: string;
-  timeline: string;
-  industry: string;
-  costTier: "low" | "mid" | "high";
-  visaFriendly: boolean;
-  bankingFriendly: boolean;
-  remoteFirst: boolean;
-}
-
-const freeZones: FreeZone[] = [
-  {
-    id: "ifza",
-    name: "IFZA — International Free Zone Authority",
-    idealFor: "Consultants, service businesses, solopreneurs",
-    startingCost: "AED 11,900",
-    costNum: 11900,
-    visaSummary: "Up to 6 visas per licence",
-    officeSummary: "Flexi-desk included in most packages",
-    bankingNote: "Generally smoother KYC process",
-    timeline: "3–5 business days",
-    industry: "services",
-    costTier: "low",
-    visaFriendly: true,
-    bankingFriendly: true,
-    remoteFirst: true,
-  },
-  {
-    id: "dmcc",
-    name: "DMCC — Dubai Multi Commodities Centre",
-    idealFor: "Trading, commodities, crypto, larger operations",
-    startingCost: "AED 25,000",
-    costNum: 25000,
-    visaSummary: "Up to 25+ visas depending on office",
-    officeSummary: "Physical office required (Flexi-desk available for 1 visa)",
-    bankingNote: "Strong banking relationships; KYC thorough",
-    timeline: "5–10 business days",
-    industry: "trading",
-    costTier: "mid",
-    visaFriendly: true,
-    bankingFriendly: true,
-    remoteFirst: false,
-  },
-  {
-    id: "rakez",
-    name: "RAKEZ — Ras Al Khaimah Economic Zone",
-    idealFor: "Cost-conscious founders, manufacturing, freelancers",
-    startingCost: "AED 7,500",
-    costNum: 7500,
-    visaSummary: "Up to 6 visas per licence",
-    officeSummary: "No physical office required for most packages",
-    bankingNote: "Some banks may require additional documentation",
-    timeline: "3–7 business days",
-    industry: "general",
-    costTier: "low",
-    visaFriendly: true,
-    bankingFriendly: false,
-    remoteFirst: true,
-  },
-  {
-    id: "difc",
-    name: "DIFC — Dubai International Financial Centre",
-    idealFor: "Fintech, financial services, funds, wealth management",
-    startingCost: "AED 50,000",
-    costNum: 50000,
-    visaSummary: "Visas available; quota depends on office tier",
-    officeSummary: "Premium office space in DIFC Gate district",
-    bankingNote: "Premium banking relationships available",
-    timeline: "7–14 business days",
-    industry: "finance",
-    costTier: "high",
-    visaFriendly: true,
-    bankingFriendly: true,
-    remoteFirst: false,
-  },
-  {
-    id: "shams",
-    name: "Sharjah Media City (Shams)",
-    idealFor: "Freelancers, content creators, digital agencies",
-    startingCost: "AED 5,750",
-    costNum: 5750,
-    visaSummary: "Up to 6 visas per licence",
-    officeSummary: "No physical office required",
-    bankingNote: "Banking can be slower; plan for additional KYC steps",
-    timeline: "2–5 business days",
-    industry: "media",
-    costTier: "low",
-    visaFriendly: true,
-    bankingFriendly: false,
-    remoteFirst: true,
-  },
-  {
-    id: "adgm",
-    name: "ADGM — Abu Dhabi Global Market",
-    idealFor: "Fintech, legal, professional services, holding structures",
-    startingCost: "AED 35,000",
-    costNum: 35000,
-    visaSummary: "Visas available through partner arrangements",
-    officeSummary: "Office required; co-working available",
-    bankingNote: "Strong regulatory reputation aids banking",
-    timeline: "7–14 business days",
-    industry: "finance",
-    costTier: "high",
-    visaFriendly: true,
-    bankingFriendly: true,
-    remoteFirst: false,
-  },
-  {
-    id: "dafza",
-    name: "DAFZA — Dubai Airport Free Zone",
-    idealFor: "Aviation, logistics, import/export, pharma",
-    startingCost: "AED 18,000",
-    costNum: 18000,
-    visaSummary: "Generous visa allocations",
-    officeSummary: "Office or warehouse space available",
-    bankingNote: "Well-established; smoother onboarding",
-    timeline: "5–10 business days",
-    industry: "trading",
-    costTier: "mid",
-    visaFriendly: true,
-    bankingFriendly: true,
-    remoteFirst: false,
-  },
-  {
-    id: "jafza",
-    name: "JAFZA — Jebel Ali Free Zone",
-    idealFor: "Manufacturing, logistics, large-scale trading",
-    startingCost: "AED 25,000",
-    costNum: 25000,
-    visaSummary: "High visa quotas with warehouse/office",
-    officeSummary: "Office or warehouse required",
-    bankingNote: "Established zone; good banking track record",
-    timeline: "7–14 business days",
-    industry: "trading",
-    costTier: "mid",
-    visaFriendly: true,
-    bankingFriendly: true,
-    remoteFirst: false,
-  },
-];
+import { freeZones } from "@/data/freeZones";
 
 const industryOptions = [
   { value: "all", label: "All industries" },
@@ -392,9 +245,11 @@ const FreeZones = () => {
                     <Button size="sm" variant="outline" className="flex-1 text-xs">
                       Compare
                     </Button>
-                    <Button size="sm" className="flex-1 text-xs bg-accent text-accent-foreground hover:bg-accent/90">
-                      View Details
-                      <ArrowRight className="ml-1 h-3.5 w-3.5" />
+                    <Button size="sm" className="flex-1 text-xs bg-accent text-accent-foreground hover:bg-accent/90" asChild>
+                      <Link to={`/free-zones/${fz.id}`}>
+                        View Details
+                        <ArrowRight className="ml-1 h-3.5 w-3.5" />
+                      </Link>
                     </Button>
                   </div>
                 </article>
@@ -431,8 +286,10 @@ const FreeZones = () => {
                         <td className="px-4 py-3 text-muted-foreground whitespace-nowrap">{fz.timeline}</td>
                         <td className="px-4 py-3 text-muted-foreground max-w-[180px]">{fz.bankingNote}</td>
                         <td className="px-4 py-3">
-                          <Button size="sm" variant="ghost" className="text-accent hover:text-accent text-xs whitespace-nowrap">
-                            Details <ArrowRight className="ml-1 h-3 w-3" />
+                          <Button size="sm" variant="ghost" className="text-accent hover:text-accent text-xs whitespace-nowrap" asChild>
+                            <Link to={`/free-zones/${fz.id}`}>
+                              Details <ArrowRight className="ml-1 h-3 w-3" />
+                            </Link>
                           </Button>
                         </td>
                       </tr>
