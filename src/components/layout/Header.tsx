@@ -25,7 +25,7 @@ const navItems = [
   },
   {
     label: "Relocation",
-    href: "#relocation",
+    href: "/relocation",
   },
   {
     label: "Taxes & Compliance",
