@@ -8,9 +8,14 @@ import {
 
 const mistakes = [
   {
+    title: "Comparing only the headline package number",
+    content:
+      "The headline figure rarely tells the full story. Founders should review office-related requirements, immigration steps, renewals, approvals, and practical setup support costs.",
+  },
+  {
     title: "Choosing a free zone based on cost alone",
     content:
-      "The cheapest option often lacks the activity coverage, banking support, or visa capacity you need. Evaluate the full picture before committing.",
+      "A lower headline package can still become more expensive if activity fit, visa needs, renewals, or practical operating requirements are not considered properly.",
   },
   {
     title: "Not checking banking and KYC realities",
@@ -18,19 +23,19 @@ const mistakes = [
       "Some free zones have weaker banking relationships. Opening a business account can take weeks — or fail entirely — if your jurisdiction or activity raises compliance flags.",
   },
   {
-    title: "Ignoring renewal costs",
+    title: "Ignoring renewal costs and friction",
     content:
-      "Year-one setup pricing often excludes visa renewals, licence renewals, office renewals, and compliance obligations. Budget for the full lifecycle.",
+      "Some routes look acceptable in year one but become less attractive at renewal if office, visa, or admin needs grow. Budget for the full lifecycle, not just setup.",
   },
   {
-    title: "Skipping the activity-licence match",
+    title: "Choosing a route before pressure-testing the activity",
     content:
-      "Not all business activities are available in every jurisdiction. Mismatching your activity to the wrong free zone can require re-setup.",
+      "The right route depends heavily on the actual activity being licensed, not just the founder's generic business description. Mismatching your activity to the wrong free zone can require re-setup.",
   },
   {
     title: "Trusting a single advisor without comparison",
     content:
-      "Advisors often recommend routes they're most commercially aligned with. Always compare at least two independent assessments.",
+      "Advisors often recommend routes they are most commercially aligned with. Always compare at least two independent assessments before committing.",
   },
 ];
 

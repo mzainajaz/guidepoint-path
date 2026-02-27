@@ -90,15 +90,15 @@ const FreeZones = () => {
         {/* Header */}
         <section className="container py-12">
           <h1 className="font-display text-3xl md:text-4xl lg:text-5xl font-semibold text-foreground mb-4 leading-tight">
-            UAE Free Zones Directory
+            UAE Free Zones: compare options by cost, activity, visas, office needs, and business fit
           </h1>
           <p className="text-lg text-muted-foreground max-w-2xl mb-8">
-            Browse, filter and compare 40+ free zones by cost, visa suitability, banking friendliness, and business activity. Find the right fit before you commit.
+            The UAE has many free zones, but they are not interchangeable. The right choice depends on what you do, how you plan to operate, and what you need your setup to support over the next 12 to 36 months.
           </p>
 
           <BestAnswerBlock
-            title="How to choose the right UAE free zone"
-            content="The best free zone depends on your business activity, visa needs, budget, and banking requirements. Low cost doesn't always mean best fit — check activity coverage, renewal fees, and banking realities before deciding."
+            title="Best answer"
+            content="The best free zone for your business is not the one with the lowest advertised package. It is the one that balances activity fit, setup cost, visa needs, renewal logic, operational flexibility, and banking practicality for your specific situation."
             audience="First-time founders, e-commerce sellers, consultants, remote-first operators."
             caution="Always verify current pricing directly with the authority. Packages and inclusions change frequently."
           />
