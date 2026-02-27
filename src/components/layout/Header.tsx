@@ -13,7 +13,7 @@ const navItems = [
   },
   {
     label: "Compare",
-    href: "#compare",
+    href: "/compare",
   },
   {
     label: "Tools & Calculators",

@@ -7,6 +7,8 @@ import Index from "./pages/Index";
 import FreeZones from "./pages/FreeZones";
 import FreeZoneDetail from "./pages/FreeZoneDetail";
 import RelocationHub from "./pages/RelocationHub";
+import ComparisonsIndex from "./pages/ComparisonsIndex";
+import ComparisonDetail from "./pages/ComparisonDetail";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -22,6 +24,8 @@ const App = () => (
           <Route path="/free-zones" element={<FreeZones />} />
           <Route path="/free-zones/:slug" element={<FreeZoneDetail />} />
           <Route path="/relocation" element={<RelocationHub />} />
+          <Route path="/compare" element={<ComparisonsIndex />} />
+          <Route path="/compare/:slug" element={<ComparisonDetail />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
