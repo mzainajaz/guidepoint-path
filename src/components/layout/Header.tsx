@@ -4,7 +4,7 @@ import { Menu, X, ChevronDown, Globe } from "lucide-react";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLocale } from "@/i18n/context";
-import { locales, localeConfig } from "@/i18n/translations";
+import { locales, localeConfig } from "@/i18n/translations/index";
 
 const Header = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
