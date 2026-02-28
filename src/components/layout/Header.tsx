@@ -29,7 +29,11 @@ const navItems = [
   },
   {
     label: "Taxes & Compliance",
-    href: "#compliance",
+    children: [
+      { label: "Overview", href: "/taxes" },
+      { label: "VAT Guide", href: "/taxes/vat" },
+      { label: "Corporate Tax Guide", href: "/taxes/corporate-tax" },
+    ],
   },
 ];
 
