@@ -8,6 +8,9 @@ import FreeZones from "./pages/FreeZones";
 import FreeZoneDetail from "./pages/FreeZoneDetail";
 import RelocationHub from "./pages/RelocationHub";
 import MainlandHub from "./pages/MainlandHub";
+import MainlandLicensing from "./pages/MainlandLicensing";
+import MainlandEjari from "./pages/MainlandEjari";
+import MainlandCompliance from "./pages/MainlandCompliance";
 import ComparisonsIndex from "./pages/ComparisonsIndex";
 import ComparisonDetail from "./pages/ComparisonDetail";
 import CountryRelocation from "./pages/CountryRelocation";
@@ -35,6 +38,9 @@ const App = () => (
           <Route path="/free-zones/:slug" element={<FreeZoneDetail />} />
           <Route path="/relocation" element={<RelocationHub />} />
           <Route path="/mainland" element={<MainlandHub />} />
+          <Route path="/mainland/licensing" element={<MainlandLicensing />} />
+          <Route path="/mainland/office-ejari" element={<MainlandEjari />} />
+          <Route path="/mainland/compliance" element={<MainlandCompliance />} />
           <Route path="/compare" element={<ComparisonsIndex />} />
           <Route path="/compare/:slug" element={<ComparisonDetail />} />
           <Route path="/activities" element={<ActivitiesIndex />} />

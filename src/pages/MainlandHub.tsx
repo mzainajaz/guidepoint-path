@@ -43,6 +43,23 @@ const MainlandHub = () => (
         />
       </section>
 
+      {/* Quick Links to Subpages */}
+      <section className="container pb-12">
+        <h2 className="font-display text-2xl font-semibold text-foreground mb-6">Explore mainland topics</h2>
+        <div className="grid md:grid-cols-3 gap-4">
+          {[
+            { title: "Licensing Basics", desc: "Licence types, fees, approval processes, and common mistakes", href: "/mainland/licensing" },
+            { title: "Office & Ejari", desc: "Office requirements, Ejari registration, costs, and what qualifies", href: "/mainland/office-ejari" },
+            { title: "Compliance Basics", desc: "Annual obligations, deadlines, penalties, and a first-year calendar", href: "/mainland/compliance" },
+          ].map((card) => (
+            <Link key={card.href} to={card.href} className="border border-border rounded-lg p-5 bg-card hover:border-accent/40 transition-colors group">
+              <h3 className="font-display text-lg font-semibold text-foreground mb-1 group-hover:text-accent transition-colors">{card.title}</h3>
+              <p className="text-sm text-muted-foreground">{card.desc}</p>
+            </Link>
+          ))}
+        </div>
+      </section>
+
       {/* What mainland means */}
       <section className="container pb-12">
         <h2 className="font-display text-2xl font-semibold text-foreground mb-4">What mainland setup usually means</h2>
