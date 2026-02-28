@@ -63,16 +63,20 @@ const App = () => (
             {appRoutes.map((r) => (
               <Route key={r.path} path={r.path} element={r.element} />
             ))}
-            {/* French routes with /fr prefix */}
-            {appRoutes.map((r) => (
-              <Route
-                key={`fr-${r.path}`}
-                path={`/fr${r.path === "/" ? "" : r.path}`}
-                element={r.element}
-              />
+            {/* Localized routes for all non-EN locales */}
+            {["fr", "de", "es", "ar", "it", "ru", "uk"].map((loc) =>
+              appRoutes.map((r) => (
+                <Route
+                  key={`${loc}-${r.path}`}
+                  path={`/${loc}${r.path === "/" ? "" : r.path}`}
+                  element={r.element}
+                />
+              ))
+            )}
+            {/* Locale roots */}
+            {["fr", "de", "es", "ar", "it", "ru", "uk"].map((loc) => (
+              <Route key={`${loc}-root`} path={`/${loc}`} element={<Index />} />
             ))}
-            {/* French root */}
-            <Route path="/fr" element={<Index />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
