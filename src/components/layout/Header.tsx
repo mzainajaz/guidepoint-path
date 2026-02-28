@@ -8,7 +8,7 @@ const navItems = [
     children: [
       { label: "Free Zones", href: "/free-zones" },
       { label: "Mainland", href: "/mainland" },
-      { label: "Business Activities", href: "#activities" },
+      { label: "Business Activities", href: "/activities" },
     ],
   },
   {
