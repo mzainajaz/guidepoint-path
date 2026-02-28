@@ -131,7 +131,7 @@ export const comparisons: ComparisonData[] = [
     optionAName: "Free Zone",
     optionBName: "Mainland",
     summaryVerdict:
-      "Free zones offer simpler setup, 100% foreign ownership, and lower costs for most service and trading businesses. Mainland is necessary when you need to trade directly with UAE consumers, operate in certain regulated sectors, or need flexibility to work anywhere in the UAE.",
+      "Free Zone vs mainland is not a prestige choice — it's an operating model choice. If you can operate without heavy onshore constraints and you want a faster, lighter start, a Free Zone can be a clean entry route. If your business truly requires broader onshore operating flexibility or specific licensing paths, mainland may be justified. Decide using a shortlist and realistic cost drivers, not headline package prices.",
     suitableWhen: [
       "You only trade internationally or within free zones → Free zone is usually simpler",
       "You need to invoice UAE mainland clients directly → Mainland is typically required",
