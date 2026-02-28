@@ -13,6 +13,8 @@ import ComparisonDetail from "./pages/ComparisonDetail";
 import CountryRelocation from "./pages/CountryRelocation";
 import ActivitiesIndex from "./pages/ActivitiesIndex";
 import ActivityDetail from "./pages/ActivityDetail";
+import TaxComplianceHub from "./pages/TaxComplianceHub";
+import TaxGuideDetail from "./pages/TaxGuideDetail";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -33,6 +35,8 @@ const App = () => (
           <Route path="/compare/:slug" element={<ComparisonDetail />} />
           <Route path="/activities" element={<ActivitiesIndex />} />
           <Route path="/activities/:slug" element={<ActivityDetail />} />
+          <Route path="/taxes" element={<TaxComplianceHub />} />
+          <Route path="/taxes/:slug" element={<TaxGuideDetail />} />
           <Route path="/relocation/:countryCode" element={<CountryRelocation />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
