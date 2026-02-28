@@ -1,6 +1,6 @@
 import { createContext, useContext, useMemo, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { translations, locales, localeConfig, type Locale, type TranslationSet } from "./translations";
+import { translations, locales, localeConfig, type Locale, type TranslationSet } from "./translations/index";
 
 interface LanguageContextType {
   locale: Locale;

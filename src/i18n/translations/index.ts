@@ -1,3 +1,4 @@
+// i18n translation registry
 import en, { type TranslationSet } from "./en";
 import fr from "./fr";
 import de from "./de";
