@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 const FinalCTA = () => (
   <section className="relative overflow-hidden py-24 md:py-32">
@@ -24,18 +25,22 @@ const FinalCTA = () => (
         </p>
         <div className="flex flex-col sm:flex-row gap-3 justify-center">
           <Button
+            asChild
             size="lg"
             className="bg-accent text-accent-foreground hover:bg-accent/90 text-base px-8 rounded-full font-semibold shadow-xl shadow-accent/25 h-12"
           >
-            Get Setup Snapshot
-            <ArrowRight className="ml-2 h-4 w-4" />
+            <Link to="/tools/cost-estimator">
+              Get Setup Snapshot
+              <ArrowRight className="ml-2 h-4 w-4" />
+            </Link>
           </Button>
           <Button
+            asChild
             size="lg"
             variant="outline"
             className="border-primary-foreground/15 text-primary-foreground hover:bg-primary-foreground/5 text-base px-8 rounded-full h-12"
           >
-            Speak to an Agent
+            <Link to="/tools">Explore Tools</Link>
           </Button>
         </div>
       </motion.div>

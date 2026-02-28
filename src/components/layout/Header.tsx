@@ -107,11 +107,11 @@ const Header = () => {
 
         {/* Desktop CTAs */}
         <div className="hidden lg:flex items-center gap-3">
-          <Button variant="ghost" size="sm" className="text-muted-foreground hover:text-foreground">
-            Talk to us
+          <Button asChild variant="ghost" size="sm" className="text-muted-foreground hover:text-foreground">
+            <Link to="/compare">Compare Options</Link>
           </Button>
-          <Button size="sm" className="bg-accent text-accent-foreground hover:bg-accent/90 rounded-full px-5 font-semibold shadow-lg shadow-accent/20">
-            Get Started
+          <Button asChild size="sm" className="bg-accent text-accent-foreground hover:bg-accent/90 rounded-full px-5 font-semibold shadow-lg shadow-accent/20">
+            <Link to="/tools/cost-estimator">Get Started</Link>
           </Button>
         </div>
 
@@ -168,11 +168,11 @@ const Header = () => {
                 </div>
               ))}
               <div className="flex flex-col gap-2 pt-4 px-4">
-                <Button variant="outline" size="sm" className="w-full rounded-full">
-                  Talk to us
+                <Button asChild variant="outline" size="sm" className="w-full rounded-full">
+                  <Link to="/compare" onClick={() => setMobileOpen(false)}>Compare Options</Link>
                 </Button>
-                <Button size="sm" className="w-full bg-accent text-accent-foreground hover:bg-accent/90 rounded-full font-semibold">
-                  Get Started
+                <Button asChild size="sm" className="w-full bg-accent text-accent-foreground hover:bg-accent/90 rounded-full font-semibold">
+                  <Link to="/tools/cost-estimator" onClick={() => setMobileOpen(false)}>Get Started</Link>
                 </Button>
               </div>
             </nav>
