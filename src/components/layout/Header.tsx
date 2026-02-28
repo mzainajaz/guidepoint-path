@@ -100,14 +100,27 @@ const Header = () => {
         </nav>
 
         <div className="hidden lg:flex items-center gap-3">
-          <button
-            onClick={switchLocale}
-            className="flex items-center gap-1.5 px-3 py-1.5 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors rounded-lg hover:bg-secondary"
-            aria-label={t.nav.switchLangLabel}
-          >
-            <Globe className="h-3.5 w-3.5" />
-            {t.nav.switchLang}
-          </button>
+          <div className="relative group">
+            <button className="flex items-center gap-1.5 px-3 py-1.5 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors rounded-lg hover:bg-secondary">
+              <Globe className="h-3.5 w-3.5" />
+              {localeConfig[locale].flag} {localeConfig[locale].label}
+              <ChevronDown className="h-3 w-3 transition-transform group-hover:rotate-180" />
+            </button>
+            <div className="invisible group-hover:visible opacity-0 group-hover:opacity-100 transition-all duration-200 absolute top-full right-0 pt-2 z-50">
+              <div className="glass-card rounded-xl shadow-xl p-1.5 min-w-[160px]">
+                {locales.map((loc) => (
+                  <button
+                    key={loc}
+                    onClick={() => switchLocale(loc)}
+                    className={`w-full text-left flex items-center gap-2 px-3 py-2 text-sm rounded-lg transition-colors ${loc === locale ? "bg-accent/10 text-accent font-medium" : "text-muted-foreground hover:text-foreground hover:bg-secondary"}`}
+                  >
+                    <span>{localeConfig[loc].flag}</span>
+                    <span>{localeConfig[loc].name}</span>
+                  </button>
+                ))}
+              </div>
+            </div>
+          </div>
           <Button asChild variant="ghost" size="sm" className="text-muted-foreground hover:text-foreground">
             <Link to={lp("/compare")}>{t.common.compareOptions}</Link>
           </Button>

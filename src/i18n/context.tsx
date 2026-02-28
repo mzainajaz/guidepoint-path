@@ -1,39 +1,44 @@
 import { createContext, useContext, useMemo, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { translations, type TranslationSet } from "./translations";
-
-export type Locale = "en" | "fr";
+import { translations, locales, localeConfig, type Locale, type TranslationSet } from "./translations";
 
 interface LanguageContextType {
   locale: Locale;
   t: TranslationSet;
   lp: (path: string) => string;
-  switchLocale: () => void;
+  switchLocale: (target: Locale) => void;
   alternateUrl: string;
   basePath: string;
 }
 
 const LanguageContext = createContext<LanguageContextType | null>(null);
 
+function detectLocale(pathname: string): Locale {
+  for (const loc of locales) {
+    if (loc === "en") continue;
+    if (pathname === `/${loc}` || pathname.startsWith(`/${loc}/`)) return loc;
+  }
+  return "en";
+}
+
 export const LanguageProvider = ({ children }: { children: React.ReactNode }) => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  const locale: Locale = location.pathname.startsWith("/fr") ? "fr" : "en";
+  const locale = detectLocale(location.pathname);
   const t = translations[locale];
 
   const basePath = useMemo(() => {
-    if (locale === "fr") {
-      const stripped = location.pathname.replace(/^\/fr/, "") || "/";
-      return stripped;
+    if (locale !== "en") {
+      return location.pathname.replace(new RegExp(`^/${locale}`), "") || "/";
     }
     return location.pathname;
   }, [locale, location.pathname]);
 
   const lp = useMemo(() => {
     return (path: string) => {
-      if (locale === "fr") return `/fr${path === "/" ? "" : path}`;
-      return path;
+      if (locale === "en") return path;
+      return `/${locale}${path === "/" ? "" : path}`;
     };
   }, [locale]);
 
@@ -42,43 +47,39 @@ export const LanguageProvider = ({ children }: { children: React.ReactNode }) =>
     return basePath || "/";
   }, [locale, basePath]);
 
-  const switchLocale = () => navigate(alternateUrl);
+  const switchLocale = (target: Locale) => {
+    if (target === locale) return;
+    const newPath = target === "en" ? basePath : `/${target}${basePath === "/" ? "" : basePath}`;
+    navigate(newPath);
+  };
 
-  // Set hreflang tags
+  // Set hreflang tags + dir
   useEffect(() => {
     const origin = window.location.origin;
-    const enUrl = `${origin}${basePath}`;
-    const frUrl = `${origin}/fr${basePath === "/" ? "" : basePath}`;
 
-    let enLink = document.querySelector('link[hreflang="en"]') as HTMLLinkElement;
-    let frLink = document.querySelector('link[hreflang="fr"]') as HTMLLinkElement;
-    let defaultLink = document.querySelector('link[hreflang="x-default"]') as HTMLLinkElement;
+    // Clean up old hreflang links
+    document.querySelectorAll('link[rel="alternate"][hreflang]').forEach(el => el.remove());
 
-    if (!enLink) {
-      enLink = document.createElement("link");
-      enLink.rel = "alternate";
-      enLink.hreflang = "en";
-      document.head.appendChild(enLink);
-    }
-    if (!frLink) {
-      frLink = document.createElement("link");
-      frLink.rel = "alternate";
-      frLink.hreflang = "fr";
-      document.head.appendChild(frLink);
-    }
-    if (!defaultLink) {
-      defaultLink = document.createElement("link");
-      defaultLink.rel = "alternate";
-      defaultLink.hreflang = "x-default";
-      document.head.appendChild(defaultLink);
+    for (const loc of locales) {
+      const href = loc === "en"
+        ? `${origin}${basePath}`
+        : `${origin}/${loc}${basePath === "/" ? "" : basePath}`;
+      const link = document.createElement("link");
+      link.rel = "alternate";
+      link.hreflang = loc;
+      link.href = href;
+      document.head.appendChild(link);
     }
 
-    enLink.href = enUrl;
-    frLink.href = frUrl;
-    defaultLink.href = enUrl;
+    // x-default
+    const defaultLink = document.createElement("link");
+    defaultLink.rel = "alternate";
+    defaultLink.hreflang = "x-default";
+    defaultLink.href = `${origin}${basePath}`;
+    document.head.appendChild(defaultLink);
 
-    // Set html lang attribute
     document.documentElement.lang = locale;
+    document.documentElement.dir = localeConfig[locale].dir || "ltr";
   }, [locale, basePath]);
 
   const value = useMemo(
