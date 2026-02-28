@@ -4,6 +4,7 @@ import { Menu, X, ChevronDown, Globe } from "lucide-react";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLocale } from "@/i18n/context";
+import { locales, localeConfig } from "@/i18n/translations";
 
 const Header = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -184,7 +185,7 @@ const Header = () => {
                   variant="outline"
                   size="sm"
                   className="w-full rounded-full"
-                  onClick={() => { switchLocale(); setMobileOpen(false); }}
+                  onClick={() => { switchLocale(locale === "en" ? "fr" : "en"); setMobileOpen(false); }}
                 >
                   <Globe className="h-3.5 w-3.5 mr-1.5" />
                   {t.nav.switchLangLabel}
