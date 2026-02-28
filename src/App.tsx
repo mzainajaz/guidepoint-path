@@ -11,6 +11,8 @@ import MainlandHub from "./pages/MainlandHub";
 import ComparisonsIndex from "./pages/ComparisonsIndex";
 import ComparisonDetail from "./pages/ComparisonDetail";
 import CountryRelocation from "./pages/CountryRelocation";
+import ActivitiesIndex from "./pages/ActivitiesIndex";
+import ActivityDetail from "./pages/ActivityDetail";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -29,6 +31,8 @@ const App = () => (
           <Route path="/mainland" element={<MainlandHub />} />
           <Route path="/compare" element={<ComparisonsIndex />} />
           <Route path="/compare/:slug" element={<ComparisonDetail />} />
+          <Route path="/activities" element={<ActivitiesIndex />} />
+          <Route path="/activities/:slug" element={<ActivityDetail />} />
           <Route path="/relocation/:countryCode" element={<CountryRelocation />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
