@@ -5,6 +5,8 @@ import Footer from "@/components/layout/Footer";
 import BestAnswerBlock from "@/components/BestAnswerBlock";
 import { Button } from "@/components/ui/button";
 import { getFreeZoneById, freeZones, type FreeZoneData } from "@/data/freeZones";
+import { getZoneActivities } from "@/data/zoneActivities";
+import ZoneActivityListComponent from "@/components/ZoneActivityList";
 import {
   ChevronRight,
   ArrowRight,
@@ -235,16 +237,26 @@ const FreeZoneDetail = () => {
               {/* Activities */}
               <section id="activities">
                 <h2 className="font-display text-2xl font-semibold text-foreground mb-4">Business activities</h2>
-                <div className="flex flex-wrap gap-2">
-                  {zone.activities.map((a) => (
-                    <span key={a} className="px-3 py-1.5 bg-secondary text-secondary-foreground text-sm rounded-md">
-                      {a}
-                    </span>
-                  ))}
-                </div>
-                <p className="text-xs text-muted-foreground mt-3">
-                  Activity availability may vary. Confirm with the authority for your specific activity.
-                </p>
+                {(() => {
+                  const zoneActivities = slug ? getZoneActivities(slug) : undefined;
+                  if (zoneActivities) {
+                    return <ZoneActivityListComponent data={zoneActivities} />;
+                  }
+                  return (
+                    <>
+                      <div className="flex flex-wrap gap-2">
+                        {zone.activities.map((a) => (
+                          <span key={a} className="px-3 py-1.5 bg-secondary text-secondary-foreground text-sm rounded-md">
+                            {a}
+                          </span>
+                        ))}
+                      </div>
+                      <p className="text-xs text-muted-foreground mt-3">
+                        Activity availability may vary. Confirm with the authority for your specific activity.
+                      </p>
+                    </>
+                  );
+                })()}
               </section>
 
               {/* Pricing */}
