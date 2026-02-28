@@ -3,6 +3,7 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { LanguageProvider } from "@/i18n/context";
 import Index from "./pages/Index";
 import FreeZones from "./pages/FreeZones";
 import FreeZoneDetail from "./pages/FreeZoneDetail";
@@ -23,8 +24,32 @@ import CostEstimator from "./pages/CostEstimator";
 import ZonePicker from "./pages/ZonePicker";
 import VatHelper from "./pages/VatHelper";
 import NotFound from "./pages/NotFound";
+import React from "react";
 
 const queryClient = new QueryClient();
+
+// All app routes defined once, rendered for both '' and '/fr' prefixes
+const appRoutes = [
+  { path: "/", element: <Index /> },
+  { path: "/free-zones", element: <FreeZones /> },
+  { path: "/free-zones/:slug", element: <FreeZoneDetail /> },
+  { path: "/relocation", element: <RelocationHub /> },
+  { path: "/mainland", element: <MainlandHub /> },
+  { path: "/mainland/licensing", element: <MainlandLicensing /> },
+  { path: "/mainland/office-ejari", element: <MainlandEjari /> },
+  { path: "/mainland/compliance", element: <MainlandCompliance /> },
+  { path: "/compare", element: <ComparisonsIndex /> },
+  { path: "/compare/:slug", element: <ComparisonDetail /> },
+  { path: "/activities", element: <ActivitiesIndex /> },
+  { path: "/activities/:slug", element: <ActivityDetail /> },
+  { path: "/taxes", element: <TaxComplianceHub /> },
+  { path: "/taxes/:slug", element: <TaxGuideDetail /> },
+  { path: "/relocation/:countryCode", element: <CountryRelocation /> },
+  { path: "/tools", element: <ToolsHub /> },
+  { path: "/tools/cost-estimator", element: <CostEstimator /> },
+  { path: "/tools/zone-picker", element: <ZonePicker /> },
+  { path: "/tools/vat-helper", element: <VatHelper /> },
+];
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
@@ -32,29 +57,26 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/free-zones" element={<FreeZones />} />
-          <Route path="/free-zones/:slug" element={<FreeZoneDetail />} />
-          <Route path="/relocation" element={<RelocationHub />} />
-          <Route path="/mainland" element={<MainlandHub />} />
-          <Route path="/mainland/licensing" element={<MainlandLicensing />} />
-          <Route path="/mainland/office-ejari" element={<MainlandEjari />} />
-          <Route path="/mainland/compliance" element={<MainlandCompliance />} />
-          <Route path="/compare" element={<ComparisonsIndex />} />
-          <Route path="/compare/:slug" element={<ComparisonDetail />} />
-          <Route path="/activities" element={<ActivitiesIndex />} />
-          <Route path="/activities/:slug" element={<ActivityDetail />} />
-          <Route path="/taxes" element={<TaxComplianceHub />} />
-          <Route path="/taxes/:slug" element={<TaxGuideDetail />} />
-          <Route path="/relocation/:countryCode" element={<CountryRelocation />} />
-          <Route path="/tools" element={<ToolsHub />} />
-          <Route path="/tools/cost-estimator" element={<CostEstimator />} />
-          <Route path="/tools/zone-picker" element={<ZonePicker />} />
-          <Route path="/tools/vat-helper" element={<VatHelper />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-          <Route path="*" element={<NotFound />} />
-        </Routes>
+        <LanguageProvider>
+          <Routes>
+            {/* English routes */}
+            {appRoutes.map((r) => (
+              <Route key={r.path} path={r.path} element={r.element} />
+            ))}
+            {/* French routes with /fr prefix */}
+            {appRoutes.map((r) => (
+              <Route
+                key={`fr-${r.path}`}
+                path={`/fr${r.path === "/" ? "" : r.path}`}
+                element={r.element}
+              />
+            ))}
+            {/* French root */}
+            <Route path="/fr" element={<Index />} />
+            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </LanguageProvider>
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>

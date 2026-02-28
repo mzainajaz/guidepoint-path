@@ -1,51 +1,47 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { Menu, X, ChevronDown } from "lucide-react";
+import { Menu, X, ChevronDown, Globe } from "lucide-react";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-
-const navItems = [
-  {
-    label: "Setup Options",
-    children: [
-      { label: "Free Zones", href: "/free-zones" },
-      { label: "Mainland Overview", href: "/mainland" },
-      { label: "Licensing Basics", href: "/mainland/licensing" },
-      { label: "Office & Ejari", href: "/mainland/office-ejari" },
-      { label: "Compliance Basics", href: "/mainland/compliance" },
-      { label: "Business Activities", href: "/activities" },
-    ],
-  },
-  {
-    label: "Compare",
-    href: "/compare",
-  },
-  {
-    label: "Tools",
-    href: "/tools",
-    children: [
-      { label: "Cost Estimator", href: "/tools/cost-estimator" },
-      { label: "Free Zone Picker", href: "/tools/zone-picker" },
-      { label: "VAT Helper", href: "/tools/vat-helper" },
-    ],
-  },
-  {
-    label: "Relocation",
-    href: "/relocation",
-  },
-  {
-    label: "Taxes",
-    children: [
-      { label: "Overview", href: "/taxes" },
-      { label: "VAT Guide", href: "/taxes/vat" },
-      { label: "Corporate Tax", href: "/taxes/corporate-tax" },
-    ],
-  },
-];
+import { useLocale } from "@/i18n/context";
 
 const Header = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const { t, lp, switchLocale, locale } = useLocale();
+
+  const navItems = [
+    {
+      label: t.nav.setupOptions,
+      children: [
+        { label: t.nav.freeZones, href: lp("/free-zones") },
+        { label: t.nav.mainlandOverview, href: lp("/mainland") },
+        { label: t.nav.licensingBasics, href: lp("/mainland/licensing") },
+        { label: t.nav.officeEjari, href: lp("/mainland/office-ejari") },
+        { label: t.nav.complianceBasics, href: lp("/mainland/compliance") },
+        { label: t.nav.businessActivities, href: lp("/activities") },
+      ],
+    },
+    { label: t.nav.compare, href: lp("/compare") },
+    {
+      label: t.nav.tools,
+      href: lp("/tools"),
+      children: [
+        { label: t.nav.costEstimator, href: lp("/tools/cost-estimator") },
+        { label: t.nav.freeZonePicker, href: lp("/tools/zone-picker") },
+        { label: t.nav.vatHelper, href: lp("/tools/vat-helper") },
+      ],
+    },
+    { label: t.nav.relocation, href: lp("/relocation") },
+    {
+      label: t.nav.taxes,
+      children: [
+        { label: t.nav.overview, href: lp("/taxes") },
+        { label: t.nav.vatGuide, href: lp("/taxes/vat") },
+        { label: t.nav.corporateTax, href: lp("/taxes/corporate-tax") },
+      ],
+    },
+  ];
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -62,14 +58,12 @@ const Header = () => {
       }`}
     >
       <div className="container flex h-16 items-center justify-between lg:h-[72px]">
-        {/* Logo */}
-        <Link to="/" className="flex items-center gap-2 group">
+        <Link to={lp("/")} className="flex items-center gap-2 group">
           <span className="font-display text-xl font-bold text-foreground tracking-tight">
             Incorporate<span className="gradient-text">UAE</span>
           </span>
         </Link>
 
-        {/* Desktop Nav */}
         <nav className="hidden lg:flex items-center gap-0.5">
           {navItems.map((item) => (
             <div key={item.label} className="relative group">
@@ -105,17 +99,23 @@ const Header = () => {
           ))}
         </nav>
 
-        {/* Desktop CTAs */}
         <div className="hidden lg:flex items-center gap-3">
+          <button
+            onClick={switchLocale}
+            className="flex items-center gap-1.5 px-3 py-1.5 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors rounded-lg hover:bg-secondary"
+            aria-label={t.nav.switchLangLabel}
+          >
+            <Globe className="h-3.5 w-3.5" />
+            {t.nav.switchLang}
+          </button>
           <Button asChild variant="ghost" size="sm" className="text-muted-foreground hover:text-foreground">
-            <Link to="/compare">Compare Options</Link>
+            <Link to={lp("/compare")}>{t.common.compareOptions}</Link>
           </Button>
           <Button asChild size="sm" className="bg-accent text-accent-foreground hover:bg-accent/90 rounded-full px-5 font-semibold shadow-lg shadow-accent/20">
-            <Link to="/tools/cost-estimator">Get Started</Link>
+            <Link to={lp("/tools/cost-estimator")}>{t.common.getStarted}</Link>
           </Button>
         </div>
 
-        {/* Mobile Toggle */}
         <button
           onClick={() => setMobileOpen(!mobileOpen)}
           className="lg:hidden p-2 text-foreground rounded-lg hover:bg-secondary transition-colors"
@@ -125,7 +125,6 @@ const Header = () => {
         </button>
       </div>
 
-      {/* Mobile Menu */}
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
@@ -168,11 +167,20 @@ const Header = () => {
                 </div>
               ))}
               <div className="flex flex-col gap-2 pt-4 px-4">
+                <Button
+                  variant="outline"
+                  size="sm"
+                  className="w-full rounded-full"
+                  onClick={() => { switchLocale(); setMobileOpen(false); }}
+                >
+                  <Globe className="h-3.5 w-3.5 mr-1.5" />
+                  {t.nav.switchLangLabel}
+                </Button>
                 <Button asChild variant="outline" size="sm" className="w-full rounded-full">
-                  <Link to="/compare" onClick={() => setMobileOpen(false)}>Compare Options</Link>
+                  <Link to={lp("/compare")} onClick={() => setMobileOpen(false)}>{t.common.compareOptions}</Link>
                 </Button>
                 <Button asChild size="sm" className="w-full bg-accent text-accent-foreground hover:bg-accent/90 rounded-full font-semibold">
-                  <Link to="/tools/cost-estimator" onClick={() => setMobileOpen(false)}>Get Started</Link>
+                  <Link to={lp("/tools/cost-estimator")} onClick={() => setMobileOpen(false)}>{t.common.getStarted}</Link>
                 </Button>
               </div>
             </nav>
