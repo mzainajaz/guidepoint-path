@@ -125,7 +125,7 @@ const FreeZoneDetail = () => {
 
           <BestAnswerBlock
             title={`Should you choose ${zone.shortName}?`}
-            content={zone.overview.split(".").slice(0, 2).join(".") + "."}
+            content={zone.bestAnswer}
             audience={zone.idealFor}
             caution="Always verify current pricing, activity suitability, and banking realities before committing."
           />
@@ -416,9 +416,10 @@ const FreeZoneDetail = () => {
                 <h2 className="font-display text-2xl font-semibold text-foreground mb-4">Frequently asked questions</h2>
                 <Accordion type="single" collapsible className="space-y-2">
                   {[
+                    ...zone.faqs,
                     {
                       q: `How much does it cost to set up in ${zone.shortName}?`,
-                      a: `Indicative starting cost is ${zone.startingCost}. This typically covers the licence fee and basic inclusions. Visa processing, Emirates ID, medical tests, and bank account setup are additional costs. Always confirm the latest pricing directly.`,
+                      a: `Indicative starting cost is ${zone.startingCost}. ${zone.pricingNote}`,
                     },
                     {
                       q: `How long does ${zone.shortName} setup take?`,
@@ -450,16 +451,26 @@ const FreeZoneDetail = () => {
                 <div className="space-y-3 text-sm text-muted-foreground">
                   <p className="font-medium text-foreground">Sources & methodology</p>
                   <ul className="space-y-1">
-                    {zone.sources.map((s, i) => (
-                      <li key={i} className="flex items-center gap-2">
-                        <FileText className="h-3.5 w-3.5 shrink-0" />
-                        {s}
-                      </li>
-                    ))}
+                    {zone.sourceUrls.length > 0
+                      ? zone.sourceUrls.map((s, i) => (
+                          <li key={i} className="flex items-center gap-2">
+                            <FileText className="h-3.5 w-3.5 shrink-0" />
+                            <a href={s.url} target="_blank" rel="noopener noreferrer" className="text-accent hover:underline">
+                              {s.label}
+                            </a>
+                            <span className="text-xs text-muted-foreground/60">[{s.ref}]</span>
+                          </li>
+                        ))
+                      : zone.sources.map((s, i) => (
+                          <li key={i} className="flex items-center gap-2">
+                            <FileText className="h-3.5 w-3.5 shrink-0" />
+                            {s}
+                          </li>
+                        ))}
                   </ul>
                   <p><strong>Last checked:</strong> {zone.lastChecked}</p>
                   <p className="text-xs">
-                    Pricing can change. Always confirm current fees, package inclusions, and authority requirements before proceeding. This page is educational and does not replace legal, tax, or regulatory advice.
+                    This page is educational and not legal or tax advice. Fees, requirements, and authority policies can change. Always confirm the latest official requirements and get qualified advice for your specific situation.
                   </p>
                 </div>
               </section>
