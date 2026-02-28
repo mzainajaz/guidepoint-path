@@ -7,7 +7,10 @@ const navItems = [
     label: "Setup Options",
     children: [
       { label: "Free Zones", href: "/free-zones" },
-      { label: "Mainland", href: "/mainland" },
+      { label: "Mainland Overview", href: "/mainland" },
+      { label: "Licensing Basics", href: "/mainland/licensing" },
+      { label: "Office & Ejari", href: "/mainland/office-ejari" },
+      { label: "Compliance Basics", href: "/mainland/compliance" },
       { label: "Business Activities", href: "/activities" },
     ],
   },
