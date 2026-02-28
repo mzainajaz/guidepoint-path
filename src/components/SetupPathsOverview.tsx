@@ -1,4 +1,6 @@
-import { Building, Landmark, Users } from "lucide-react";
+import { Building, Landmark, Users, ArrowRight } from "lucide-react";
+import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 const paths = [
   {
@@ -11,6 +13,8 @@ const paths = [
       "Ideal for service, consulting, tech, e-commerce",
       "Limited mainland trading without distribution licence",
     ],
+    href: "/free-zones",
+    accent: "bg-emerald-500/10 text-emerald-600",
   },
   {
     icon: Landmark,
@@ -22,6 +26,8 @@ const paths = [
       "Requires office / Ejari",
       "More compliance and licensing steps",
     ],
+    href: "/mainland",
+    accent: "bg-blue-500/10 text-blue-600",
   },
   {
     icon: Users,
@@ -33,35 +39,58 @@ const paths = [
       "Higher setup cost but lower effort",
       "Important to verify value vs DIY route",
     ],
+    href: "/compare",
+    accent: "bg-purple-500/10 text-purple-600",
   },
 ];
 
 const SetupPathsOverview = () => (
-  <section className="bg-secondary py-20">
+  <section className="py-20 md:py-28 bg-secondary">
     <div className="container">
-      <div className="text-center mb-12">
-        <h2 className="font-display text-3xl md:text-4xl font-semibold text-foreground mb-3">
-          Three main setup routes
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        className="text-center mb-14"
+      >
+        <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
+          Three main <span className="gradient-text">setup routes</span>
         </h2>
-        <p className="text-muted-foreground max-w-xl mx-auto">
+        <p className="text-muted-foreground max-w-xl mx-auto text-lg">
           Every UAE business setup falls into one of these paths. Understanding the trade-offs early saves time and money.
         </p>
-      </div>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        {paths.map((path) => (
-          <div key={path.label} className="bg-card border border-border rounded-lg p-6">
-            <path.icon className="h-7 w-7 text-accent mb-4" />
-            <h3 className="font-display text-xl font-semibold text-foreground mb-1">{path.label}</h3>
-            <p className="text-sm text-muted-foreground mb-4">{path.tagline}</p>
-            <ul className="space-y-2">
-              {path.points.map((point) => (
-                <li key={point} className="flex items-start gap-2 text-sm text-muted-foreground">
-                  <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-accent flex-shrink-0" />
-                  {point}
-                </li>
-              ))}
-            </ul>
-          </div>
+      </motion.div>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+        {paths.map((path, i) => (
+          <motion.div
+            key={path.label}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: i * 0.1 }}
+          >
+            <Link
+              to={path.href}
+              className="group flex flex-col h-full bg-card border border-border rounded-2xl p-7 hover:border-accent/30 hover:shadow-lg transition-all duration-300"
+            >
+              <div className={`flex items-center justify-center h-12 w-12 rounded-xl ${path.accent} mb-5`}>
+                <path.icon className="h-6 w-6" />
+              </div>
+              <h3 className="font-display text-xl font-bold text-foreground mb-1">{path.label}</h3>
+              <p className="text-sm text-muted-foreground mb-5">{path.tagline}</p>
+              <ul className="space-y-2.5 mb-6 flex-1">
+                {path.points.map((point) => (
+                  <li key={point} className="flex items-start gap-2.5 text-sm text-muted-foreground">
+                    <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-accent flex-shrink-0" />
+                    {point}
+                  </li>
+                ))}
+              </ul>
+              <div className="flex items-center gap-1.5 text-sm font-semibold text-accent group-hover:gap-2.5 transition-all">
+                Learn more <ArrowRight className="h-3.5 w-3.5" />
+              </div>
+            </Link>
+          </motion.div>
         ))}
       </div>
     </div>

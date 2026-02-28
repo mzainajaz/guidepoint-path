@@ -1,4 +1,6 @@
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
+import { ArrowUpRight } from "lucide-react";
 
 const countries = [
   { name: "United Kingdom", code: "uk", flag: "🇬🇧" },
@@ -9,26 +11,41 @@ const countries = [
 ];
 
 const CountryCards = () => (
-  <section className="bg-secondary py-20">
+  <section className="py-20 md:py-28">
     <div className="container">
-      <div className="text-center mb-12">
-        <h2 className="font-display text-3xl md:text-4xl font-semibold text-foreground mb-3">
-          Moving to the UAE from…
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        className="text-center mb-14"
+      >
+        <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
+          Moving to the UAE <span className="gradient-text">from…</span>
         </h2>
-        <p className="text-muted-foreground max-w-xl mx-auto">
-          Country-specific guides covering setup routes, banking realities, relocation planning, and common pitfalls.
+        <p className="text-muted-foreground max-w-xl mx-auto text-lg">
+          Country-specific guides covering setup routes, banking, relocation, and common pitfalls.
         </p>
-      </div>
+      </motion.div>
       <div className="flex flex-wrap justify-center gap-4">
-        {countries.map((country) => (
-          <Link
+        {countries.map((country, i) => (
+          <motion.div
             key={country.code}
-            to={`/relocation/${country.code}`}
-            className="flex items-center gap-3 bg-card border border-border rounded-lg px-6 py-4 hover:border-accent/40 hover:shadow-md transition-all min-w-[180px]"
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: i * 0.06 }}
           >
-            <span className="text-2xl">{country.flag}</span>
-            <span className="font-medium text-foreground">{country.name}</span>
-          </Link>
+            <Link
+              to={`/relocation/${country.code}`}
+              className="group flex items-center gap-4 bg-card border border-border rounded-2xl px-7 py-5 hover:border-accent/30 hover:shadow-lg transition-all duration-300 min-w-[200px]"
+            >
+              <span className="text-3xl">{country.flag}</span>
+              <span className="font-display font-semibold text-foreground group-hover:text-accent transition-colors">
+                {country.name}
+              </span>
+              <ArrowUpRight className="h-4 w-4 text-muted-foreground group-hover:text-accent transition-colors ml-auto" />
+            </Link>
+          </motion.div>
         ))}
       </div>
     </div>
