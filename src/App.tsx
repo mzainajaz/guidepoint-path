@@ -15,6 +15,10 @@ import ActivitiesIndex from "./pages/ActivitiesIndex";
 import ActivityDetail from "./pages/ActivityDetail";
 import TaxComplianceHub from "./pages/TaxComplianceHub";
 import TaxGuideDetail from "./pages/TaxGuideDetail";
+import ToolsHub from "./pages/ToolsHub";
+import CostEstimator from "./pages/CostEstimator";
+import ZonePicker from "./pages/ZonePicker";
+import VatHelper from "./pages/VatHelper";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -38,6 +42,10 @@ const App = () => (
           <Route path="/taxes" element={<TaxComplianceHub />} />
           <Route path="/taxes/:slug" element={<TaxGuideDetail />} />
           <Route path="/relocation/:countryCode" element={<CountryRelocation />} />
+          <Route path="/tools" element={<ToolsHub />} />
+          <Route path="/tools/cost-estimator" element={<CostEstimator />} />
+          <Route path="/tools/zone-picker" element={<ZonePicker />} />
+          <Route path="/tools/vat-helper" element={<VatHelper />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

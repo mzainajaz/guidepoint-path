@@ -1,0 +1,98 @@
+import { Calculator, Search, FileCheck, BarChart3, ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
+import Header from "@/components/layout/Header";
+import Footer from "@/components/layout/Footer";
+
+const tools = [
+  {
+    icon: Calculator,
+    title: "Total Setup Cost Estimator",
+    description:
+      "Get an indicative cost breakdown for your specific setup — activity, visas, office, and banking included.",
+    href: "/tools/cost-estimator",
+    badge: "Popular",
+  },
+  {
+    icon: Search,
+    title: "Free Zone Picker",
+    description:
+      "Answer a few questions and get matched with the free zones most likely to suit your needs.",
+    href: "/tools/zone-picker",
+    badge: "Interactive",
+  },
+  {
+    icon: FileCheck,
+    title: "VAT Decision Helper",
+    description:
+      "Understand whether you need to register for VAT and what the key thresholds and timelines are.",
+    href: "/tools/vat-helper",
+    badge: "Compliance",
+  },
+];
+
+const ToolsHub = () => (
+  <>
+    <Header />
+    <main className="min-h-screen bg-background">
+      {/* Hero */}
+      <section className="border-b border-border bg-secondary/30">
+        <div className="container py-16 md:py-24 text-center">
+          <span className="inline-block text-xs font-semibold tracking-widest uppercase text-accent mb-4">
+            Interactive Tools
+          </span>
+          <h1 className="font-display text-4xl md:text-5xl font-bold text-foreground mb-4 max-w-2xl mx-auto">
+            Tools that help you decide
+          </h1>
+          <p className="text-muted-foreground max-w-xl mx-auto text-lg">
+            Interactive calculators and matchers built on structured data and transparent methodology.
+          </p>
+        </div>
+      </section>
+
+      {/* Tool Cards */}
+      <section className="container py-16">
+        <div className="grid gap-6 md:grid-cols-3 max-w-5xl mx-auto">
+          {tools.map((tool) => (
+            <Link
+              key={tool.title}
+              to={tool.href}
+              className="group relative border border-border rounded-xl p-8 bg-card hover:border-accent/50 hover:shadow-lg transition-all flex flex-col"
+            >
+              <span className="absolute top-4 right-4 text-[10px] font-semibold tracking-wider uppercase px-2 py-0.5 rounded-full bg-accent/10 text-accent">
+                {tool.badge}
+              </span>
+              <div className="h-12 w-12 rounded-lg bg-accent/10 flex items-center justify-center mb-6">
+                <tool.icon className="h-6 w-6 text-accent" />
+              </div>
+              <h2 className="font-display text-xl font-semibold text-foreground mb-2">
+                {tool.title}
+              </h2>
+              <p className="text-sm text-muted-foreground leading-relaxed flex-1 mb-6">
+                {tool.description}
+              </p>
+              <span className="inline-flex items-center gap-1 text-sm font-medium text-accent group-hover:gap-2 transition-all">
+                Launch tool <ArrowRight className="h-4 w-4" />
+              </span>
+            </Link>
+          ))}
+        </div>
+      </section>
+
+      {/* Methodology note */}
+      <section className="container pb-20">
+        <div className="max-w-3xl mx-auto border border-border rounded-xl p-8 bg-card text-center">
+          <h3 className="font-display text-lg font-semibold text-foreground mb-2">
+            How these tools work
+          </h3>
+          <p className="text-sm text-muted-foreground leading-relaxed">
+            All estimates are based on published authority pricing, verified against official sources as of February 2026. 
+            These tools give you directional guidance — they are not quotes. Always confirm final pricing with the relevant authority or a licensed service agent before committing.
+          </p>
+        </div>
+      </section>
+    </main>
+    <Footer />
+  </>
+);
+
+export default ToolsHub;

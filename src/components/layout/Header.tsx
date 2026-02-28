@@ -17,10 +17,11 @@ const navItems = [
   },
   {
     label: "Tools & Calculators",
+    href: "/tools",
     children: [
-      { label: "Total Setup Cost Estimator", href: "#cost-estimator" },
-      { label: "Free Zone Picker", href: "#fz-picker" },
-      { label: "VAT Decision Helper", href: "#vat-helper" },
+      { label: "Total Setup Cost Estimator", href: "/tools/cost-estimator" },
+      { label: "Free Zone Picker", href: "/tools/zone-picker" },
+      { label: "VAT Decision Helper", href: "/tools/vat-helper" },
     ],
   },
   {
