@@ -6,8 +6,7 @@
 
 @layer base {
   :root {
-    /* Light mode — crisp, high-contrast, modern */
-    --background: 0 0% 100%;
+    --background: 210 20% 98%;
     --foreground: 222 47% 11%;
 
     --card: 0 0% 100%;
@@ -18,9 +17,9 @@
 
     /* Deep indigo-navy */
     --primary: 224 71% 8%;
-    --primary-foreground: 0 0% 100%;
+    --primary-foreground: 210 20% 98%;
 
-    /* Light gray surface */
+    /* Subtle warm gray surface */
     --secondary: 220 14% 96%;
     --secondary-foreground: 222 47% 11%;
 
@@ -52,6 +51,13 @@
     --gradient-start: 160 84% 39%;
     --gradient-end: 190 95% 39%;
     --gradient-accent: linear-gradient(135deg, hsl(160 84% 39%), hsl(190 95% 39%));
+    --gradient-hero: linear-gradient(160deg, hsl(224 71% 6%), hsl(224 60% 12%), hsl(200 50% 10%));
+    --gradient-surface: linear-gradient(180deg, hsl(220 14% 96%), hsl(210 20% 98%));
+
+    /* Elevation shadows */
+    --shadow-card: 0 1px 3px hsl(222 47% 11% / 0.04), 0 4px 12px hsl(222 47% 11% / 0.03);
+    --shadow-card-hover: 0 4px 16px hsl(160 84% 39% / 0.08), 0 8px 32px hsl(222 47% 11% / 0.06);
+    --shadow-elevated: 0 8px 30px hsl(222 47% 11% / 0.08), 0 2px 8px hsl(222 47% 11% / 0.04);
 
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
@@ -86,6 +92,10 @@
 
     --glass: 224 71% 6% / 0.6;
     --glass-border: 210 40% 98% / 0.08;
+
+    --shadow-card: 0 1px 3px hsl(0 0% 0% / 0.2);
+    --shadow-card-hover: 0 4px 16px hsl(160 84% 39% / 0.12), 0 8px 32px hsl(0 0% 0% / 0.3);
+    --shadow-elevated: 0 8px 30px hsl(0 0% 0% / 0.3);
 
     --sidebar-background: 224 71% 4%;
     --sidebar-foreground: 210 40% 98%;
@@ -155,5 +165,41 @@
     background: radial-gradient(circle, hsl(160 84% 39% / 0.15) 0%, transparent 70%);
     filter: blur(80px);
     pointer-events: none;
+  }
+
+  .card-modern {
+    background: hsl(var(--card));
+    border: 1px solid hsl(var(--border));
+    border-radius: 1rem;
+    box-shadow: var(--shadow-card);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .card-modern:hover {
+    border-color: hsl(var(--accent) / 0.3);
+    box-shadow: var(--shadow-card-hover);
+    transform: translateY(-2px);
+  }
+
+  .section-divider {
+    position: relative;
+  }
+
+  .section-divider::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120px;
+    height: 2px;
+    background: var(--gradient-accent);
+    border-radius: 1px;
+    opacity: 0.4;
+  }
+
+  .dot-pattern {
+    background-image: radial-gradient(hsl(var(--foreground) / 0.04) 1px, transparent 1px);
+    background-size: 24px 24px;
   }
 }
