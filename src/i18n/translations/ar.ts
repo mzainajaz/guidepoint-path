@@ -620,6 +620,22 @@ const ar: TranslationSet = {
     message: "عذراً! الصفحة غير موجودة",
     backHome: "العودة للرئيسية",
   },
+  leadGate: {
+    freeAccess: "وصول مجاني",
+    title: "احصل على وصول فوري لهذه الأداة",
+    subtitle: "أدخل بياناتك لفتح التجربة التفاعلية الكاملة.",
+    nameLabel: "الاسم الكامل",
+    namePlaceholder: "مثال: أحمد محمد",
+    emailLabel: "البريد الإلكتروني",
+    emailPlaceholder: "you@company.com",
+    phoneLabel: "رقم الهاتف",
+    phonePlaceholder: "50 123 4567",
+    cta: "فتح الأداة",
+    privacy: "تُستخدم بياناتك فقط لتخصيص تجربتك. لن نشاركها مع أطراف ثالثة أبداً.",
+    fieldRequired: "هذا الحقل مطلوب",
+    invalidEmail: "يرجى إدخال بريد إلكتروني صالح",
+    invalidPhone: "يرجى إدخال رقم هاتف صالح",
+  },
 };
 
 export default ar;

@@ -620,6 +620,22 @@ const de: TranslationSet = {
     message: "Hoppla! Seite nicht gefunden",
     backHome: "Zur Startseite zurückkehren",
   },
+  leadGate: {
+    freeAccess: "Kostenloser Zugang",
+    title: "Sofortigen Zugang zu diesem Tool erhalten",
+    subtitle: "Geben Sie Ihre Daten ein, um das vollständige interaktive Erlebnis freizuschalten.",
+    nameLabel: "Vollständiger Name",
+    namePlaceholder: "z.B. Max Müller",
+    emailLabel: "E-Mail-Adresse",
+    emailPlaceholder: "sie@unternehmen.com",
+    phoneLabel: "Telefonnummer",
+    phonePlaceholder: "151 1234 5678",
+    cta: "Tool freischalten",
+    privacy: "Ihre Daten werden nur zur Personalisierung Ihres Erlebnisses verwendet. Wir geben sie niemals weiter.",
+    fieldRequired: "Dieses Feld ist erforderlich",
+    invalidEmail: "Bitte geben Sie eine gültige E-Mail-Adresse ein",
+    invalidPhone: "Bitte geben Sie eine gültige Telefonnummer ein",
+  },
 };
 
 export default de;

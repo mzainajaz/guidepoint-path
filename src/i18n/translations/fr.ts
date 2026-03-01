@@ -635,6 +635,22 @@ const fr: TranslationSet = {
     message: "Oups ! Page introuvable",
     backHome: "Retour à l'accueil",
   },
+  leadGate: {
+    freeAccess: "Accès gratuit",
+    title: "Accédez instantanément à cet outil",
+    subtitle: "Entrez vos coordonnées pour débloquer l'expérience interactive complète.",
+    nameLabel: "Nom complet",
+    namePlaceholder: "ex. Marie Dupont",
+    emailLabel: "Adresse e-mail",
+    emailPlaceholder: "vous@entreprise.com",
+    phoneLabel: "Numéro de téléphone",
+    phonePlaceholder: "6 12 34 56 78",
+    cta: "Débloquer l'outil",
+    privacy: "Vos données servent uniquement à personnaliser votre expérience. Nous ne les partageons jamais.",
+    fieldRequired: "Ce champ est obligatoire",
+    invalidEmail: "Veuillez entrer une adresse e-mail valide",
+    invalidPhone: "Veuillez entrer un numéro de téléphone valide",
+  },
 };
 
 export default fr;

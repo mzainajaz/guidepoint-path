@@ -727,6 +727,22 @@ const en = {
     message: "Oops! Page not found",
     backHome: "Return to Home",
   },
+  leadGate: {
+    freeAccess: "Free access",
+    title: "Get instant access to this tool",
+    subtitle: "Enter your details to unlock the full interactive experience.",
+    nameLabel: "Full name",
+    namePlaceholder: "e.g. Sarah Johnson",
+    emailLabel: "Email address",
+    emailPlaceholder: "you@company.com",
+    phoneLabel: "Phone number",
+    phonePlaceholder: "50 123 4567",
+    cta: "Unlock tool",
+    privacy: "Your data is used only to personalise your experience. We never share it with third parties.",
+    fieldRequired: "This field is required",
+    invalidEmail: "Please enter a valid email address",
+    invalidPhone: "Please enter a valid phone number",
+  },
 };
 
 export type TranslationSet = typeof en;
