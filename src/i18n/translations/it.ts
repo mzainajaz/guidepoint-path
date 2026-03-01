@@ -729,6 +729,22 @@ const it: TranslationSet = {
     message: "Oops! Pagina non trovata",
     backHome: "Torna alla Home",
   },
+  leadGate: {
+    freeAccess: "Accesso gratuito",
+    title: "Accedi subito a questo strumento",
+    subtitle: "Inserisci i tuoi dati per sbloccare l'esperienza interattiva completa.",
+    nameLabel: "Nome completo",
+    namePlaceholder: "es. Marco Rossi",
+    emailLabel: "Indirizzo email",
+    emailPlaceholder: "tu@azienda.com",
+    phoneLabel: "Numero di telefono",
+    phonePlaceholder: "333 123 4567",
+    cta: "Sblocca strumento",
+    privacy: "I tuoi dati vengono utilizzati solo per personalizzare la tua esperienza. Non li condividiamo mai.",
+    fieldRequired: "Questo campo è obbligatorio",
+    invalidEmail: "Inserisci un indirizzo email valido",
+    invalidPhone: "Inserisci un numero di telefono valido",
+  },
 };
 
 export default it;

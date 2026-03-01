@@ -620,6 +620,22 @@ const es: TranslationSet = {
     message: "¡Ups! Página no encontrada",
     backHome: "Volver al inicio",
   },
+  leadGate: {
+    freeAccess: "Acceso gratuito",
+    title: "Accede a esta herramienta al instante",
+    subtitle: "Introduce tus datos para desbloquear la experiencia interactiva completa.",
+    nameLabel: "Nombre completo",
+    namePlaceholder: "ej. María García",
+    emailLabel: "Correo electrónico",
+    emailPlaceholder: "tu@empresa.com",
+    phoneLabel: "Número de teléfono",
+    phonePlaceholder: "612 345 678",
+    cta: "Desbloquear herramienta",
+    privacy: "Tus datos solo se usan para personalizar tu experiencia. Nunca los compartimos con terceros.",
+    fieldRequired: "Este campo es obligatorio",
+    invalidEmail: "Por favor, introduce un correo electrónico válido",
+    invalidPhone: "Por favor, introduce un número de teléfono válido",
+  },
 };
 
 export default es;
