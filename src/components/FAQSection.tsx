@@ -5,16 +5,19 @@ import { useLocale } from "@/i18n/context";
 const FAQSection = () => {
   const { t } = useLocale();
   return (
-    <section className="py-20 md:py-28">
+    <section className="py-24 md:py-32">
       <div className="container">
         <div className="max-w-3xl mx-auto">
-          <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="font-display text-3xl md:text-4xl font-bold text-foreground mb-10 text-center">
-            {t.faq.title} <span className="gradient-text">{t.faq.titleHighlight}</span>
-          </motion.h2>
-          <Accordion type="single" collapsible className="space-y-2">
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-12">
+            <span className="inline-block text-xs font-semibold tracking-widest uppercase text-accent mb-4">FAQ</span>
+            <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground">
+              {t.faq.title} <span className="gradient-text">{t.faq.titleHighlight}</span>
+            </h2>
+          </motion.div>
+          <Accordion type="single" collapsible className="space-y-2.5">
             {t.faq.items.map((faq, i) => (
-              <motion.div key={i} initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.05 }}>
-                <AccordionItem value={`faq-${i}`} className="border border-border rounded-xl px-5 bg-card">
+              <motion.div key={i} initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.04 }}>
+                <AccordionItem value={`faq-${i}`} className="border border-border rounded-xl px-5 bg-card shadow-sm hover:shadow-md transition-shadow">
                   <AccordionTrigger className="text-left font-medium text-foreground hover:no-underline py-4">{faq.q}</AccordionTrigger>
                   <AccordionContent className="text-muted-foreground pb-4 leading-relaxed">{faq.a}</AccordionContent>
                 </AccordionItem>
