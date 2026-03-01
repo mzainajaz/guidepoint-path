@@ -8,22 +8,12 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
 import { Slider } from "@/components/ui/slider";
 import { freeZones } from "@/data/freeZones";
+import { useT, useLocalePath } from "@/i18n/context";
 
-const activityOptions = [
-  { value: "consulting", label: "Consulting / Advisory" },
-  { value: "ecommerce", label: "E-commerce" },
-  { value: "it", label: "IT / Software / SaaS" },
-  { value: "marketing", label: "Marketing / Media" },
-  { value: "trading", label: "General Trading" },
-  { value: "freelance", label: "Freelancer / Solopreneur" },
-  { value: "holding", label: "Holding Company" },
-  { value: "other", label: "Other Services" },
-];
-
-const officeOptions = [
-  { value: "flexi", label: "Flexi-desk / Virtual", cost: 0 },
-  { value: "shared", label: "Shared / Co-working", cost: 8000 },
-  { value: "private", label: "Private Office", cost: 25000 },
+const officeDefaults = [
+  { value: "flexi", cost: 0 },
+  { value: "shared", cost: 8000 },
+  { value: "private", cost: 25000 },
 ];
 
 const VISA_COST_PER_PERSON = 4000;
@@ -31,11 +21,21 @@ const BANKING_SETUP = 1500;
 const PRO_SERVICES = 3000;
 
 const CostEstimator = () => {
+  const t = useT();
+  const lp = useLocalePath();
   const [step, setStep] = useState(0);
   const [activity, setActivity] = useState("consulting");
   const [visas, setVisas] = useState([2]);
   const [office, setOffice] = useState("flexi");
   const [priorityBanking, setPriorityBanking] = useState(false);
+
+  const ce = t.costEstimator;
+
+  const officeOptions = useMemo(() => [
+    { value: "flexi", label: ce.flexiDesk, cost: 0 },
+    { value: "shared", label: ce.sharedOffice, cost: 8000 },
+    { value: "private", label: ce.privateOffice, cost: 25000 },
+  ], [ce]);
 
   const matchedZones = useMemo(() => {
     const activityMap: Record<string, string[]> = {
@@ -58,7 +58,7 @@ const CostEstimator = () => {
   const breakdown = useMemo(() => {
     const cheapest = matchedZones[0];
     const licenceFee = cheapest?.costNum || 15000;
-    const officeCost = officeOptions.find((o) => o.value === office)?.cost || 0;
+    const officeCost = officeDefaults.find((o) => o.value === office)?.cost || 0;
     const visaCost = visas[0] * VISA_COST_PER_PERSON;
     const banking = priorityBanking ? BANKING_SETUP : 0;
     const total = licenceFee + officeCost + visaCost + banking + PRO_SERVICES;
@@ -66,10 +66,10 @@ const CostEstimator = () => {
   }, [matchedZones, office, visas, priorityBanking]);
 
   const steps = [
-    { label: "Activity", icon: Building2 },
-    { label: "Team", icon: Users },
-    { label: "Office", icon: Building2 },
-    { label: "Estimate", icon: Calculator },
+    { label: ce.stepLabels[0], icon: Building2 },
+    { label: ce.stepLabels[1], icon: Users },
+    { label: ce.stepLabels[2], icon: Building2 },
+    { label: ce.stepLabels[3], icon: Calculator },
   ];
 
   return (
@@ -77,15 +77,15 @@ const CostEstimator = () => {
       <Header />
       <main className="min-h-screen bg-background">
         <div className="container py-12 max-w-3xl">
-          <Link to="/tools" className="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground mb-8">
-            <ArrowLeft className="h-4 w-4" /> Back to Tools
+          <Link to={lp("/tools")} className="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground mb-8">
+            <ArrowLeft className="h-4 w-4" /> {t.common.backToTools}
           </Link>
 
           <h1 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-2">
-            Total Setup Cost Estimator
+            {ce.title}
           </h1>
           <p className="text-muted-foreground mb-10">
-            Get a directional cost estimate based on your activity, team size, and office needs.
+            {ce.subtitle}
           </p>
 
           {/* Progress */}
@@ -109,9 +109,9 @@ const CostEstimator = () => {
           {/* Step 0: Activity */}
           {step === 0 && (
             <div className="space-y-6">
-              <h2 className="font-display text-xl font-semibold text-foreground">What will your business do?</h2>
+              <h2 className="font-display text-xl font-semibold text-foreground">{ce.whatWillYourBusinessDo}</h2>
               <RadioGroup value={activity} onValueChange={setActivity} className="grid grid-cols-2 gap-3">
-                {activityOptions.map((a) => (
+                {ce.activities.map((a) => (
                   <Label
                     key={a.value}
                     htmlFor={a.value}
@@ -126,7 +126,7 @@ const CostEstimator = () => {
               </RadioGroup>
               <div className="flex justify-end">
                 <Button onClick={() => setStep(1)} className="bg-accent text-accent-foreground hover:bg-accent/90">
-                  Next <ArrowRight className="h-4 w-4" />
+                  {t.common.next} <ArrowRight className="h-4 w-4" />
                 </Button>
               </div>
             </div>
@@ -135,22 +135,22 @@ const CostEstimator = () => {
           {/* Step 1: Visas */}
           {step === 1 && (
             <div className="space-y-6">
-              <h2 className="font-display text-xl font-semibold text-foreground">How many visas do you need?</h2>
-              <p className="text-sm text-muted-foreground">Include yourself. Each visa costs approximately AED {VISA_COST_PER_PERSON.toLocaleString()} (medical + EID + processing).</p>
+              <h2 className="font-display text-xl font-semibold text-foreground">{ce.howManyVisas}</h2>
+              <p className="text-sm text-muted-foreground">{ce.visaNote(VISA_COST_PER_PERSON)}</p>
               <div className="bg-card border border-border rounded-xl p-8">
                 <div className="text-center mb-6">
                   <span className="font-display text-5xl font-bold text-accent">{visas[0]}</span>
-                  <span className="text-muted-foreground ml-2">visa{visas[0] !== 1 ? "s" : ""}</span>
+                  <span className="text-muted-foreground ml-2">{ce.visaUnit(visas[0])}</span>
                 </div>
                 <Slider value={visas} onValueChange={setVisas} min={0} max={10} step={1} />
                 <div className="flex justify-between text-xs text-muted-foreground mt-2">
-                  <span>0 (no visa)</span><span>10</span>
+                  <span>{ce.noVisa}</span><span>10</span>
                 </div>
               </div>
               <div className="flex justify-between">
-                <Button variant="outline" onClick={() => setStep(0)}><ArrowLeft className="h-4 w-4" /> Back</Button>
+                <Button variant="outline" onClick={() => setStep(0)}><ArrowLeft className="h-4 w-4" /> {t.common.back}</Button>
                 <Button onClick={() => setStep(2)} className="bg-accent text-accent-foreground hover:bg-accent/90">
-                  Next <ArrowRight className="h-4 w-4" />
+                  {t.common.next} <ArrowRight className="h-4 w-4" />
                 </Button>
               </div>
             </div>
@@ -159,7 +159,7 @@ const CostEstimator = () => {
           {/* Step 2: Office */}
           {step === 2 && (
             <div className="space-y-6">
-              <h2 className="font-display text-xl font-semibold text-foreground">What office type do you need?</h2>
+              <h2 className="font-display text-xl font-semibold text-foreground">{ce.officeType}</h2>
               <RadioGroup value={office} onValueChange={setOffice} className="space-y-3">
                 {officeOptions.map((o) => (
                   <Label
@@ -174,7 +174,7 @@ const CostEstimator = () => {
                       <span className="text-sm font-medium text-foreground">{o.label}</span>
                     </div>
                     <span className="text-sm text-muted-foreground">
-                      {o.cost === 0 ? "Included" : `+AED ${o.cost.toLocaleString()}/yr`}
+                      {o.cost === 0 ? ce.included : `+AED ${o.cost.toLocaleString()}/yr`}
                     </span>
                   </Label>
                 ))}
@@ -190,17 +190,17 @@ const CostEstimator = () => {
                 <div className="flex items-center gap-3">
                   <CreditCard className="h-4 w-4 text-accent" />
                   <div>
-                    <span className="text-sm font-medium text-foreground block">Priority banking support</span>
-                    <span className="text-xs text-muted-foreground">Assisted account opening with partner banks</span>
+                    <span className="text-sm font-medium text-foreground block">{ce.priorityBanking}</span>
+                    <span className="text-xs text-muted-foreground">{ce.priorityBankingDesc}</span>
                   </div>
                 </div>
                 <span className="text-sm text-muted-foreground">+AED {BANKING_SETUP.toLocaleString()}</span>
               </Label>
 
               <div className="flex justify-between">
-                <Button variant="outline" onClick={() => setStep(1)}><ArrowLeft className="h-4 w-4" /> Back</Button>
+                <Button variant="outline" onClick={() => setStep(1)}><ArrowLeft className="h-4 w-4" /> {t.common.back}</Button>
                 <Button onClick={() => setStep(3)} className="bg-accent text-accent-foreground hover:bg-accent/90">
-                  See estimate <Calculator className="h-4 w-4" />
+                  {ce.seeEstimate} <Calculator className="h-4 w-4" />
                 </Button>
               </div>
             </div>
@@ -209,30 +209,30 @@ const CostEstimator = () => {
           {/* Step 3: Result */}
           {step === 3 && (
             <div className="space-y-8">
-              <h2 className="font-display text-xl font-semibold text-foreground">Your indicative first-year cost</h2>
+              <h2 className="font-display text-xl font-semibold text-foreground">{ce.yourEstimate}</h2>
 
               <div className="border border-border rounded-xl overflow-hidden">
                 <div className="bg-accent/5 p-6 border-b border-border">
                   <div className="flex items-baseline justify-between">
-                    <span className="text-sm text-muted-foreground">Estimated total</span>
+                    <span className="text-sm text-muted-foreground">{ce.estimatedTotal}</span>
                     <span className="font-display text-4xl font-bold text-foreground">
                       AED {breakdown.total.toLocaleString()}
                     </span>
                   </div>
-                  <p className="text-xs text-muted-foreground mt-1">Based on {breakdown.zoneName} starting rates</p>
+                  <p className="text-xs text-muted-foreground mt-1">{ce.basedOn(breakdown.zoneName)}</p>
                 </div>
                 <div className="divide-y divide-border">
                   {[
-                    { label: "Licence fee", value: breakdown.licenceFee },
-                    { label: `Visa processing (×${visas[0]})`, value: breakdown.visaCost },
-                    { label: "Office / facility", value: breakdown.officeCost },
-                    { label: "PRO & admin services", value: breakdown.proServices },
-                    ...(breakdown.banking > 0 ? [{ label: "Priority banking", value: breakdown.banking }] : []),
+                    { label: ce.licenceFee, value: breakdown.licenceFee },
+                    { label: ce.visaProcessing(visas[0]), value: breakdown.visaCost },
+                    { label: ce.officeFacility, value: breakdown.officeCost },
+                    { label: ce.proServices, value: breakdown.proServices },
+                    ...(breakdown.banking > 0 ? [{ label: ce.priorityBankingLabel, value: breakdown.banking }] : []),
                   ].map((row) => (
                     <div key={row.label} className="flex justify-between px-6 py-3">
                       <span className="text-sm text-muted-foreground">{row.label}</span>
                       <span className="text-sm font-medium text-foreground">
-                        {row.value === 0 ? "Included" : `AED ${row.value.toLocaleString()}`}
+                        {row.value === 0 ? ce.included : `AED ${row.value.toLocaleString()}`}
                       </span>
                     </div>
                   ))}
@@ -241,16 +241,16 @@ const CostEstimator = () => {
 
               {/* Matched zones */}
               <div>
-                <h3 className="font-display text-lg font-semibold text-foreground mb-4">Best-fit zones for your profile</h3>
+                <h3 className="font-display text-lg font-semibold text-foreground mb-4">{ce.bestFitZones}</h3>
                 <div className="grid grid-cols-2 gap-3">
                   {matchedZones.map((z) => (
                     <Link
                       key={z.id}
-                      to={`/free-zones/${z.id}`}
+                      to={lp(`/free-zones/${z.id}`)}
                       className="border border-border rounded-lg p-4 hover:border-accent/40 transition-all"
                     >
                       <span className="font-display text-sm font-semibold text-foreground block">{z.shortName}</span>
-                      <span className="text-xs text-muted-foreground">From {z.startingCost}/yr</span>
+                      <span className="text-xs text-muted-foreground">{ce.fromPerYear(z.startingCost)}</span>
                     </Link>
                   ))}
                 </div>
@@ -258,18 +258,16 @@ const CostEstimator = () => {
 
               <div className="bg-secondary/50 border border-border rounded-xl p-6">
                 <p className="text-xs text-muted-foreground leading-relaxed">
-                  <strong className="text-foreground">Disclaimer:</strong> This is an indicative estimate, not a quote. 
-                  Actual costs vary based on activity approvals, authority fee changes, and your specific documentation. 
-                  Always confirm final pricing directly with the free zone authority or a licensed service agent.
+                  <strong className="text-foreground">{ce.disclaimerTitle}</strong> {ce.disclaimerText}
                 </p>
               </div>
 
               <div className="flex justify-between">
                 <Button variant="outline" onClick={() => setStep(0)}>
-                  <ArrowLeft className="h-4 w-4" /> Start over
+                  <ArrowLeft className="h-4 w-4" /> {t.common.startOver}
                 </Button>
                 <Button asChild className="bg-accent text-accent-foreground hover:bg-accent/90">
-                  <Link to="/free-zones">Explore Free Zones</Link>
+                  <Link to={lp("/free-zones")}>{ce.exploreFreeZones}</Link>
                 </Button>
               </div>
             </div>
