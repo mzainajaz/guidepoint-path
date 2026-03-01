@@ -10,6 +10,7 @@ import { Label } from "@/components/ui/label";
 import { Slider } from "@/components/ui/slider";
 import { freeZones } from "@/data/freeZones";
 import { useT, useLocalePath } from "@/i18n/context";
+import SEOHead, { serviceSchema } from "@/components/SEOHead";
 
 const officeDefaults = [
   { value: "flexi", cost: 0 },
@@ -75,6 +76,11 @@ const CostEstimator = () => {
 
   return (
     <>
+      <SEOHead
+        title="UAE Business Setup Cost Estimator"
+        description="Get an indicative cost breakdown for your UAE business setup — including licence, visas, office, and banking fees. Transparent methodology with verified pricing."
+        schema={[serviceSchema({ name: "UAE Setup Cost Estimator", description: "Interactive tool to estimate UAE business setup costs", url: "/tools/cost-estimator" })]}
+      />
       <Header />
       <main className="min-h-screen bg-background">
         <div className="container py-12 max-w-3xl">

@@ -14,6 +14,7 @@ import {
   AlertTriangle,
   Info,
 } from "lucide-react";
+import SEOHead, { breadcrumbSchema } from "@/components/SEOHead";
 
 const iconMap: Record<string, React.ElementType> = {
   Receipt,
@@ -22,6 +23,11 @@ const iconMap: Record<string, React.ElementType> = {
 
 const TaxComplianceHub = () => (
   <div className="min-h-screen bg-background">
+    <SEOHead
+      title="UAE Taxes & Compliance — VAT, Corporate Tax & Obligations"
+      description="Practical guides to UAE tax obligations for founders. Covers VAT registration, corporate tax, filing deadlines, and free zone compliance requirements."
+      schema={[breadcrumbSchema([{ name: "Home", url: "/" }, { name: "Taxes & Compliance", url: "/taxes" }])]}
+    />
     <Header />
     <main>
       {/* Breadcrumbs */}

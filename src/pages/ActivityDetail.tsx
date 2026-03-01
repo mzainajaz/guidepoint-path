@@ -6,6 +6,7 @@ import BestAnswerBlock from "@/components/BestAnswerBlock";
 import { Button } from "@/components/ui/button";
 import { getActivityById, businessActivities, type BusinessActivity } from "@/data/businessActivities";
 import { freeZones } from "@/data/freeZones";
+import SEOHead, { breadcrumbSchema, faqSchema, articleSchema } from "@/components/SEOHead";
 import {
   ChevronRight,
   ArrowRight,
@@ -88,6 +89,25 @@ const ActivityDetail = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <SEOHead
+        title={activity.meta.title}
+        description={activity.meta.description}
+        type="article"
+        schema={[
+          breadcrumbSchema([
+            { name: "Home", url: "/" },
+            { name: "Business Activities", url: "/activities" },
+            { name: activity.shortName, url: `/activities/${activity.id}` },
+          ]),
+          faqSchema(activity.faqs),
+          articleSchema({
+            title: activity.meta.title,
+            description: activity.meta.description,
+            url: `/activities/${activity.id}`,
+            dateModified: activity.lastChecked,
+          }),
+        ]}
+      />
       <Header />
       <main>
         {/* Breadcrumbs */}

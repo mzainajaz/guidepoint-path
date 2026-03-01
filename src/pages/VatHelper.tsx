@@ -7,6 +7,7 @@ import LeadGate from "@/components/LeadGate";
 import { Button } from "@/components/ui/button";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
+import SEOHead, { serviceSchema } from "@/components/SEOHead";
 
 const MANDATORY_THRESHOLD = 375000;
 const VOLUNTARY_THRESHOLD = 187500;
@@ -113,6 +114,11 @@ const VatHelper = () => {
 
   return (
     <>
+      <SEOHead
+        title="UAE VAT Decision Helper — Do You Need to Register?"
+        description="Answer four questions to understand your likely UAE VAT registration status. Covers mandatory and voluntary thresholds with clear next steps."
+        schema={[serviceSchema({ name: "VAT Decision Helper", description: "Interactive VAT registration assessment tool", url: "/tools/vat-helper" })]}
+      />
       <Header />
       <main className="min-h-screen bg-background">
         <div className="container py-12 max-w-3xl">

@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { getFreeZoneById, freeZones, type FreeZoneData } from "@/data/freeZones";
 import { getZoneActivities } from "@/data/zoneActivities";
 import ZoneActivityListComponent from "@/components/ZoneActivityList";
+import SEOHead, { breadcrumbSchema, faqSchema, articleSchema } from "@/components/SEOHead";
 import {
   ChevronRight,
   ArrowRight,
@@ -90,6 +91,25 @@ const FreeZoneDetail = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <SEOHead
+        title={`${zone.name} — Free Zone Guide & Pricing`}
+        description={`${zone.bestAnswer.slice(0, 150)}…`}
+        type="article"
+        schema={[
+          breadcrumbSchema([
+            { name: "Home", url: "/" },
+            { name: "Free Zones", url: "/free-zones" },
+            { name: zone.shortName, url: `/free-zones/${zone.id}` },
+          ]),
+          faqSchema(zone.faqs),
+          articleSchema({
+            title: zone.name,
+            description: zone.bestAnswer.slice(0, 155),
+            url: `/free-zones/${zone.id}`,
+            dateModified: zone.lastChecked,
+          }),
+        ]}
+      />
       <Header />
       <main>
         {/* Breadcrumbs */}
@@ -123,6 +143,15 @@ const FreeZoneDetail = () => {
               <FileText className="h-3.5 w-3.5" />
               {zone.sources.length} source{zone.sources.length > 1 ? "s" : ""} verified
             </span>
+          </div>
+
+          {/* TLDR */}
+          <div className="border border-accent/20 bg-accent/5 rounded-lg p-5 mb-6">
+            <div className="flex items-center gap-2 mb-2">
+              <Target className="h-4 w-4 text-accent" />
+              <span className="text-xs font-semibold uppercase tracking-wider text-accent">TL;DR</span>
+            </div>
+            <p className="text-sm text-foreground leading-relaxed">{zone.bestAnswer}</p>
           </div>
 
           <BestAnswerBlock

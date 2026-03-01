@@ -2,6 +2,7 @@ import { Calculator, Search, FileCheck, BarChart3, ArrowRight } from "lucide-rea
 import { Link } from "react-router-dom";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
+import SEOHead, { breadcrumbSchema } from "@/components/SEOHead";
 
 const tools = [
   {
@@ -32,6 +33,11 @@ const tools = [
 
 const ToolsHub = () => (
   <>
+    <SEOHead
+      title="UAE Business Setup Tools — Cost Estimator, Zone Picker, VAT Helper"
+      description="Interactive tools for UAE business setup. Estimate costs, match free zones, and understand VAT obligations with transparent methodology."
+      schema={[breadcrumbSchema([{ name: "Home", url: "/" }, { name: "Tools", url: "/tools" }])]}
+    />
     <Header />
     <main className="min-h-screen bg-background">
       {/* Hero */}

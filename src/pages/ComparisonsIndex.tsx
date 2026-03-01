@@ -10,6 +10,7 @@ import {
   Scale,
   Search,
 } from "lucide-react";
+import SEOHead, { breadcrumbSchema } from "@/components/SEOHead";
 
 const typeLabels: Record<string, string> = {
   "free-zone-vs-free-zone": "Free Zone vs Free Zone",
@@ -20,6 +21,11 @@ const typeLabels: Record<string, string> = {
 
 const ComparisonsIndex = () => (
   <div className="min-h-screen bg-background">
+    <SEOHead
+      title="Compare UAE Setup Options — Free Zones, Mainland & Structures"
+      description="Side-by-side comparisons of UAE free zones, mainland options, and entity structures. Transparent criteria, honest trade-offs, and clear methodology."
+      schema={[breadcrumbSchema([{ name: "Home", url: "/" }, { name: "Compare", url: "/compare" }])]}
+    />
     <Header />
     <main>
       <div className="container pt-6">

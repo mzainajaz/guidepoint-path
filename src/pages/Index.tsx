@@ -14,11 +14,17 @@ import FinalCTA from "@/components/FinalCTA";
 import WhyFoundersSection from "@/components/WhyFoundersSection";
 import CompareListSection from "@/components/CompareListSection";
 import { useLocale } from "@/i18n/context";
+import SEOHead, { websiteSchema, orgSchema } from "@/components/SEOHead";
 
 const Index = () => {
   const { t } = useLocale();
   return (
     <div className="min-h-screen bg-background">
+      <SEOHead
+        title="IncorporateUAE — UAE Business Setup Advisory"
+        description="Compare UAE free zones, mainland options, and business setup routes. Get transparent cost estimates, expert guidance, and a personalised setup snapshot."
+        schema={[websiteSchema(), orgSchema()]}
+      />
       <Header />
       <main>
         <HeroSection />
