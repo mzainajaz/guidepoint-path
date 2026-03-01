@@ -25,6 +25,7 @@ import {
   ChevronRight,
 } from "lucide-react";
 import { freeZones } from "@/data/freeZones";
+import SEOHead, { breadcrumbSchema } from "@/components/SEOHead";
 
 const industryOptions = [
   { value: "all", label: "All industries" },
@@ -76,6 +77,11 @@ const FreeZones = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <SEOHead
+        title="UAE Free Zones — Compare by Cost, Activity & Visas"
+        description="Compare 30+ UAE free zones by cost, business activity, visa options, and office requirements. Transparent data with verified pricing and honest assessments."
+        schema={[breadcrumbSchema([{ name: "Home", url: "/" }, { name: "Free Zones", url: "/free-zones" }])]}
+      />
       <Header />
       <main>
         {/* Breadcrumbs */}

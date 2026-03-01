@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import BestAnswerBlock from "@/components/BestAnswerBlock";
+import SEOHead, { breadcrumbSchema } from "@/components/SEOHead";
 import { Button } from "@/components/ui/button";
 import {
   ChevronRight,
@@ -209,6 +210,11 @@ const faqs = [
 
 const RelocationHub = () => (
   <div className="min-h-screen bg-background">
+    <SEOHead
+      title="Relocating to the UAE — Country-Specific Guides"
+      description="Practical relocation guides for UK, US, India, Egypt, and European founders moving to the UAE. Covers visas, banking, housing, tax, and settlement timelines."
+      schema={[breadcrumbSchema([{ name: "Home", url: "/" }, { name: "Relocation", url: "/relocation" }])]}
+    />
     <Header />
     <main>
       {/* Breadcrumbs */}

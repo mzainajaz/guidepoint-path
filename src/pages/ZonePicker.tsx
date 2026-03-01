@@ -9,6 +9,7 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
 import { freeZones } from "@/data/freeZones";
+import SEOHead, { serviceSchema } from "@/components/SEOHead";
 
 const questions = [
   {
@@ -101,6 +102,11 @@ const ZonePicker = () => {
 
   return (
     <>
+      <SEOHead
+        title="UAE Free Zone Picker — Find Your Best Match"
+        description="Answer a few questions and get matched with the UAE free zones most likely to suit your business activity, budget, and visa needs."
+        schema={[serviceSchema({ name: "Free Zone Picker", description: "Interactive zone matching tool for UAE business setup", url: "/tools/zone-picker" })]}
+      />
       <Header />
       <main className="min-h-screen bg-background">
         <div className="container py-12 max-w-3xl">

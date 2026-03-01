@@ -18,6 +18,7 @@ import {
   Film,
   Home,
 } from "lucide-react";
+import SEOHead, { breadcrumbSchema } from "@/components/SEOHead";
 
 const iconMap: Record<string, React.ElementType> = {
   Briefcase,
@@ -34,6 +35,11 @@ const iconMap: Record<string, React.ElementType> = {
 
 const ActivitiesIndex = () => (
   <div className="min-h-screen bg-background">
+    <SEOHead
+      title="UAE Business Activities — Find the Right Licence"
+      description="Browse UAE business activities to find the right licence type, free zone, and setup route. Each guide covers costs, timelines, and common mistakes."
+      schema={[breadcrumbSchema([{ name: "Home", url: "/" }, { name: "Business Activities", url: "/activities" }])]}
+    />
     <Header />
     <main>
       {/* Breadcrumbs */}

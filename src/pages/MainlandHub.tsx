@@ -10,6 +10,7 @@ import {
   XCircle,
   AlertTriangle,
 } from "lucide-react";
+import SEOHead, { breadcrumbSchema } from "@/components/SEOHead";
 import {
   Accordion,
   AccordionContent,
@@ -19,6 +20,11 @@ import {
 
 const MainlandHub = () => (
   <div className="min-h-screen bg-background">
+    <SEOHead
+      title="UAE Mainland Setup — DED Licensing, Ejari & Compliance"
+      description="Complete guide to UAE mainland company setup. Covers DED licensing, Ejari requirements, local sponsor structures, and compliance obligations."
+      schema={[breadcrumbSchema([{ name: "Home", url: "/" }, { name: "Mainland", url: "/mainland" }])]}
+    />
     <Header />
     <main>
       <div className="container pt-6">

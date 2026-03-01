@@ -37,6 +37,7 @@ import {
   Send,
 } from "lucide-react";
 import { countryRelocationData } from "@/data/countryRelocation";
+import SEOHead, { breadcrumbSchema, articleSchema } from "@/components/SEOHead";
 
 const qualificationSchema = z.object({
   name: z.string().trim().min(1, "Name is required").max(100),
@@ -71,6 +72,24 @@ const CountryRelocation = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <SEOHead
+        title={country.meta.title}
+        description={country.meta.description}
+        type="article"
+        schema={[
+          breadcrumbSchema([
+            { name: "Home", url: "/" },
+            { name: "Relocation", url: "/relocation" },
+            { name: country.name, url: `/relocation/${countryCode}` },
+          ]),
+          articleSchema({
+            title: country.meta.title,
+            description: country.meta.description,
+            url: `/relocation/${countryCode}`,
+            dateModified: "2026-02-01",
+          }),
+        ]}
+      />
       <Header />
       <main>
         {/* Breadcrumbs */}

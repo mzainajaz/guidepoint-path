@@ -4,6 +4,7 @@ import Footer from "@/components/layout/Footer";
 import BestAnswerBlock from "@/components/BestAnswerBlock";
 import { Button } from "@/components/ui/button";
 import { getComparisonById } from "@/data/comparisons";
+import SEOHead, { breadcrumbSchema, faqSchema, articleSchema } from "@/components/SEOHead";
 import {
   ChevronRight,
   ArrowRight,
@@ -14,6 +15,7 @@ import {
   Info,
   Scale,
   Shield,
+  Zap,
 } from "lucide-react";
 import {
   Accordion,
@@ -42,6 +44,25 @@ const ComparisonDetail = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <SEOHead
+        title={`${comp.title} — UAE Setup Comparison`}
+        description={comp.summaryVerdict.slice(0, 155)}
+        type="article"
+        schema={[
+          breadcrumbSchema([
+            { name: "Home", url: "/" },
+            { name: "Compare", url: "/compare" },
+            { name: comp.title, url: `/compare/${comp.id}` },
+          ]),
+          faqSchema(comp.faqs),
+          articleSchema({
+            title: comp.title,
+            description: comp.summaryVerdict.slice(0, 155),
+            url: `/compare/${comp.id}`,
+            dateModified: comp.lastUpdated,
+          }),
+        ]}
+      />
       <Header />
       <main>
         {/* Breadcrumbs */}
@@ -76,6 +97,15 @@ const ComparisonDetail = () => {
               <AlertTriangle className="h-3.5 w-3.5" />
               Not legal or tax advice
             </span>
+          </div>
+
+          {/* TLDR */}
+          <div className="border border-accent/20 bg-accent/5 rounded-lg p-5 mb-6">
+            <div className="flex items-center gap-2 mb-2">
+              <Zap className="h-4 w-4 text-accent" />
+              <span className="text-xs font-semibold uppercase tracking-wider text-accent">TL;DR</span>
+            </div>
+            <p className="text-sm text-foreground leading-relaxed">{comp.summaryVerdict}</p>
           </div>
 
           <BestAnswerBlock

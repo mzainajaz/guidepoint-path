@@ -5,6 +5,7 @@ import Footer from "@/components/layout/Footer";
 import BestAnswerBlock from "@/components/BestAnswerBlock";
 import { Button } from "@/components/ui/button";
 import { getTaxGuideById, taxGuides, type TaxGuide } from "@/data/taxCompliance";
+import SEOHead, { breadcrumbSchema, faqSchema, articleSchema } from "@/components/SEOHead";
 import {
   ChevronRight,
   ArrowRight,
@@ -79,6 +80,25 @@ const TaxGuideDetail = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <SEOHead
+        title={guide.meta.title}
+        description={guide.meta.description}
+        type="article"
+        schema={[
+          breadcrumbSchema([
+            { name: "Home", url: "/" },
+            { name: "Taxes & Compliance", url: "/taxes" },
+            { name: guide.shortName, url: `/taxes/${guide.slug}` },
+          ]),
+          faqSchema(guide.faqs),
+          articleSchema({
+            title: guide.meta.title,
+            description: guide.meta.description,
+            url: `/taxes/${guide.slug}`,
+            dateModified: guide.lastChecked,
+          }),
+        ]}
+      />
       <Header />
       <main>
         {/* Breadcrumbs */}
