@@ -80,6 +80,16 @@ const App = () => (
           <LanguageProvider>
             <AnalyticsWrapper>
               <Routes>
+                {/* Admin routes — must come before locale patterns */}
+                <Route path="/admin/login" element={<AdminLogin />} />
+                <Route path="/admin" element={<ProtectedRoute><AdminLayout /></ProtectedRoute>}>
+                  <Route index element={<AdminDashboard />} />
+                  <Route path="leads" element={<AdminLeads />} />
+                  <Route path="analytics" element={<AdminAnalytics />} />
+                  <Route path="blog" element={<AdminBlog />} />
+                  <Route path="content" element={<AdminContent />} />
+                  <Route path="seo" element={<AdminSEO />} />
+                </Route>
                 {appRoutes.map((r) => (
                   <Route key={r.path} path={r.path} element={r.element} />
                 ))}
@@ -91,16 +101,6 @@ const App = () => (
                 {["fr", "de", "es", "ar", "it", "ru", "uk"].map((loc) => (
                   <Route key={`${loc}-root`} path={`/${loc}`} element={<Index />} />
                 ))}
-                {/* Admin routes */}
-                <Route path="/admin/login" element={<AdminLogin />} />
-                <Route path="/admin" element={<ProtectedRoute><AdminLayout /></ProtectedRoute>}>
-                  <Route index element={<AdminDashboard />} />
-                  <Route path="leads" element={<AdminLeads />} />
-                  <Route path="analytics" element={<AdminAnalytics />} />
-                  <Route path="blog" element={<AdminBlog />} />
-                  <Route path="content" element={<AdminContent />} />
-                  <Route path="seo" element={<AdminSEO />} />
-                </Route>
                 <Route path="*" element={<NotFound />} />
               </Routes>
             </AnalyticsWrapper>
