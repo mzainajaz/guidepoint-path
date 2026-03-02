@@ -114,7 +114,7 @@ const LeadGate = ({ children }: LeadGateProps) => {
               {lg.title}
             </h2>
             <p className="text-sm text-muted-foreground">
-              {lg.subtitle}
+              To proceed, please share the following details.
             </p>
           </div>
 
