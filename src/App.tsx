@@ -4,6 +4,8 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { LanguageProvider } from "@/i18n/context";
+import { AuthProvider } from "@/hooks/useAuth";
+import { useAnalyticsTracker } from "@/hooks/useAnalyticsTracker";
 import Index from "./pages/Index";
 import FreeZones from "./pages/FreeZones";
 import FreeZoneDetail from "./pages/FreeZoneDetail";
@@ -23,12 +25,22 @@ import ToolsHub from "./pages/ToolsHub";
 import CostEstimator from "./pages/CostEstimator";
 import ZonePicker from "./pages/ZonePicker";
 import VatHelper from "./pages/VatHelper";
+import BlogIndex from "./pages/BlogIndex";
+import BlogPost from "./pages/BlogPost";
+import AdminLogin from "./pages/AdminLogin";
+import AdminLayout from "./components/admin/AdminLayout";
+import ProtectedRoute from "./components/admin/ProtectedRoute";
+import AdminDashboard from "./pages/admin/AdminDashboard";
+import AdminLeads from "./pages/admin/AdminLeads";
+import AdminAnalytics from "./pages/admin/AdminAnalytics";
+import AdminBlog from "./pages/admin/AdminBlog";
+import AdminContent from "./pages/admin/AdminContent";
+import AdminSEO from "./pages/admin/AdminSEO";
 import NotFound from "./pages/NotFound";
 import React from "react";
 
 const queryClient = new QueryClient();
 
-// All app routes defined once, rendered for both '' and '/fr' prefixes
 const appRoutes = [
   { path: "/", element: <Index /> },
   { path: "/free-zones", element: <FreeZones /> },
@@ -49,7 +61,14 @@ const appRoutes = [
   { path: "/tools/cost-estimator", element: <CostEstimator /> },
   { path: "/tools/zone-picker", element: <ZonePicker /> },
   { path: "/tools/vat-helper", element: <VatHelper /> },
+  { path: "/blog", element: <BlogIndex /> },
+  { path: "/blog/:slug", element: <BlogPost /> },
 ];
+
+const AnalyticsWrapper = ({ children }: { children: React.ReactNode }) => {
+  useAnalyticsTracker();
+  return <>{children}</>;
+};
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
@@ -57,30 +76,36 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
-        <LanguageProvider>
-          <Routes>
-            {/* English routes */}
-            {appRoutes.map((r) => (
-              <Route key={r.path} path={r.path} element={r.element} />
-            ))}
-            {/* Localized routes for all non-EN locales */}
-            {["fr", "de", "es", "ar", "it", "ru", "uk"].map((loc) =>
-              appRoutes.map((r) => (
-                <Route
-                  key={`${loc}-${r.path}`}
-                  path={`/${loc}${r.path === "/" ? "" : r.path}`}
-                  element={r.element}
-                />
-              ))
-            )}
-            {/* Locale roots */}
-            {["fr", "de", "es", "ar", "it", "ru", "uk"].map((loc) => (
-              <Route key={`${loc}-root`} path={`/${loc}`} element={<Index />} />
-            ))}
-            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </LanguageProvider>
+        <AuthProvider>
+          <LanguageProvider>
+            <AnalyticsWrapper>
+              <Routes>
+                {appRoutes.map((r) => (
+                  <Route key={r.path} path={r.path} element={r.element} />
+                ))}
+                {["fr", "de", "es", "ar", "it", "ru", "uk"].map((loc) =>
+                  appRoutes.map((r) => (
+                    <Route key={`${loc}-${r.path}`} path={`/${loc}${r.path === "/" ? "" : r.path}`} element={r.element} />
+                  ))
+                )}
+                {["fr", "de", "es", "ar", "it", "ru", "uk"].map((loc) => (
+                  <Route key={`${loc}-root`} path={`/${loc}`} element={<Index />} />
+                ))}
+                {/* Admin routes */}
+                <Route path="/admin/login" element={<AdminLogin />} />
+                <Route path="/admin" element={<ProtectedRoute><AdminLayout /></ProtectedRoute>}>
+                  <Route index element={<AdminDashboard />} />
+                  <Route path="leads" element={<AdminLeads />} />
+                  <Route path="analytics" element={<AdminAnalytics />} />
+                  <Route path="blog" element={<AdminBlog />} />
+                  <Route path="content" element={<AdminContent />} />
+                  <Route path="seo" element={<AdminSEO />} />
+                </Route>
+                <Route path="*" element={<NotFound />} />
+              </Routes>
+            </AnalyticsWrapper>
+          </LanguageProvider>
+        </AuthProvider>
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>
