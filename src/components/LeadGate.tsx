@@ -3,6 +3,7 @@ import { z } from "zod";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, Lock, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { supabase } from "@/integrations/supabase/client";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useT } from "@/i18n/context";
@@ -67,6 +68,23 @@ const LeadGate = ({ children }: LeadGateProps) => {
       setErrors(fieldErrors);
       return;
     }
+    // Save lead to database with URL params
+    const sp = new URLSearchParams(window.location.search);
+    supabase.from("leads").insert({
+      name: result.data.name,
+      email: result.data.email,
+      phone: fullPhone,
+      source_url: window.location.href,
+      utm_source: sp.get("utm_source") || null,
+      utm_medium: sp.get("utm_medium") || null,
+      utm_campaign: sp.get("utm_campaign") || null,
+      utm_term: sp.get("utm_term") || null,
+      utm_content: sp.get("utm_content") || null,
+      referrer: document.referrer || null,
+      landing_page: window.location.pathname,
+      user_agent: navigator.userAgent,
+    }).then(() => {});
+
     markSubmitted();
     setSubmitted(true);
   }, [form, selectedCountry, lg]);
