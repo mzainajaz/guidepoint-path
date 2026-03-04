@@ -90,11 +90,11 @@ export const LanguageProvider = ({ children }: { children: React.ReactNode }) =>
   return <LanguageContext.Provider value={value}>{children}</LanguageContext.Provider>;
 };
 
-export const useLocale = () => {
+export function useLocale() {
   const ctx = useContext(LanguageContext);
   if (!ctx) throw new Error("useLocale must be used within LanguageProvider");
   return ctx;
-};
+}
 
 export const useT = () => useLocale().t;
 export const useLocalePath = () => useLocale().lp;
