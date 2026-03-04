@@ -67,7 +67,7 @@ const Header = () => {
             : "bg-transparent"
         }`}
       >
-        <div className="max-w-[1280px] mx-auto px-6 lg:px-10 h-[72px] flex items-center justify-between">
+        <div className="max-w-[1280px] mx-auto px-6 lg:px-10 h-[72px] flex items-center justify-between lg:grid lg:grid-cols-[1fr_auto_1fr]">
 
           {/* Left nav (desktop) */}
           <nav className="hidden lg:flex items-center gap-7">
@@ -108,7 +108,7 @@ const Header = () => {
           {/* Center: Logo */}
           <Link
             to={lp("/")}
-            className="lg:absolute lg:left-1/2 lg:-translate-x-1/2 flex items-center"
+            className="flex items-center"
           >
             <img
               src="/images/logo-incorpuae.png"
@@ -118,7 +118,7 @@ const Header = () => {
           </Link>
 
           {/* Right nav + CTA (desktop) */}
-          <div className="hidden lg:flex items-center gap-7">
+          <div className="hidden lg:flex items-center justify-end gap-7">
             {navItems.slice(2).map((item) => (
               <div key={item.label} className="relative group">
                 {item.href && !item.children ? (
@@ -190,7 +190,7 @@ const Header = () => {
           {/* Mobile hamburger */}
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="lg:hidden ml-auto text-white/70 hover:text-white transition-colors p-1"
+            className="lg:hidden text-white/70 hover:text-white transition-colors p-1"
             aria-label="Toggle menu"
           >
             {mobileOpen ? <X size={20} /> : <Menu size={20} />}
