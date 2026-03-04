@@ -3,7 +3,7 @@ import type { TranslationSet } from "./en";
 const uk: TranslationSet = {
   common: {
     home: "Головна",
-    getStarted: "Розпочати",
+    getStarted: "Зв'язатися",
     compareOptions: "Порівняти варіанти",
     exploreTools: "Інструменти",
     getSetupSnapshot: "Отримати огляд",

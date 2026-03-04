@@ -180,7 +180,7 @@ const Header = () => {
             </div>
 
             <Link
-              to={lp("/tools/cost-estimator")}
+              to={lp("/contact")}
               className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-white text-black text-[11px] font-medium tracking-[0.1em] uppercase hover:bg-white/88 transition-all duration-200"
             >
               {t.common.getStarted}
@@ -242,7 +242,7 @@ const Header = () => {
               ))}
               <div className="mt-8 flex flex-col gap-3">
                 <Link
-                  to={lp("/tools/cost-estimator")}
+                  to={lp("/contact")}
                   onClick={() => setMobileOpen(false)}
                   className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-white text-black text-[11px] font-medium tracking-[0.1em] uppercase"
                 >

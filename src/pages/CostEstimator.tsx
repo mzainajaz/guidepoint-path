@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { ArrowLeft, ArrowRight, Check, Users, Building2, CreditCard, Calculator } from "lucide-react";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
-import LeadGate from "@/components/LeadGate";
+
 import { Button } from "@/components/ui/button";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
@@ -95,7 +95,7 @@ const CostEstimator = () => {
             {ce.subtitle}
           </p>
 
-          <LeadGate>
+          
 
           {/* Progress */}
           <div className="flex items-center gap-1 mb-10">
@@ -281,7 +281,7 @@ const CostEstimator = () => {
               </div>
             </div>
           )}
-          </LeadGate>
+          
         </div>
       </main>
       <Footer />
