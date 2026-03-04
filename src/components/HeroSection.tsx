@@ -49,9 +49,9 @@ const HeroSection = () => {
 
           {/* Badge */}
           <motion.div
-            initial={{ opacity: 0, y: 12 }}
+            initial={{ opacity: 1, y: 0 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 0.3 }}
             style={{
               display: "inline-flex",
               alignItems: "center",
@@ -74,9 +74,9 @@ const HeroSection = () => {
 
           {/* Headline */}
           <motion.h1
-            initial={{ opacity: 0, y: 24 }}
+            initial={{ opacity: 1, y: 0 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.1 }}
+            transition={{ duration: 0.3 }}
             style={{
               fontFamily: "'Sora', system-ui, sans-serif",
               fontWeight: 700,
@@ -95,9 +95,9 @@ const HeroSection = () => {
 
           {/* Subtitle */}
           <motion.p
-            initial={{ opacity: 0, y: 24 }}
+            initial={{ opacity: 1, y: 0 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.2 }}
+            transition={{ duration: 0.3 }}
             style={{
               fontFamily: "'Inter', sans-serif",
               fontSize: "1.0625rem",
@@ -113,9 +113,9 @@ const HeroSection = () => {
 
           {/* CTAs */}
           <motion.div
-            initial={{ opacity: 0, y: 24 }}
+            initial={{ opacity: 1, y: 0 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.3 }}
+            transition={{ duration: 0.3 }}
             style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: "16px" }}
           >
             <Link
@@ -165,9 +165,9 @@ const HeroSection = () => {
 
           {/* Stats */}
           <motion.div
-            initial={{ opacity: 0, y: 24 }}
+            initial={{ opacity: 1, y: 0 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.45 }}
+            transition={{ duration: 0.3 }}
             style={{ marginTop: "56px", display: "flex", alignItems: "center", gap: "48px", flexWrap: "wrap", justifyContent: "center" }}
           >
             {t.hero.stats.map((stat, i) => (
