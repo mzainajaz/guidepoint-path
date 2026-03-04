@@ -120,7 +120,7 @@ const VatHelper = () => {
         schema={[serviceSchema({ name: "VAT Decision Helper", description: "Interactive VAT registration assessment tool", url: "/tools/vat-helper" })]}
       />
       <Header />
-      <main className="min-h-screen bg-background">
+      <main className="page-offset min-h-screen bg-background">
         <div className="container py-12 max-w-3xl">
           <Link to="/tools" className="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground mb-8">
             <ArrowLeft className="h-4 w-4" /> Back to Tools

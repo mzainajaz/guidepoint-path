@@ -11,7 +11,7 @@ const FinalCTA = () => {
       {/* Background image */}
       <div className="absolute inset-0">
         <img src="/images/section-mainland.jpg" alt="Dubai business district" className="w-full h-full object-cover object-center" />
-        <div className="absolute inset-0 bg-[#0B1628]/88" />
+        <div className="absolute inset-0 bg-[#0B1628]/92" />
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] rounded-full bg-amber-400/8 blur-[130px] pointer-events-none" />
       </div>
       <div className="container relative z-10 text-center">
@@ -22,7 +22,7 @@ const FinalCTA = () => {
               {t.finalCta.titleHighlight}
             </span>
           </h2>
-          <p className="text-white/65 max-w-lg mx-auto mb-10 text-lg">{t.finalCta.subtitle}</p>
+          <p className="text-white/80 max-w-lg mx-auto mb-10 text-lg">{t.finalCta.subtitle}</p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <Button
               asChild

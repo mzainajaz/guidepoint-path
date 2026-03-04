@@ -271,6 +271,16 @@ html {
   scroll-behavior: smooth;
 }
 
+/* ── Fixed header offset for non-hero pages ── */
+.page-offset {
+  padding-top: 4rem; /* 64px = h-16 */
+}
+@media (min-width: 1024px) {
+  .page-offset {
+    padding-top: 4.5rem; /* 72px = lg:h-[72px] */
+  }
+}
+
 /* ── Custom selection color ── */
 ::selection {
   background: hsl(38 92% 50% / 0.25);

@@ -29,6 +29,7 @@ const Index = () => {
       />
       <Header />
       <main>
+        {/* Hero fills the full viewport including behind the fixed header */}
         <HeroSection />
         <TrustStrip />
         <section className="container py-16">

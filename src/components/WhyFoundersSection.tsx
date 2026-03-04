@@ -48,7 +48,7 @@ const WhyFoundersSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
-              className="space-y-5 text-white/65 leading-relaxed text-lg"
+              className="space-y-5 text-white/75 leading-relaxed text-lg"
             >
               <p>{t.whyFounders.p1}</p>
               <p>{t.whyFounders.p2}</p>
@@ -63,7 +63,7 @@ const WhyFoundersSection = () => {
             transition={{ delay: 0.15 }}
             className="bg-white/5 border border-white/10 rounded-2xl p-8"
           >
-            <p className="text-white/50 text-xs font-semibold tracking-widest uppercase mb-5">Compare what actually matters</p>
+            <p className="text-white/60 text-xs font-semibold tracking-widest uppercase mb-5">Compare what actually matters</p>
             <ul className="space-y-3">
               {checkItems.map((item) => (
                 <li key={item} className="flex items-center gap-3">

@@ -109,7 +109,7 @@ const ActivityDetail = () => {
         ]}
       />
       <Header />
-      <main>
+      <main className="page-offset">
         {/* Breadcrumbs */}
         <div className="container pt-6">
           <nav className="flex items-center gap-1.5 text-sm text-muted-foreground">

@@ -30,7 +30,7 @@ const BlogIndex = () => {
   return (
     <>
       <Header />
-      <main className="min-h-screen pt-24 pb-16">
+      <main className="page-offset min-h-screen pb-16">
         <div className="max-w-4xl mx-auto px-4">
           <h1 className="font-display text-3xl font-bold text-foreground mb-2">Blog</h1>
           <p className="text-muted-foreground mb-8">Insights, guides, and updates on UAE business setup.</p>

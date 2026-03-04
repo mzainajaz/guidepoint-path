@@ -26,7 +26,7 @@ const MainlandHub = () => (
       schema={[breadcrumbSchema([{ name: "Home", url: "/" }, { name: "Mainland", url: "/mainland" }])]}
     />
     <Header />
-    <main>
+    <main className="page-offset">
       <div className="container pt-6">
         <nav className="flex items-center gap-1.5 text-sm text-muted-foreground">
           <Link to="/" className="hover:text-foreground transition-colors">Home</Link>

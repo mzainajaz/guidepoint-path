@@ -39,7 +39,7 @@ const BlogPost = () => {
     return (
       <>
         <Header />
-        <main className="min-h-screen pt-24 pb-16 flex items-center justify-center">
+        <main className="page-offset min-h-screen pb-16 flex items-center justify-center">
           <p className="text-muted-foreground">Post not found.</p>
         </main>
         <Footer />
@@ -55,7 +55,7 @@ const BlogPost = () => {
         canonical={`https://incorporateuae.com/blog/${post.slug}`}
       />
       <Header />
-      <main className="min-h-screen pt-24 pb-16">
+      <main className="page-offset min-h-screen pb-16">
         <article className="max-w-3xl mx-auto px-4">
           <Link to="/blog" className="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground mb-6">
             <ArrowLeft className="h-4 w-4" /> Back to Blog

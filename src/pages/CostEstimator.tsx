@@ -82,7 +82,7 @@ const CostEstimator = () => {
         schema={[serviceSchema({ name: "UAE Setup Cost Estimator", description: "Interactive tool to estimate UAE business setup costs", url: "/tools/cost-estimator" })]}
       />
       <Header />
-      <main className="min-h-screen bg-background">
+      <main className="page-offset min-h-screen bg-background">
         <div className="container py-12 max-w-3xl">
           <Link to={lp("/tools")} className="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground mb-8">
             <ArrowLeft className="h-4 w-4" /> {t.common.backToTools}

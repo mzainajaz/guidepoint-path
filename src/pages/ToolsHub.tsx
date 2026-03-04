@@ -39,7 +39,7 @@ const ToolsHub = () => (
       schema={[breadcrumbSchema([{ name: "Home", url: "/" }, { name: "Tools", url: "/tools" }])]}
     />
     <Header />
-    <main className="min-h-screen bg-background">
+    <main className="page-offset min-h-screen bg-background">
       {/* Hero */}
       <section className="border-b border-border bg-secondary/30">
         <div className="container py-16 md:py-24 text-center">

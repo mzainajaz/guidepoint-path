@@ -39,7 +39,7 @@ const TrustStrip = () => {
                 </div>
 
                 {/* Description */}
-                <p className="text-[13px] leading-relaxed text-white/55 text-center lg:text-left max-w-[220px]">
+                <p className="text-[13px] leading-relaxed text-white/70 text-center lg:text-left max-w-[220px]">
                   {item.description}
                 </p>
               </motion.div>
