@@ -27,6 +27,8 @@ import ZonePicker from "./pages/ZonePicker";
 import VatHelper from "./pages/VatHelper";
 import BlogIndex from "./pages/BlogIndex";
 import BlogPost from "./pages/BlogPost";
+import GuidesIndex from "./pages/GuidesIndex";
+import GuideDetail from "./pages/GuideDetail";
 import Contact from "./pages/Contact";
 import AdminLogin from "./pages/AdminLogin";
 import AdminLayout from "./components/admin/AdminLayout";
@@ -64,6 +66,8 @@ const appRoutes = [
   { path: "/tools/vat-helper", element: <VatHelper /> },
   { path: "/blog", element: <BlogIndex /> },
   { path: "/blog/:slug", element: <BlogPost /> },
+  { path: "/guides", element: <GuidesIndex /> },
+  { path: "/guides/:slug", element: <GuideDetail /> },
   { path: "/contact", element: <Contact /> },
 ];
 
