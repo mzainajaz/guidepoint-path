@@ -16,6 +16,7 @@ import CompareListSection from "@/components/CompareListSection";
 import CustomerReels from "@/components/CustomerReels";
 import ReviewsSection from "@/components/ReviewsSection";
 import BlogPreview from "@/components/BlogPreview";
+import GuidesPreview from "@/components/GuidesPreview";
 import { useLocale } from "@/i18n/context";
 import SEOHead, { websiteSchema, orgSchema } from "@/components/SEOHead";
 
@@ -50,10 +51,10 @@ const Index = () => {
         <CountryCards />
         <CustomerReels />
         <ReviewsSection />
+        <GuidesPreview />
         <BlogPreview />
         <MethodologyTeaser />
         <FAQSection />
-        <FinalCTA />
         <FinalCTA />
       </main>
       <Footer />

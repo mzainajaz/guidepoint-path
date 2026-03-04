@@ -43,6 +43,7 @@ const Header = () => {
         { label: t.nav.corporateTax, href: lp("/taxes/corporate-tax") },
       ],
     },
+    { label: "Guides", href: lp("/guides") },
     { label: "Blog", href: lp("/blog") },
   ];
 
