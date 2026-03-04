@@ -3,7 +3,7 @@ import { useParams, Link } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
-import SEOHead from "@/components/SEOHead";
+import SEOHead, { articleSchema } from "@/components/SEOHead";
 import { Badge } from "@/components/ui/badge";
 import { ArrowLeft } from "lucide-react";
 
@@ -53,6 +53,13 @@ const BlogPost = () => {
         title={post.meta_title || post.title}
         description={post.meta_description || post.excerpt || ""}
         canonical={`https://incorporateuae.com/blog/${post.slug}`}
+        type="article"
+        schema={articleSchema({
+          title: post.meta_title || post.title,
+          description: post.meta_description || post.excerpt || "",
+          url: `/blog/${post.slug}`,
+          dateModified: post.created_at,
+        })}
       />
       <Header />
       <main className="page-offset min-h-screen pb-16">
