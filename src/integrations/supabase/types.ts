@@ -67,6 +67,11 @@ export type Database = {
       }
       leads: {
         Row: {
+          additional_services: string[] | null
+          budget: string | null
+          business_type: string | null
+          contact_preference: string[] | null
+          country: string | null
           created_at: string
           email: string
           id: string
@@ -76,6 +81,7 @@ export type Database = {
           notes: string | null
           phone: string | null
           referrer: string | null
+          setup_preference: string | null
           source_url: string | null
           status: string
           updated_at: string
@@ -87,6 +93,11 @@ export type Database = {
           utm_term: string | null
         }
         Insert: {
+          additional_services?: string[] | null
+          budget?: string | null
+          business_type?: string | null
+          contact_preference?: string[] | null
+          country?: string | null
           created_at?: string
           email: string
           id?: string
@@ -96,6 +107,7 @@ export type Database = {
           notes?: string | null
           phone?: string | null
           referrer?: string | null
+          setup_preference?: string | null
           source_url?: string | null
           status?: string
           updated_at?: string
@@ -107,6 +119,11 @@ export type Database = {
           utm_term?: string | null
         }
         Update: {
+          additional_services?: string[] | null
+          budget?: string | null
+          business_type?: string | null
+          contact_preference?: string[] | null
+          country?: string | null
           created_at?: string
           email?: string
           id?: string
@@ -116,6 +133,7 @@ export type Database = {
           notes?: string | null
           phone?: string | null
           referrer?: string | null
+          setup_preference?: string | null
           source_url?: string | null
           status?: string
           updated_at?: string
