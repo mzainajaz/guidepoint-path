@@ -27,6 +27,7 @@ import ZonePicker from "./pages/ZonePicker";
 import VatHelper from "./pages/VatHelper";
 import BlogIndex from "./pages/BlogIndex";
 import BlogPost from "./pages/BlogPost";
+import Contact from "./pages/Contact";
 import AdminLogin from "./pages/AdminLogin";
 import AdminLayout from "./components/admin/AdminLayout";
 import ProtectedRoute from "./components/admin/ProtectedRoute";
@@ -63,6 +64,7 @@ const appRoutes = [
   { path: "/tools/vat-helper", element: <VatHelper /> },
   { path: "/blog", element: <BlogIndex /> },
   { path: "/blog/:slug", element: <BlogPost /> },
+  { path: "/contact", element: <Contact /> },
 ];
 
 const AnalyticsWrapper = ({ children }: { children: React.ReactNode }) => {

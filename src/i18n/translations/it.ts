@@ -3,7 +3,7 @@ import type { TranslationSet } from "./en";
 const it: TranslationSet = {
   common: {
     home: "Home",
-    getStarted: "Inizia",
+    getStarted: "Contattaci",
     compareOptions: "Confronta opzioni",
     exploreTools: "Esplora strumenti",
     getSetupSnapshot: "Ottieni panoramica",

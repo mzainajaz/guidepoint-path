@@ -1,7 +1,7 @@
 const en = {
   common: {
     home: "Home",
-    getStarted: "Get Started",
+    getStarted: "Contact Us",
     compareOptions: "Compare Options",
     exploreTools: "Explore Tools",
     getSetupSnapshot: "Get Setup Snapshot",
