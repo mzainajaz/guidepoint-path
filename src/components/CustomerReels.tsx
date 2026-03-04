@@ -45,13 +45,8 @@ function ReelCard({ reel }: { reel: (typeof reels)[0] }) {
   const togglePlay = () => {
     const v = videoRef.current;
     if (!v) return;
-    if (v.paused) {
-      v.play();
-      setPlaying(true);
-    } else {
-      v.pause();
-      setPlaying(false);
-    }
+    if (v.paused) { v.play(); setPlaying(true); }
+    else { v.pause(); setPlaying(false); }
   };
 
   const toggleMute = (e: React.MouseEvent) => {
@@ -68,11 +63,10 @@ function ReelCard({ reel }: { reel: (typeof reels)[0] }) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5 }}
-      className="relative flex-shrink-0 w-[240px] sm:w-[260px] md:w-full rounded-2xl overflow-hidden shadow-2xl cursor-pointer group border border-white/10"
-      style={{ aspectRatio: "9/16" }}
+      className="relative flex-shrink-0 w-[240px] sm:w-[260px] md:w-full overflow-hidden cursor-pointer group border border-white/[0.07] hover:border-[#C87941]/20 transition-colors duration-300"
+      style={{ aspectRatio: "9/16", borderRadius: "2px" }}
       onClick={togglePlay}
     >
-      {/* Video */}
       <video
         ref={videoRef}
         src={reel.src}
@@ -83,51 +77,44 @@ function ReelCard({ reel }: { reel: (typeof reels)[0] }) {
       />
 
       {/* Gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-t from-[#0B1628]/90 via-[#0B1628]/20 to-transparent pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-t from-[#050505]/95 via-[#050505]/20 to-transparent pointer-events-none" />
 
       {/* Play/Pause button */}
-      <div
-        className={`absolute inset-0 flex items-center justify-center transition-opacity duration-200 ${
-          playing ? "opacity-0 group-hover:opacity-100" : "opacity-100"
-        }`}
-      >
-        <div className="w-14 h-14 rounded-full bg-amber-400/90 backdrop-blur-sm flex items-center justify-center shadow-lg shadow-amber-400/30 transform group-hover:scale-110 transition-transform duration-200">
-          {playing ? (
-            <Pause className="h-6 w-6 text-gray-900 fill-gray-900" />
-          ) : (
-            <Play className="h-6 w-6 text-gray-900 fill-gray-900 ml-1" />
-          )}
+      <div className={`absolute inset-0 flex items-center justify-center transition-opacity duration-200 ${playing ? "opacity-0 group-hover:opacity-100" : "opacity-100"}`}>
+        <div className="w-12 h-12 border border-white/20 bg-white/[0.08] backdrop-blur-md flex items-center justify-center transform group-hover:border-[#C87941]/40 transition-all duration-200"
+          style={{ borderRadius: "2px" }}
+        >
+          {playing
+            ? <Pause className="h-5 w-5 text-white" strokeWidth={1.5} />
+            : <Play className="h-5 w-5 text-white ml-0.5" strokeWidth={1.5} />
+          }
         </div>
       </div>
 
       {/* Mute toggle */}
       <button
         onClick={toggleMute}
-        className="absolute top-3 right-3 w-8 h-8 rounded-full bg-black/40 backdrop-blur-sm flex items-center justify-center text-white hover:bg-black/60 transition-colors z-10"
+        className="absolute top-3 right-3 w-7 h-7 border border-white/10 bg-black/40 backdrop-blur-sm flex items-center justify-center text-white/60 hover:text-white hover:border-white/25 transition-colors z-10"
+        style={{ borderRadius: "2px" }}
       >
-        {muted ? (
-          <VolumeX className="h-4 w-4" />
-        ) : (
-          <Volume2 className="h-4 w-4" />
-        )}
+        {muted ? <VolumeX className="h-3.5 w-3.5" strokeWidth={1.5} /> : <Volume2 className="h-3.5 w-3.5" strokeWidth={1.5} />}
       </button>
 
       {/* Bottom info */}
       <div className="absolute bottom-0 left-0 right-0 p-4 pointer-events-none">
-        {/* Stars */}
-        <div className="text-amber-400 text-sm mb-2">★★★★★</div>
-        {/* Quote */}
-        <p className="text-white/85 text-xs leading-relaxed mb-3 italic line-clamp-3">
+        <div className="flex gap-0.5 mb-2">
+          {Array.from({ length: 5 }).map((_, i) => (
+            <svg key={i} className="w-2.5 h-2.5 fill-[#C87941]" viewBox="0 0 24 24"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z"/></svg>
+          ))}
+        </div>
+        <p className="text-white/60 text-[11px] leading-relaxed mb-3 italic line-clamp-3"
+          style={{ fontFamily: "'Inter', sans-serif" }}>
           "{reel.quote}"
         </p>
-        {/* Divider */}
-        <div className="w-8 h-0.5 bg-amber-400 mb-2" />
-        {/* Name */}
-        <p className="text-white font-bold text-sm">{reel.name}</p>
-        {/* Role */}
-        <p className="text-amber-400 text-xs mt-0.5">{reel.role}</p>
-        {/* Location */}
-        <p className="text-white/50 text-xs mt-0.5">{reel.location}</p>
+        <div className="w-5 h-px bg-[#C87941] mb-2.5" />
+        <p className="text-white text-[13px] font-medium" style={{ fontFamily: "'Inter', sans-serif" }}>{reel.name}</p>
+        <p className="text-[#C87941] text-[11px] mt-0.5" style={{ fontFamily: "'Inter', sans-serif" }}>{reel.role}</p>
+        <p className="text-white/30 text-[11px] mt-0.5" style={{ fontFamily: "'Inter', sans-serif" }}>{reel.location}</p>
       </div>
     </motion.div>
   );
@@ -135,9 +122,8 @@ function ReelCard({ reel }: { reel: (typeof reels)[0] }) {
 
 const CustomerReels = () => {
   return (
-    <section className="py-20 md:py-28 bg-[#080F1E] overflow-hidden">
+    <section className="py-20 md:py-28 bg-[#0f0f0f] overflow-hidden border-y border-white/[0.06]">
       <div className="container relative z-10">
-        {/* Section header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -145,22 +131,22 @@ const CustomerReels = () => {
           transition={{ duration: 0.5 }}
           className="mb-12"
         >
-          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-400/10 border border-amber-400/25 text-amber-400 text-xs font-semibold tracking-widest uppercase mb-4">
-            Real Founders, Real Results
-          </span>
-          <h2 className="font-display text-3xl md:text-4xl font-bold text-white leading-tight tracking-tight max-w-lg mt-4">
+          <span className="section-label block mb-4">Real Founders, Real Results</span>
+          <h2
+            className="font-display font-light text-white leading-tight max-w-lg mt-2"
+            style={{ fontSize: "clamp(2rem, 4vw, 3rem)", letterSpacing: "-0.02em" }}
+          >
             Hear from founders who{" "}
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-amber-400 to-orange-400">
-              set up in the UAE
-            </span>
+            <em className="not-italic gradient-text">set up in the UAE</em>
           </h2>
-          <p className="text-white/55 mt-4 text-base max-w-md leading-relaxed">
-            Watch short stories from entrepreneurs who navigated the UAE business
-            setup process with IncorporateUAE.
+          <p
+            className="text-white/40 mt-4 text-[14px] max-w-md leading-relaxed"
+            style={{ fontFamily: "'Inter', sans-serif" }}
+          >
+            Watch short stories from entrepreneurs who navigated the UAE business setup process with IncorpUAE.
           </p>
         </motion.div>
 
-        {/* Reel cards */}
         <div className="flex gap-5 overflow-x-auto pb-6 snap-x snap-mandatory scrollbar-none -mx-4 px-4 md:mx-0 md:px-0 md:grid md:grid-cols-4 md:overflow-visible">
           {reels.map((reel) => (
             <div key={reel.id} className="snap-start">

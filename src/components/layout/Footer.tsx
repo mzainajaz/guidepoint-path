@@ -31,22 +31,33 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-[#080F1E] text-white">
+    <footer className="bg-[#050505] text-white border-t border-white/[0.06]">
       <div className="container py-16 md:py-20">
-        {/* Brand + tagline at top */}
-        <div className="mb-12 pb-10 border-b border-white/8">
-          <Link to={lp("/")} className="font-display text-2xl font-bold text-white">
-            Incorporate
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-amber-400 to-orange-400">UAE</span>
+        {/* Brand + tagline */}
+        <div className="mb-12 pb-10 border-b border-white/[0.06]">
+          <Link to={lp("/")} className="inline-block">
+            <img
+              src="/images/logo-incorpuae.png"
+              alt="IncorpUAE"
+              className="h-8 w-auto object-contain"
+            />
           </Link>
-          <p className="text-white/40 text-sm mt-2 max-w-xs">{t.footer.tagline}</p>
+          <p
+            className="text-white/30 text-sm mt-3 max-w-xs"
+            style={{ fontFamily: "'Inter', sans-serif" }}
+          >
+            {t.footer.tagline}
+          </p>
         </div>
 
         {/* Links grid */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12 mb-14">
           {Object.entries(footerLinks).map(([section, links]) => (
             <div key={section}>
-              <h4 className="text-xs font-semibold mb-5 text-amber-400/80 uppercase tracking-[0.15em]">
+              <h4
+                className="text-[10px] font-medium mb-5 text-[#C87941] uppercase tracking-[0.18em]"
+                style={{ fontFamily: "'Inter', sans-serif" }}
+              >
                 {section}
               </h4>
               <ul className="space-y-3">
@@ -54,7 +65,8 @@ const Footer = () => {
                   <li key={link.label}>
                     <Link
                       to={link.href}
-                      className="text-sm text-white/50 hover:text-white transition-colors duration-200"
+                      className="text-[13px] text-white/40 hover:text-white transition-colors duration-200"
+                      style={{ fontFamily: "'Inter', sans-serif" }}
                     >
                       {link.label}
                     </Link>
@@ -66,10 +78,20 @@ const Footer = () => {
         </div>
 
         {/* Bottom bar */}
-        <div className="border-t border-white/8 pt-8 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
-          <p className="text-xs text-white/30">{t.footer.copyright(new Date().getFullYear())}</p>
+        <div className="border-t border-white/[0.06] pt-8 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+          <p
+            className="text-[12px] text-white/20"
+            style={{ fontFamily: "'Inter', sans-serif" }}
+          >
+            {t.footer.copyright(new Date().getFullYear())}
+          </p>
           <div className="flex items-center gap-6">
-            <span className="text-xs text-white/20">UAE Business Setup Advisory</span>
+            <span
+              className="text-[11px] text-white/15 tracking-[0.1em] uppercase"
+              style={{ fontFamily: "'Inter', sans-serif" }}
+            >
+              UAE Business Setup Advisory
+            </span>
           </div>
         </div>
       </div>
