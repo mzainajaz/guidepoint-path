@@ -98,3 +98,4 @@ export const useLocale = () => {
 
 export const useT = () => useLocale().t;
 export const useLocalePath = () => useLocale().lp;
+
