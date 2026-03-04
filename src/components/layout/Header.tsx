@@ -108,7 +108,7 @@ const Header = () => {
           {/* Center: Logo */}
           <Link
             to={lp("/")}
-            className="absolute left-1/2 -translate-x-1/2 flex items-center"
+            className="lg:absolute lg:left-1/2 lg:-translate-x-1/2 flex items-center"
           >
             <img
               src="/images/logo-incorpuae.png"
