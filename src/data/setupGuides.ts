@@ -814,4 +814,384 @@ export const guideChapters: GuideChapter[] = [
       },
     ],
   },
+
+  // ── Part IV: Remaining Zone Profiles ──
+  {
+    id: "saif-zone-profile",
+    partId: "zone-profiles",
+    chapterNumber: 29,
+    title: "SAIF Zone",
+    slug: "saif-zone-profile",
+    summary: "Trading, warehousing, logistics, aviation-linked commerce, and straightforward Sharjah operational setups.",
+    icon: "Warehouse",
+    sections: [
+      { heading: "Best Fit", content: "Trading, warehousing, logistics, aviation-linked commerce, and straightforward Sharjah operational setups." },
+      { heading: "Strengths", content: "Strong practical choice for trading/logistics businesses. Public marketing focuses on speed and infrastructure." },
+      { heading: "Watch-outs", content: "Less suitable than Shams/SPC for content creators or purely remote consultants. Activity and facility model are more operational than purely founder-package driven." },
+    ],
+  },
+  {
+    id: "hamriyah-profile",
+    partId: "zone-profiles",
+    chapterNumber: 30,
+    title: "Hamriyah Free Zone",
+    slug: "hamriyah-profile",
+    summary: "Industrial, manufacturing, maritime, storage, and larger operational footprints in Sharjah.",
+    icon: "Anchor",
+    sections: [
+      { heading: "Best Fit", content: "Industrial, manufacturing, maritime, storage, and larger operational footprints in Sharjah." },
+      { heading: "Strengths", content: "Very strong for serious operating businesses that need land, sheds, or industrial support." },
+      { heading: "Pricing", content: "Pricing is more infrastructure-led than startup-bundle led. Expect quote-based costing in many real cases." },
+      { heading: "Watch-outs", content: "Not ideal for the founder whose needs are consultancy, remote invoicing, and one visa only." },
+    ],
+  },
+  {
+    id: "ajman-freezone-profile",
+    partId: "zone-profiles",
+    chapterNumber: 31,
+    title: "Ajman Free Zone",
+    slug: "ajman-freezone-profile",
+    summary: "Broad low-to-mid-cost SME setups, trade, services, selected industrial activity, and general flexibility in Ajman.",
+    icon: "Store",
+    sections: [
+      { heading: "Best Fit", content: "Broad low-to-mid-cost SME setups, trade, services, selected industrial activity, and general flexibility in Ajman." },
+      { heading: "Strengths", content: "Good breadth and useful activity infrastructure. Official activity list is broad and useful for large-scale research work." },
+      { heading: "Watch-outs", content: "Needs careful comparison against Ajman Media City, UAQ FTZ, and RAKEZ for total-value logic." },
+    ],
+  },
+  {
+    id: "rak-icc-profile",
+    partId: "zone-profiles",
+    chapterNumber: 34,
+    title: "RAK ICC",
+    slug: "rak-icc-profile",
+    summary: "International holding, offshore company work, foundations, succession planning, and premium structuring.",
+    icon: "Shield",
+    sections: [
+      { heading: "Best Fit", content: "International holding, offshore company work, foundations, succession planning, and selected premium structuring use cases." },
+      { heading: "Strengths", content: "Strong for foundations, offshore holdings, redomiciliation, and family-wealth structuring." },
+      { heading: "Watch-outs", content: "Not a substitute for an operating mainland or free-zone company. Pricing is specialist and agent-driven rather than mass-founder public-card pricing." },
+    ],
+  },
+  {
+    id: "dafz-commercity-profile",
+    partId: "zone-profiles",
+    chapterNumber: 23,
+    title: "DAFZ & Dubai CommerCity",
+    slug: "dafz-commercity-profile",
+    summary: "Airport-linked trade, logistics, e-commerce fulfilment, premium infrastructure, and international operator profiles.",
+    icon: "PlaneTakeoff",
+    sections: [
+      { heading: "Best Fit", content: "Airport-linked trade, logistics, e-commerce fulfilment, premium infrastructure, international operator profiles." },
+      { heading: "Strengths", content: "Premium infrastructure and strong logistics position. Dubai CommerCity adds e-commerce ecosystem relevance." },
+      { heading: "Watch-outs", content: "May be too infrastructure-heavy or premium for a simple solo service setup. Expect tailored pricing rather than purely public fixed packages." },
+    ],
+  },
+  {
+    id: "fujairah-creative-city-profile",
+    partId: "zone-profiles",
+    chapterNumber: 36,
+    title: "Fujairah Free Zone & Creative City",
+    slug: "fujairah-creative-city-profile",
+    summary: "Trade/logistics in Fujairah and low-cost creative/media/freelancer setups — two distinct models.",
+    icon: "Palette",
+    sections: [
+      { heading: "Best Fit", content: "Trade/logistics in Fujairah on one side, and low-cost creative/media/freelancer setups on the other." },
+      { heading: "Two Distinct Models", content: "Creative City is usually the more founder-facing and publicly marketed of the two; Fujairah Free Zone is more operational and trade-oriented. Cost structure depends on which system is chosen." },
+      { heading: "Watch-outs", content: "Should not be treated as interchangeable. They solve different problems. Visa logic also differs substantially between the two." },
+    ],
+  },
+  {
+    id: "national-freezone-map",
+    partId: "zone-profiles",
+    chapterNumber: 15,
+    title: "National Free Zone Map by Emirate",
+    slug: "national-freezone-map",
+    summary: "The Ministry of Economy and Tourism's official registry of free-zone registrars across all seven emirates.",
+    icon: "Map",
+    sections: [
+      {
+        heading: "Free Zones by Emirate",
+        content: "",
+        table: {
+          headers: ["Emirate", "Free Zones / Registrars"],
+          rows: [
+            ["Abu Dhabi", "Masdar, twofour54, Abu Dhabi Airports FZ, KIZAD/KEZAD, ADGM"],
+            ["Dubai", "DDA clusters, DIFC, DSO, Dubai Maritime City, Trakhees, DHCC, DMCC, Meydan, IHC, Dubai South, DWTC, DAFZA/CommerCity, JAFZA"],
+            ["Sharjah", "SAIF Zone, Hamriyah, Publishing City, SRTIP, Shams"],
+            ["Ajman", "Ajman Media City, Ajman Free Zone"],
+            ["Ras Al Khaimah", "RAKEZ, RAK Maritime"],
+            ["Umm Al Quwain", "UAQ Free Trade Zone"],
+            ["Fujairah", "Fujairah Free Zone, Creative City Fujairah"],
+          ],
+        },
+      },
+    ],
+  },
+
+  // ── Part VI: Additional structuring chapters ──
+  {
+    id: "branches-foreign-companies",
+    partId: "structuring-depth",
+    chapterNumber: 48,
+    title: "Branches of Foreign Companies",
+    slug: "branches-foreign-companies",
+    summary: "When a branch beats a subsidiary — parent continuity, liability, banking, and customer perception.",
+    icon: "GitBranch",
+    sections: [
+      {
+        heading: "When to Use a Branch",
+        content: "A branch can be the right answer where an existing foreign company wants a UAE presence without creating a wholly separate owned subsidiary. The branch route must still be tested against liability, banking, customer perception, tax registration, and practical onboarding needs.",
+      },
+      {
+        heading: "Principles",
+        content: "",
+        bullets: [
+          "Use a branch when parent continuity matters more than ring-fenced subsidiary logic.",
+          "Use a subsidiary when liability separation, cap-table flexibility, or bank onboarding clarity matters more.",
+          "Check whether the target jurisdiction supports the specific branch format you need.",
+        ],
+      },
+    ],
+  },
+  {
+    id: "family-offices-wealth",
+    partId: "structuring-depth",
+    chapterNumber: 50,
+    title: "Family Offices & Private Wealth Structures",
+    slug: "family-offices-wealth",
+    summary: "ADGM vs DIFC, governance design, active investment management, and cross-border asset administration.",
+    icon: "Crown",
+    sections: [
+      {
+        heading: "Not a Single Licence Product",
+        content: "Family-office design in the UAE sits across governance, ownership, tax, banking, residency, and operating-substance decisions. ADGM and DIFC are the most obvious premium starting points where the family office needs institutional-grade governance or private-wealth credibility.",
+      },
+      {
+        heading: "Watch-outs",
+        content: "Wealth structures often fail in practice not because of the legal entity, but because the documentation and operating logic were not designed well enough for bank and tax scrutiny.",
+      },
+    ],
+  },
+  {
+    id: "offshore-structures",
+    partId: "structuring-depth",
+    chapterNumber: 51,
+    title: "Offshore Structures — What They Are and What They Are Not",
+    slug: "offshore-structures",
+    summary: "JAFZA Offshore and RAK ICC — when offshore is right and when it's the wrong framing entirely.",
+    icon: "Globe",
+    sections: [
+      {
+        heading: "Purpose-Driven Selection",
+        content: "Offshore does not mean a cheaper substitute for a real UAE operating company. Offshore vehicles are used for holding, governance, asset ownership, and certain cross-border structuring needs. The most commonly referenced routes are JAFZA Offshore and RAK ICC structures.",
+      },
+      {
+        heading: "Principles",
+        content: "",
+        bullets: [
+          "Do not buy offshore for visa purposes — that is usually the wrong framing.",
+          "Do not buy offshore as a shortcut around normal operating compliance.",
+          "Use offshore where governance and ownership, not daily operations, are the centre of gravity.",
+        ],
+      },
+    ],
+  },
+  {
+    id: "labour-payroll-wps",
+    partId: "structuring-depth",
+    chapterNumber: 52,
+    title: "Labour, Payroll, WPS & Employer Operations",
+    slug: "labour-payroll-wps",
+    summary: "Moving beyond founder-only setup — labour files, work permits, payroll discipline, and insurance.",
+    icon: "Users",
+    sections: [
+      {
+        heading: "Beyond a One-Visa Package",
+        content: "Once the company moves beyond a founder-only setup, employer operations become its own workstream. Visa issuance is only one layer — the company also has to think about labour files, offer letters, work permits, payroll discipline, health insurance, and wage-protection expectations.",
+      },
+      {
+        heading: "Principles",
+        content: "",
+        bullets: [
+          "Map founder-only stage separately from first-hire stage.",
+          "Budget for insurance and employer admin separately from licence marketing packages.",
+          "If dependents will work under family sponsorship, plan the MOHRE work-permit layer from the start.",
+        ],
+      },
+    ],
+  },
+  {
+    id: "renewals-amendments",
+    partId: "structuring-depth",
+    chapterNumber: 54,
+    title: "Renewals, Amendments, Share Transfers & Liquidation",
+    slug: "renewals-amendments",
+    summary: "Model over three moments: incorporation, first renewal, and material change. Where real complexity accumulates.",
+    icon: "RefreshCw",
+    sections: [
+      {
+        heading: "The Three Operating Moments",
+        content: "The UAE setup decision should always be modelled over at least three operating moments: incorporation, first renewal, and material change. Adding an activity, changing a manager, transferring shares, upgrading visa quota, or liquidating can involve separate fees, NOCs, and bank coordination.",
+      },
+      {
+        heading: "Principles",
+        content: "",
+        bullets: [
+          "Before incorporating, ask what renewal usually looks like in year two.",
+          "If the cap table may change, test how simple share transfer and beneficial-owner updates are.",
+          "Liquidation should be understood before incorporation, especially for project-based or short-cycle structures.",
+        ],
+      },
+    ],
+  },
+
+  // ── Part VII: Mainland Dossiers ──
+  {
+    id: "dubai-mainland",
+    partId: "mainland-dossiers",
+    chapterNumber: 40,
+    title: "Dubai Mainland",
+    slug: "dubai-mainland",
+    summary: "The benchmark operating structure for direct onshore UAE trade — retail, services, tenders, and contracting.",
+    icon: "Building",
+    sections: [
+      {
+        heading: "Best Fit",
+        content: "Direct onshore UAE trade, local service delivery, tenders, retail, food and beverage, contracting, and activities where onshore invoices and local market presence are central.",
+      },
+      {
+        heading: "Key Strengths",
+        content: "Clean local-market access, broad activity availability, easier alignment with retail, local services, government-facing work, and domestic contracting.",
+      },
+      {
+        heading: "Decision Logic",
+        content: "",
+        bullets: [
+          "Choose mainland first when the business needs unrestricted UAE domestic trade.",
+          "Use free zone first when the business is export-led, digital-first, or only lightly staffed in year one.",
+          "Treat each regulated activity separately — mainland simplicity disappears quickly when healthcare, education, finance, food, or engineering approvals enter the stack.",
+        ],
+      },
+    ],
+  },
+  {
+    id: "abu-dhabi-mainland",
+    partId: "mainland-dossiers",
+    chapterNumber: 41,
+    title: "Abu Dhabi Mainland",
+    slug: "abu-dhabi-mainland",
+    summary: "Abu Dhabi domestic trade, government-linked work, and when mainland beats ADGM, KEZAD, or Masdar.",
+    icon: "Building",
+    sections: [
+      {
+        heading: "Best Fit",
+        content: "Abu Dhabi domestic trade, government-linked work, local services, contracting, and businesses that want Abu Dhabi substance outside a specialist free zone.",
+      },
+      {
+        heading: "Decision Logic",
+        content: "",
+        bullets: [
+          "Use mainland when the business model is intrinsically local and onshore.",
+          "Use Masdar or ADGM where the ecosystem or legal architecture is part of the value proposition.",
+          "Use KEZAD or ADAFZ where industrial or logistics infrastructure drives the decision.",
+        ],
+      },
+    ],
+  },
+  {
+    id: "sharjah-mainland",
+    partId: "mainland-dossiers",
+    chapterNumber: 42,
+    title: "Sharjah Mainland",
+    slug: "sharjah-mainland",
+    summary: "Cost-competitive onshore operations — local services, retail, contracting, and industrial spillover.",
+    icon: "Building",
+    sections: [
+      {
+        heading: "Best Fit",
+        content: "Local Sharjah services, retail, contracting, industrial spillover from free-zone ecosystems, and cost-aware onshore operations.",
+      },
+      {
+        heading: "Decision Logic",
+        content: "The main comparison is usually not versus Dubai mainland, but versus SAIF, Hamriyah, SPC, Shams, or SRTIP. Mainland only wins when onshore access is actually needed.",
+      },
+    ],
+  },
+  {
+    id: "ajman-mainland",
+    partId: "mainland-dossiers",
+    chapterNumber: 43,
+    title: "Ajman Mainland",
+    slug: "ajman-mainland",
+    summary: "Lean SMEs that need real domestic access without premium-city cost.",
+    icon: "Building",
+    sections: [
+      {
+        heading: "Best Fit",
+        content: "Smaller local trading and service businesses that need onshore market access at lower operating cost. A commercial choice, not a prestige choice.",
+      },
+      {
+        heading: "Watch-outs",
+        content: "Lower-cost free zones remain simpler where onshore access is not essential.",
+      },
+    ],
+  },
+  {
+    id: "rak-mainland",
+    partId: "mainland-dossiers",
+    chapterNumber: 44,
+    title: "Ras Al Khaimah Mainland",
+    slug: "rak-mainland",
+    summary: "Onshore RAK operations — when mainland pairs better than RAKEZ for industrial and logistics work.",
+    icon: "Building",
+    sections: [
+      {
+        heading: "Best Fit",
+        content: "Onshore operations in RAK, local trading, and businesses that want to combine RAK operating economics with mainland capability.",
+      },
+      {
+        heading: "Decision Logic",
+        content: "RAK mainland is usually evaluated alongside RAKEZ. The correct question is whether the business needs onshore access immediately or whether a RAKEZ operating company with later expansion delivers better year-one economics.",
+      },
+    ],
+  },
+  {
+    id: "uaq-mainland",
+    partId: "mainland-dossiers",
+    chapterNumber: 45,
+    title: "Umm Al Quwain Mainland",
+    slug: "uaq-mainland",
+    summary: "Niche onshore choice for local UAQ trading and services.",
+    icon: "Building",
+    sections: [
+      {
+        heading: "Best Fit",
+        content: "Local UAQ trading and services where a true mainland entity is required. A niche choice that can be commercially valid where the business needs local market access in UAQ.",
+      },
+      {
+        heading: "Watch-outs",
+        content: "UAQ FTZ is usually the better route for founder-led export, consulting, or e-commerce models.",
+      },
+    ],
+  },
+  {
+    id: "fujairah-mainland",
+    partId: "mainland-dossiers",
+    chapterNumber: 46,
+    title: "Fujairah Mainland",
+    slug: "fujairah-mainland",
+    summary: "Domestic Fujairah operations, port-adjacent service businesses, and East Coast economy structures.",
+    icon: "Building",
+    sections: [
+      {
+        heading: "Best Fit",
+        content: "Domestic Fujairah operations, port-adjacent service businesses, and onshore structures linked to the East Coast economy.",
+      },
+      {
+        heading: "Watch-outs",
+        content: "Fujairah Free Zone or Creative City are often easier for export-led or founder-only structures. Mainland is most relevant when the operating footprint is genuinely local to Fujairah.",
+      },
+    ],
+  },
 ];
