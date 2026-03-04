@@ -9,15 +9,27 @@ const HeroSection = () => {
 
   return (
     <section className="relative overflow-hidden min-h-screen flex flex-col">
-      {/* ── Background: Dubai image + navy overlay ── */}
+      {/* ── Background: Dubai video + navy overlay ── */}
       <div className="absolute inset-0 z-0">
-        <img
-          src="/images/hero-dubai.jpg"
-          alt="Dubai skyline at golden hour"
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
           className="w-full h-full object-cover object-center"
-        />
+          poster="/images/hero-dubai.jpg"
+        >
+          <source src="/videos/dubai-hero.mp4" type="video/mp4" />
+          <source src="/videos/dubai-alt.mp4" type="video/mp4" />
+          {/* Fallback to image if video fails */}
+          <img
+            src="/images/hero-dubai.jpg"
+            alt="Dubai skyline at golden hour"
+            className="w-full h-full object-cover object-center"
+          />
+        </video>
         {/* Deep navy gradient — guarantees text legibility at all viewports */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#0B1628]/88 via-[#0B1628]/72 to-[#0B1628]/92" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0B1628]/80 via-[#0B1628]/65 to-[#0B1628]/88" />
         {/* Warm gold ambient glow */}
         <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[450px] rounded-full bg-amber-400/8 blur-[130px] pointer-events-none" />
       </div>
@@ -57,7 +69,7 @@ const HeroSection = () => {
             initial={{ opacity: 0, y: 28 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.65, delay: 0.2 }}
-            className="text-base md:text-lg text-white/70 leading-relaxed max-w-lg font-light"
+            className="text-base md:text-lg text-white/80 leading-relaxed max-w-lg font-light"
           >
             {t.hero.subtitle}
           </motion.p>
@@ -100,7 +112,7 @@ const HeroSection = () => {
                 <div className="font-display text-2xl md:text-3xl font-bold text-amber-400 tabular-nums">
                   {stat.value}
                 </div>
-                <div className="text-[11px] md:text-xs text-white/45 mt-1 font-medium tracking-wide uppercase">
+                <div className="text-[11px] md:text-xs text-white/50 mt-1 font-medium tracking-wide uppercase">
                   {stat.label}
                 </div>
               </div>
@@ -116,8 +128,8 @@ const HeroSection = () => {
         transition={{ delay: 1.8 }}
         className="relative z-10 flex flex-col items-center pb-8 gap-1.5"
       >
-        <span className="text-[10px] text-white/30 tracking-[0.15em] uppercase font-medium">Scroll</span>
-        <ChevronDown className="h-4 w-4 text-white/30 animate-bounce" />
+        <span className="text-[10px] text-white/40 tracking-[0.15em] uppercase font-medium">Scroll</span>
+        <ChevronDown className="h-4 w-4 text-white/40 animate-bounce" />
       </motion.div>
     </section>
   );
