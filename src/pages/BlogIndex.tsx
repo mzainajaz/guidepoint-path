@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
+import SEOHead, { breadcrumbSchema } from "@/components/SEOHead";
 import { Badge } from "@/components/ui/badge";
 
 interface Post {
@@ -29,6 +30,14 @@ const BlogIndex = () => {
 
   return (
     <>
+      <SEOHead
+        title="Blog – UAE Business Setup Insights & Guides"
+        description="Expert insights, practical guides, and updates on UAE business setup, free zones, corporate tax, licensing, and relocation for entrepreneurs."
+        schema={breadcrumbSchema([
+          { name: "Home", url: "/" },
+          { name: "Blog", url: "/blog" },
+        ])}
+      />
       <Header />
       <main className="page-offset min-h-screen pb-16">
         <div className="max-w-4xl mx-auto px-4">
