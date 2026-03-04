@@ -63,11 +63,11 @@ const Header = () => {
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
           solidBg
-            ? "bg-[#0a0a0a]/96 backdrop-blur-md border-b border-white/[0.06]"
+            ? "bg-[#0a0a0a]/96 backdrop-blur-md border-b border-white/[0.06] shadow-[0_4px_30px_rgba(0,0,0,0.5)]"
             : "bg-transparent"
         }`}
       >
-        <div className="max-w-[1280px] mx-auto px-6 lg:px-10 h-[72px] flex items-center justify-between lg:grid lg:grid-cols-[1fr_auto_1fr]">
+        <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-10 h-[64px] lg:h-[72px] flex items-center justify-between lg:grid lg:grid-cols-[1fr_auto_1fr]">
 
           {/* Left nav (desktop) */}
           <nav className="hidden lg:flex items-center gap-7">
@@ -113,7 +113,7 @@ const Header = () => {
             <img
               src="/images/logo-incorpuae.png"
               alt="IncorpUAE"
-              className="h-9 w-auto object-contain"
+              className="h-7 sm:h-8 lg:h-9 w-auto object-contain transition-all duration-300"
             />
           </Link>
 
@@ -206,7 +206,7 @@ const Header = () => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-0 z-40 bg-[#0a0a0a] flex flex-col pt-[72px] overflow-y-auto"
+            className="fixed inset-0 z-40 bg-[#0a0a0a] flex flex-col pt-[64px] overflow-y-auto"
           >
             <div className="flex flex-col px-8 py-8 gap-0">
               {navItems.map((item, i) => (
