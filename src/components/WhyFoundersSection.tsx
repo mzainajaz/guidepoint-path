@@ -44,7 +44,7 @@ const WhyFoundersSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
-              className="space-y-5 text-white/50 leading-relaxed"
+              className="space-y-5 text-[#b8b8b8] leading-relaxed"
               style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.9375rem" }}
             >
               <p>{t.whyFounders.p1}</p>
@@ -62,7 +62,7 @@ const WhyFoundersSection = () => {
             style={{ borderRadius: "2px" }}
           >
             <p
-              className="text-white/30 text-[10px] font-medium tracking-[0.18em] uppercase mb-6"
+              className="text-[#909090] text-[10px] font-medium tracking-[0.18em] uppercase mb-6"
               style={{ fontFamily: "'Inter', sans-serif" }}
             >
               Compare what actually matters
@@ -72,7 +72,7 @@ const WhyFoundersSection = () => {
                 <li key={item} className="flex items-center gap-3 group">
                   <div className="w-1 h-1 rounded-full bg-[#C87941] flex-shrink-0" />
                   <span
-                    className="text-white/60 text-sm group-hover:text-white/80 transition-colors"
+                    className="text-[#c8c8c8] text-sm group-hover:text-white/80 transition-colors"
                     style={{ fontFamily: "'Inter', sans-serif" }}
                   >
                     {item}

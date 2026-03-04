@@ -44,7 +44,7 @@ const FAQSection = () => {
                     {faq.q}
                   </AccordionTrigger>
                   <AccordionContent
-                    className="text-white/45 pb-5 leading-relaxed"
+                    className="text-[#a0a0a0] pb-5 leading-relaxed"
                     style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.9rem" }}
                   >
                     {faq.a}

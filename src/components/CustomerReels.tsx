@@ -94,7 +94,7 @@ function ReelCard({ reel }: { reel: (typeof reels)[0] }) {
       {/* Mute toggle */}
       <button
         onClick={toggleMute}
-        className="absolute top-3 right-3 w-7 h-7 border border-white/10 bg-black/40 backdrop-blur-sm flex items-center justify-center text-white/60 hover:text-white hover:border-white/25 transition-colors z-10"
+        className="absolute top-3 right-3 w-7 h-7 border border-white/10 bg-black/40 backdrop-blur-sm flex items-center justify-center text-[#c8c8c8] hover:text-white hover:border-white/25 transition-colors z-10"
         style={{ borderRadius: "2px" }}
       >
         {muted ? <VolumeX className="h-3.5 w-3.5" strokeWidth={1.5} /> : <Volume2 className="h-3.5 w-3.5" strokeWidth={1.5} />}
@@ -107,14 +107,14 @@ function ReelCard({ reel }: { reel: (typeof reels)[0] }) {
             <svg key={i} className="w-2.5 h-2.5 fill-[#C87941]" viewBox="0 0 24 24"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z"/></svg>
           ))}
         </div>
-        <p className="text-white/60 text-[11px] leading-relaxed mb-3 italic line-clamp-3"
+        <p className="text-[#c8c8c8] text-[11px] leading-relaxed mb-3 italic line-clamp-3"
           style={{ fontFamily: "'Inter', sans-serif" }}>
           "{reel.quote}"
         </p>
         <div className="w-5 h-px bg-[#C87941] mb-2.5" />
         <p className="text-white text-[13px] font-medium" style={{ fontFamily: "'Inter', sans-serif" }}>{reel.name}</p>
         <p className="text-[#C87941] text-[11px] mt-0.5" style={{ fontFamily: "'Inter', sans-serif" }}>{reel.role}</p>
-        <p className="text-white/30 text-[11px] mt-0.5" style={{ fontFamily: "'Inter', sans-serif" }}>{reel.location}</p>
+        <p className="text-[#909090] text-[11px] mt-0.5" style={{ fontFamily: "'Inter', sans-serif" }}>{reel.location}</p>
       </div>
     </motion.div>
   );
@@ -140,7 +140,7 @@ const CustomerReels = () => {
             <em className="not-italic gradient-text">set up in the UAE</em>
           </h2>
           <p
-            className="text-white/40 mt-4 text-[14px] max-w-md leading-relaxed"
+            className="text-[#a0a0a0] mt-4 text-[14px] max-w-md leading-relaxed"
             style={{ fontFamily: "'Inter', sans-serif" }}
           >
             Watch short stories from entrepreneurs who navigated the UAE business setup process with IncorpUAE.

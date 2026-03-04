@@ -20,8 +20,8 @@ export default {
     extend: {
       fontFamily: {
         sans: ['"Inter"', "system-ui", "sans-serif"],
-        display: ['"Cormorant Garamond"', "Georgia", "serif"],
-        serif: ['"Cormorant Garamond"', "Georgia", "serif"],
+        display: ['"Sora"', "system-ui", "sans-serif"],
+        serif: ['"Sora"', "system-ui", "sans-serif"],
       },
       colors: {
         border: "hsl(var(--border))",

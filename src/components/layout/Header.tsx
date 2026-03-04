@@ -92,7 +92,7 @@ const Header = () => {
                         <Link
                           key={child.label}
                           to={child.href}
-                          className="block px-4 py-2.5 text-[12px] text-white/55 hover:text-white hover:bg-white/[0.04] transition-colors"
+                          className="block px-4 py-2.5 text-[12px] text-[#c0c0c0] hover:text-white hover:bg-white/[0.04] transition-colors"
                         >
                           {child.label}
                         </Link>
@@ -140,7 +140,7 @@ const Header = () => {
                         <Link
                           key={child.label}
                           to={child.href}
-                          className="block px-4 py-2.5 text-[12px] text-white/55 hover:text-white hover:bg-white/[0.04] transition-colors"
+                          className="block px-4 py-2.5 text-[12px] text-[#c0c0c0] hover:text-white hover:bg-white/[0.04] transition-colors"
                         >
                           {child.label}
                         </Link>
@@ -167,7 +167,7 @@ const Header = () => {
                       className={`w-full text-left flex items-center gap-2.5 px-4 py-2.5 text-[12px] transition-colors ${
                         loc === locale
                           ? "text-[#C87941]"
-                          : "text-white/55 hover:text-white hover:bg-white/[0.04]"
+                          : "text-[#c0c0c0] hover:text-white hover:bg-white/[0.04]"
                       }`}
                     >
                       <span>{localeConfig[loc].flag}</span>

@@ -43,7 +43,7 @@ const Footer = () => {
             />
           </Link>
           <p
-            className="text-white/30 text-sm mt-3 max-w-xs"
+            className="text-[#909090] text-sm mt-3 max-w-xs"
             style={{ fontFamily: "'Inter', sans-serif" }}
           >
             {t.footer.tagline}
@@ -65,7 +65,7 @@ const Footer = () => {
                   <li key={link.label}>
                     <Link
                       to={link.href}
-                      className="text-[13px] text-white/40 hover:text-white transition-colors duration-200"
+                      className="text-[13px] text-[#a0a0a0] hover:text-white transition-colors duration-200"
                       style={{ fontFamily: "'Inter', sans-serif" }}
                     >
                       {link.label}

@@ -26,7 +26,7 @@ const FeaturedTools = () => {
             <em className="not-italic gradient-text">{t.featuredTools.titleHighlight}</em>
           </h2>
           <p
-            className="text-white/40 max-w-xl mx-auto"
+            className="text-[#a0a0a0] max-w-xl mx-auto"
             style={{ fontFamily: "'Inter', sans-serif" }}
           >
             {t.featuredTools.subtitle}
@@ -63,13 +63,13 @@ const FeaturedTools = () => {
                   {tool.title}
                 </h3>
                 <p
-                  className="text-[13px] text-white/40 leading-relaxed mb-5 flex-1"
+                  className="text-[13px] text-[#a0a0a0] leading-relaxed mb-5 flex-1"
                   style={{ fontFamily: "'Inter', sans-serif" }}
                 >
                   {tool.description}
                 </p>
                 <div
-                  className="flex items-center gap-1.5 text-[12px] font-medium text-white/40 group-hover:text-white/70 group-hover:gap-2.5 transition-all"
+                  className="flex items-center gap-1.5 text-[12px] font-medium text-[#a0a0a0] group-hover:text-[#d0d0d0] group-hover:gap-2.5 transition-all"
                   style={{ fontFamily: "'Inter', sans-serif", letterSpacing: "0.08em", textTransform: "uppercase" }}
                 >
                   {tool.cta} <ArrowRight className="h-3 w-3" strokeWidth={1.5} />

@@ -26,7 +26,7 @@ const RouteCards = () => {
             <em className="not-italic gradient-text">{t.routeCards.titleHighlight}</em>
           </h2>
           <p
-            className="text-white/40 max-w-xl mx-auto text-base"
+            className="text-[#a0a0a0] max-w-xl mx-auto text-base"
             style={{ fontFamily: "'Inter', sans-serif" }}
           >
             {t.routeCards.subtitle}
@@ -57,7 +57,7 @@ const RouteCards = () => {
                     })()}
                   </div>
                   <ArrowUpRight
-                    className="h-4 w-4 text-white/20 group-hover:text-white/60 transition-colors"
+                    className="h-4 w-4 text-white/20 group-hover:text-[#c8c8c8] transition-colors"
                     strokeWidth={1.5}
                   />
                 </div>
@@ -68,7 +68,7 @@ const RouteCards = () => {
                   {route.title}
                 </h3>
                 <p
-                  className="text-[13px] text-white/40 leading-relaxed"
+                  className="text-[13px] text-[#a0a0a0] leading-relaxed"
                   style={{ fontFamily: "'Inter', sans-serif" }}
                 >
                   {route.description}

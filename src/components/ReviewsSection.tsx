@@ -103,7 +103,7 @@ const ReviewCard = ({ review, index }: { review: Review; index: number }) => (
 
     {/* Review text */}
     <p
-      className="text-white/55 text-[13px] leading-relaxed flex-1"
+      className="text-[#b8b8b8] text-[13px] leading-relaxed flex-1"
       style={{ fontFamily: "'Inter', sans-serif" }}
     >
       "{review.text}"
@@ -123,7 +123,7 @@ const ReviewCard = ({ review, index }: { review: Review; index: number }) => (
             {review.name}
           </p>
           <p
-            className="text-white/30 text-[11px] mt-0.5"
+            className="text-[#909090] text-[11px] mt-0.5"
             style={{ fontFamily: "'Inter', sans-serif" }}
           >
             {review.role} · {review.country}
@@ -163,7 +163,7 @@ const ReviewsSection = () => {
               Trusted by founders worldwide
             </h2>
             <p
-              className="text-white/40 mt-4 text-[14px] max-w-md leading-relaxed"
+              className="text-[#a0a0a0] mt-4 text-[14px] max-w-md leading-relaxed"
               style={{ fontFamily: "'Inter', sans-serif" }}
             >
               Hundreds of entrepreneurs have used IncorpUAE to navigate their UAE business setup with confidence.
@@ -188,7 +188,7 @@ const ReviewsSection = () => {
                 ))}
               </div>
               <div
-                className="text-white/30 text-[10px] mt-1"
+                className="text-[#909090] text-[10px] mt-1"
                 style={{ fontFamily: "'Inter', sans-serif" }}
               >
                 {reviews.length} reviews
@@ -203,7 +203,7 @@ const ReviewsSection = () => {
                 98%
               </div>
               <div
-                className="text-white/30 text-[10px] mt-1 leading-snug"
+                className="text-[#909090] text-[10px] mt-1 leading-snug"
                 style={{ fontFamily: "'Inter', sans-serif" }}
               >
                 would<br />recommend

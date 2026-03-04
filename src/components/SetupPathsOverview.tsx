@@ -26,7 +26,7 @@ const SetupPathsOverview = () => {
             <em className="not-italic gradient-text">{t.setupPaths.titleHighlight}</em>
           </h2>
           <p
-            className="text-white/40 max-w-xl mx-auto"
+            className="text-[#a0a0a0] max-w-xl mx-auto"
             style={{ fontFamily: "'Inter', sans-serif" }}
           >
             {t.setupPaths.subtitle}
@@ -63,7 +63,7 @@ const SetupPathsOverview = () => {
                   {path.label}
                 </h3>
                 <p
-                  className="text-[13px] text-white/40 mb-5"
+                  className="text-[13px] text-[#a0a0a0] mb-5"
                   style={{ fontFamily: "'Inter', sans-serif" }}
                 >
                   {path.tagline}
@@ -72,7 +72,7 @@ const SetupPathsOverview = () => {
                   {path.points.map((point) => (
                     <li
                       key={point}
-                      className="flex items-start gap-2.5 text-[13px] text-white/45"
+                      className="flex items-start gap-2.5 text-[13px] text-[#a0a0a0]"
                       style={{ fontFamily: "'Inter', sans-serif" }}
                     >
                       <div className="mt-1.5 h-1 w-1 rounded-full bg-[#C87941] flex-shrink-0" />
@@ -81,7 +81,7 @@ const SetupPathsOverview = () => {
                   ))}
                 </ul>
                 <div
-                  className="flex items-center gap-1.5 text-[12px] font-medium text-white/40 group-hover:text-white/70 group-hover:gap-2.5 transition-all"
+                  className="flex items-center gap-1.5 text-[12px] font-medium text-[#a0a0a0] group-hover:text-[#d0d0d0] group-hover:gap-2.5 transition-all"
                   style={{ fontFamily: "'Inter', sans-serif", letterSpacing: "0.08em", textTransform: "uppercase" }}
                 >
                   {t.common.learnMore} <ArrowRight className="h-3 w-3" strokeWidth={1.5} />

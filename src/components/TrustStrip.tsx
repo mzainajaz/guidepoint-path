@@ -36,7 +36,7 @@ const TrustStrip = () => {
                   </h3>
                 </div>
                 <p
-                  className="text-[12px] leading-relaxed text-white/40 text-center lg:text-left max-w-[220px]"
+                  className="text-[12px] leading-relaxed text-[#a0a0a0] text-center lg:text-left max-w-[220px]"
                   style={{ fontFamily: "'Inter', sans-serif" }}
                 >
                   {item.description}

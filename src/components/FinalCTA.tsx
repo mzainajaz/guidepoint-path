@@ -38,7 +38,7 @@ const FinalCTA = () => {
             <em className="not-italic gradient-text">{t.finalCta.titleHighlight}</em>
           </h2>
           <p
-            className="text-white/45 max-w-lg mx-auto mb-10"
+            className="text-[#a0a0a0] max-w-lg mx-auto mb-10"
             style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.9375rem", lineHeight: "1.75" }}
           >
             {t.finalCta.subtitle}
