@@ -43,6 +43,7 @@ const Header = () => {
         { label: t.nav.corporateTax, href: lp("/taxes/corporate-tax") },
       ],
     },
+    { label: "Blog", href: lp("/blog") },
   ];
 
   useEffect(() => {
