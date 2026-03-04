@@ -45,22 +45,26 @@ const Header = () => {
   ];
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20);
+    const onScroll = () => setScrolled(window.scrollY > 40);
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  const navLinkClass = scrolled
+    ? "text-muted-foreground hover:text-foreground hover:bg-secondary"
+    : "text-white/75 hover:text-white hover:bg-white/10";
 
   return (
     <header
       className={`sticky top-0 z-50 transition-all duration-300 ${
         scrolled
-          ? "bg-background/80 backdrop-blur-xl border-b border-border shadow-sm"
-          : "bg-transparent border-b border-transparent"
+          ? "bg-background/95 backdrop-blur-xl border-b border-border shadow-sm"
+          : "bg-transparent border-b border-white/10"
       }`}
     >
       <div className="container flex h-16 items-center justify-between lg:h-[72px]">
         <Link to={lp("/")} className="flex items-center gap-2 group">
-          <span className="font-display text-xl font-bold text-foreground tracking-tight">
+          <span className={`font-display text-xl font-bold tracking-tight transition-colors duration-300 ${scrolled ? "text-foreground" : "text-white"}`}>
             Incorporate<span className="gradient-text">UAE</span>
           </span>
         </Link>
@@ -71,12 +75,12 @@ const Header = () => {
               {item.href && !item.children ? (
                 <Link
                   to={item.href}
-                  className="flex items-center gap-1 px-3.5 py-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors rounded-lg hover:bg-secondary"
+                  className={`flex items-center gap-1 px-3.5 py-2 text-sm font-medium transition-colors rounded-lg ${navLinkClass}`}
                 >
                   {item.label}
                 </Link>
               ) : (
-                <button className="flex items-center gap-1 px-3.5 py-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors rounded-lg hover:bg-secondary">
+                <button className={`flex items-center gap-1 px-3.5 py-2 text-sm font-medium transition-colors rounded-lg ${navLinkClass}`}>
                   {item.label}
                   {item.children && <ChevronDown className="h-3.5 w-3.5 transition-transform group-hover:rotate-180" />}
                 </button>
@@ -102,7 +106,7 @@ const Header = () => {
 
         <div className="hidden lg:flex items-center gap-3">
           <div className="relative group">
-            <button className="flex items-center gap-1.5 px-3 py-1.5 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors rounded-lg hover:bg-secondary">
+            <button className={`flex items-center gap-1.5 px-3 py-1.5 text-sm font-medium transition-colors rounded-lg ${navLinkClass}`}>
               <Globe className="h-3.5 w-3.5" />
               {localeConfig[locale].flag} {localeConfig[locale].label}
               <ChevronDown className="h-3 w-3 transition-transform group-hover:rotate-180" />
@@ -122,17 +126,22 @@ const Header = () => {
               </div>
             </div>
           </div>
-          <Button asChild variant="ghost" size="sm" className="text-muted-foreground hover:text-foreground">
+          <Button
+            asChild
+            variant="ghost"
+            size="sm"
+            className={`transition-colors ${scrolled ? "text-muted-foreground hover:text-foreground" : "text-white/75 hover:text-white hover:bg-white/10"}`}
+          >
             <Link to={lp("/compare")}>{t.common.compareOptions}</Link>
           </Button>
-          <Button asChild size="sm" className="bg-accent text-accent-foreground hover:bg-accent/90 rounded-full px-5 font-semibold shadow-lg shadow-accent/20">
+          <Button asChild size="sm" className="bg-emerald-400 text-black hover:bg-emerald-300 rounded-full px-5 font-semibold shadow-lg shadow-emerald-500/20 transition-all">
             <Link to={lp("/tools/cost-estimator")}>{t.common.getStarted}</Link>
           </Button>
         </div>
 
         <button
           onClick={() => setMobileOpen(!mobileOpen)}
-          className="lg:hidden p-2 text-foreground rounded-lg hover:bg-secondary transition-colors"
+          className={`lg:hidden p-2 rounded-lg transition-colors ${scrolled ? "text-foreground hover:bg-secondary" : "text-white hover:bg-white/10"}`}
           aria-label="Toggle menu"
         >
           {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
@@ -193,7 +202,7 @@ const Header = () => {
                 <Button asChild variant="outline" size="sm" className="w-full rounded-full">
                   <Link to={lp("/compare")} onClick={() => setMobileOpen(false)}>{t.common.compareOptions}</Link>
                 </Button>
-                <Button asChild size="sm" className="w-full bg-accent text-accent-foreground hover:bg-accent/90 rounded-full font-semibold">
+                <Button asChild size="sm" className="w-full bg-emerald-400 text-black hover:bg-emerald-300 rounded-full font-semibold">
                   <Link to={lp("/tools/cost-estimator")} onClick={() => setMobileOpen(false)}>{t.common.getStarted}</Link>
                 </Button>
               </div>

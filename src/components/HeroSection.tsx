@@ -1,64 +1,124 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Sparkles, ChevronDown } from "lucide-react";
+import { ArrowRight, ChevronDown } from "lucide-react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { useLocale } from "@/i18n/context";
-import heroBg from "@/assets/hero-dubai.webp";
+import { useRef, useEffect } from "react";
 
 const HeroSection = () => {
   const { t, lp } = useLocale();
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.playbackRate = 0.75;
+    }
+  }, []);
 
   return (
-    <section className="relative overflow-hidden min-h-[92vh] flex items-center">
+    <section className="relative overflow-hidden min-h-screen flex items-center">
+      {/* Video Background */}
       <div className="absolute inset-0">
-        <img src={heroBg} alt="Dubai business district skyline" className="w-full h-full object-cover scale-105" loading="eager" />
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/97 via-primary/90 to-[hsl(200_50%_10%/0.80)]" />
-        <div className="absolute inset-0 dot-pattern opacity-[0.03]" />
+        <video
+          ref={videoRef}
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="w-full h-full object-cover"
+          poster="/videos/dubai-hero-poster.jpg"
+        >
+          <source src="/videos/dubai-hero.mp4" type="video/mp4" />
+          <source src="/videos/dubai-alt.mp4" type="video/mp4" />
+        </video>
+        {/* Multi-layer gradient overlay for cinematic depth */}
+        <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/55 to-black/20" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-black/30" />
       </div>
 
-      {/* Animated accent blobs */}
-      <div className="absolute -top-32 -right-32 w-[500px] h-[500px] rounded-full bg-accent/[0.07] blur-[120px] animate-pulse-glow" />
-      <div className="absolute -bottom-48 -left-24 w-[400px] h-[400px] rounded-full bg-[hsl(190_95%_39%/0.06)] blur-[100px] animate-pulse-glow" style={{ animationDelay: "2s" }} />
-      
-      {/* Subtle grid lines */}
-      <div className="absolute inset-0 opacity-[0.015]" style={{ backgroundImage: 'linear-gradient(hsl(var(--primary-foreground)) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--primary-foreground)) 1px, transparent 1px)', backgroundSize: '80px 80px' }} />
+      {/* Content */}
+      <div className="container relative z-10 py-32 md:py-40">
+        <div className="max-w-2xl space-y-7">
 
-      <div className="container relative z-10 py-24 md:py-32">
-        <div className="max-w-3xl space-y-8">
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-accent/20 bg-accent/[0.08] backdrop-blur-md">
-            <Sparkles className="h-3.5 w-3.5 text-accent" />
-            <span className="text-xs font-semibold text-accent tracking-wide uppercase">{t.hero.badge}</span>
+          {/* Eyebrow badge */}
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.55 }}
+            className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full border border-white/15 bg-white/[0.07] backdrop-blur-md"
+          >
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+            <span className="text-[11px] font-semibold text-white/80 tracking-[0.12em] uppercase">
+              {t.hero.badge}
+            </span>
           </motion.div>
 
-          <motion.h1 initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.1 }}
-            className="font-display text-4xl md:text-5xl lg:text-[3.75rem] font-bold text-primary-foreground leading-[1.08] tracking-tight">
-            {t.hero.titlePart1}{" "}<span className="gradient-text">{t.hero.titleHighlight}</span>
+          {/* Headline */}
+          <motion.h1
+            initial={{ opacity: 0, y: 28 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.65, delay: 0.1 }}
+            className="font-display text-[2.75rem] md:text-[3.5rem] lg:text-[4.25rem] font-bold text-white leading-[1.06] tracking-[-0.02em]"
+          >
+            {t.hero.titlePart1}{" "}
+            <span className="relative inline-block">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-300 via-teal-300 to-cyan-300">
+                {t.hero.titleHighlight}
+              </span>
+            </span>
           </motion.h1>
 
-          <motion.p initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-lg md:text-xl text-primary-foreground/55 leading-relaxed max-w-xl">
+          {/* Subtitle */}
+          <motion.p
+            initial={{ opacity: 0, y: 28 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.65, delay: 0.2 }}
+            className="text-base md:text-lg text-white/65 leading-relaxed max-w-lg font-light"
+          >
             {t.hero.subtitle}
           </motion.p>
 
-          <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.3 }} className="flex flex-col sm:flex-row gap-3 pt-2">
-            <Button asChild size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90 text-base px-8 rounded-full font-semibold shadow-xl shadow-accent/25 h-13 relative overflow-hidden group">
+          {/* CTAs */}
+          <motion.div
+            initial={{ opacity: 0, y: 28 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.65, delay: 0.3 }}
+            className="flex flex-col sm:flex-row gap-3 pt-1"
+          >
+            <Button
+              asChild
+              size="lg"
+              className="bg-emerald-400 text-black hover:bg-emerald-300 text-sm px-7 rounded-full font-semibold h-12 shadow-lg shadow-emerald-500/20 transition-all duration-200 group"
+            >
               <Link to={lp("/tools/cost-estimator")}>
-                <span className="relative z-10 flex items-center">{t.hero.cta1}<ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-0.5 transition-transform" /></span>
-                <span className="absolute inset-0 bg-gradient-to-r from-accent to-[hsl(190_95%_39%)] opacity-0 group-hover:opacity-100 transition-opacity" />
+                {t.hero.cta1}
+                <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-0.5 transition-transform" />
               </Link>
             </Button>
-            <Button asChild size="lg" className="border border-accent/25 bg-accent/[0.08] text-accent hover:bg-accent/15 hover:border-accent/40 text-base px-8 rounded-full h-13 backdrop-blur-sm font-medium transition-all">
+            <Button
+              asChild
+              size="lg"
+              className="border border-white/20 bg-white/[0.06] text-white hover:bg-white/[0.12] hover:border-white/30 text-sm px-7 rounded-full h-12 backdrop-blur-sm font-medium transition-all duration-200"
+            >
               <Link to={lp("/tools")}>{t.hero.cta2}</Link>
             </Button>
           </motion.div>
 
-          <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.4 }} className="flex gap-10 md:gap-14 pt-6">
+          {/* Stats row */}
+          <motion.div
+            initial={{ opacity: 0, y: 28 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.65, delay: 0.45 }}
+            className="flex gap-8 md:gap-12 pt-5 border-t border-white/10"
+          >
             {t.hero.stats.map((stat, i) => (
-              <div key={stat.label} className="relative">
-                {i > 0 && <div className="absolute -left-5 md:-left-7 top-1 bottom-1 w-px bg-primary-foreground/10" />}
-                <div className="font-display text-3xl md:text-4xl font-bold text-primary-foreground">{stat.value}</div>
-                <div className="text-xs md:text-sm text-primary-foreground/35 mt-1.5 font-medium">{stat.label}</div>
+              <div key={stat.label}>
+                <div className="font-display text-2xl md:text-3xl font-bold text-white tabular-nums">
+                  {stat.value}
+                </div>
+                <div className="text-[11px] md:text-xs text-white/40 mt-1 font-medium tracking-wide uppercase">
+                  {stat.label}
+                </div>
               </div>
             ))}
           </motion.div>
@@ -66,9 +126,14 @@ const HeroSection = () => {
       </div>
 
       {/* Scroll indicator */}
-      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.5 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2">
-        <ChevronDown className="h-5 w-5 text-primary-foreground/20 animate-bounce" />
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 2 }}
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-1.5"
+      >
+        <span className="text-[10px] text-white/25 tracking-[0.15em] uppercase font-medium">Scroll</span>
+        <ChevronDown className="h-4 w-4 text-white/25 animate-bounce" />
       </motion.div>
     </section>
   );

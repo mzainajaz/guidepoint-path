@@ -13,6 +13,8 @@ import FAQSection from "@/components/FAQSection";
 import FinalCTA from "@/components/FinalCTA";
 import WhyFoundersSection from "@/components/WhyFoundersSection";
 import CompareListSection from "@/components/CompareListSection";
+import CustomerReels from "@/components/CustomerReels";
+import ReviewsSection from "@/components/ReviewsSection";
 import { useLocale } from "@/i18n/context";
 import SEOHead, { websiteSchema, orgSchema } from "@/components/SEOHead";
 
@@ -44,6 +46,8 @@ const Index = () => {
         <FeaturedTools />
         <MistakesPrevention />
         <CountryCards />
+        <CustomerReels />
+        <ReviewsSection />
         <MethodologyTeaser />
         <FAQSection />
         <FinalCTA />
