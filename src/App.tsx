@@ -40,6 +40,7 @@ import AdminBlog from "./pages/admin/AdminBlog";
 import AdminContent from "./pages/admin/AdminContent";
 import AdminSEO from "./pages/admin/AdminSEO";
 import NotFound from "./pages/NotFound";
+import ScrollToTop from "./components/ScrollToTop";
 import React from "react";
 
 const queryClient = new QueryClient();
@@ -84,6 +85,7 @@ const App = () => (
       <BrowserRouter>
         <AuthProvider>
           <LanguageProvider>
+            <ScrollToTop />
             <AnalyticsWrapper>
               <Routes>
                 {/* Admin routes — must come before locale patterns */}
