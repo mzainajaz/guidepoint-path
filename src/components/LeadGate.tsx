@@ -106,7 +106,7 @@ const LeadGate = ({ children }: LeadGateProps) => {
       >
         <div className="bg-card border border-border rounded-2xl shadow-2xl p-8 md:p-10 w-full max-w-md mx-4">
           <div className="text-center mb-8">
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-accent/10 text-accent text-xs font-semibold mb-4">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-amber-50 border border-amber-200 text-amber-700 text-xs font-semibold mb-4">
               <Lock className="h-3 w-3" />
               {lg.freeAccess}
             </div>
@@ -211,7 +211,7 @@ const LeadGate = ({ children }: LeadGateProps) => {
 
             <Button
               type="submit"
-              className="w-full bg-accent text-accent-foreground hover:bg-accent/90 h-11 text-sm font-semibold"
+              className="w-full bg-amber-400 text-gray-900 hover:bg-amber-300 h-11 text-sm font-bold rounded-full"
             >
               {lg.cta} <ArrowRight className="h-4 w-4" />
             </Button>

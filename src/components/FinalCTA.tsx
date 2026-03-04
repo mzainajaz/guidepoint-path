@@ -8,23 +8,37 @@ const FinalCTA = () => {
   const { t, lp } = useLocale();
   return (
     <section className="relative overflow-hidden py-28 md:py-36">
-      <div className="absolute inset-0 bg-primary" />
-      <div className="absolute inset-0 dot-pattern opacity-[0.02]" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-accent/[0.05] blur-[120px] animate-pulse-glow" />
+      {/* Background image */}
+      <div className="absolute inset-0">
+        <img src="/images/section-mainland.jpg" alt="Dubai business district" className="w-full h-full object-cover object-center" />
+        <div className="absolute inset-0 bg-[#0B1628]/88" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] rounded-full bg-amber-400/8 blur-[130px] pointer-events-none" />
+      </div>
       <div className="container relative z-10 text-center">
         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="max-w-2xl mx-auto">
-          <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-primary-foreground mb-5">
-            {t.finalCta.title}{" "}<span className="gradient-text">{t.finalCta.titleHighlight}</span>
+          <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-5">
+            {t.finalCta.title}{" "}
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-amber-400 to-orange-400">
+              {t.finalCta.titleHighlight}
+            </span>
           </h2>
-          <p className="text-primary-foreground/45 max-w-lg mx-auto mb-10 text-lg">{t.finalCta.subtitle}</p>
+          <p className="text-white/65 max-w-lg mx-auto mb-10 text-lg">{t.finalCta.subtitle}</p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
-            <Button asChild size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90 text-base px-8 rounded-full font-semibold shadow-xl shadow-accent/25 h-13 relative overflow-hidden group">
+            <Button
+              asChild
+              size="lg"
+              className="bg-amber-400 text-gray-900 hover:bg-amber-300 text-base px-8 rounded-full font-bold shadow-xl shadow-amber-400/25 h-13 group transition-all"
+            >
               <Link to={lp("/tools/cost-estimator")}>
-                <span className="relative z-10 flex items-center">{t.finalCta.cta1}<ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-0.5 transition-transform" /></span>
-                <span className="absolute inset-0 bg-gradient-to-r from-accent to-[hsl(190_95%_39%)] opacity-0 group-hover:opacity-100 transition-opacity" />
+                {t.finalCta.cta1}
+                <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-0.5 transition-transform" />
               </Link>
             </Button>
-            <Button asChild size="lg" className="border border-accent/25 bg-accent/[0.08] text-accent hover:bg-accent/15 hover:border-accent/40 text-base px-8 rounded-full h-13 backdrop-blur-sm font-medium transition-all">
+            <Button
+              asChild
+              size="lg"
+              className="border border-white/25 bg-white/10 text-white hover:bg-white/20 hover:border-white/40 text-base px-8 rounded-full h-13 backdrop-blur-sm font-medium transition-all"
+            >
               <Link to={lp("/tools")}>{t.finalCta.cta2}</Link>
             </Button>
           </div>

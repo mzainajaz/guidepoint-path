@@ -16,7 +16,7 @@ const reels: Reel[] = [
   {
     id: "1",
     platform: "youtube",
-    embedId: "dQw4w9WgXcQ", // placeholder – replace with real customer video IDs
+    embedId: "dQw4w9WgXcQ",
     thumbnail: "https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg",
     name: "Alex M.",
     role: "SaaS Founder, UK",
@@ -60,10 +60,10 @@ const ReelCard = ({ reel }: { reel: Reel }) => {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-60px" }}
       transition={{ duration: 0.5 }}
-      className="group relative flex-shrink-0 w-[220px] md:w-[240px]"
+      className="group relative flex-shrink-0 w-[220px] md:w-full"
     >
-      {/* Video container — 9:16 aspect ratio like a reel */}
-      <div className="relative rounded-2xl overflow-hidden bg-neutral-900 aspect-[9/16] shadow-xl shadow-black/20">
+      {/* Video container — 9:16 aspect ratio */}
+      <div className="relative rounded-2xl overflow-hidden bg-[#0B1628] aspect-[9/16] shadow-xl shadow-black/30 border border-white/10">
         {!playing ? (
           <>
             <img
@@ -72,7 +72,7 @@ const ReelCard = ({ reel }: { reel: Reel }) => {
               className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
             />
             {/* Dark overlay */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#0B1628]/90 via-[#0B1628]/20 to-transparent" />
 
             {/* Play button */}
             <button
@@ -80,8 +80,8 @@ const ReelCard = ({ reel }: { reel: Reel }) => {
               className="absolute inset-0 flex items-center justify-center"
               aria-label={`Play ${reel.name}'s story`}
             >
-              <div className="w-14 h-14 rounded-full bg-white/90 flex items-center justify-center shadow-lg transform transition-transform duration-200 group-hover:scale-110">
-                <Play className="h-5 w-5 text-black fill-black ml-0.5" />
+              <div className="w-14 h-14 rounded-full bg-amber-400 flex items-center justify-center shadow-lg shadow-amber-400/30 transform transition-transform duration-200 group-hover:scale-110">
+                <Play className="h-5 w-5 text-gray-900 fill-gray-900 ml-0.5" />
               </div>
             </button>
 
@@ -108,8 +108,10 @@ const ReelCard = ({ reel }: { reel: Reel }) => {
 
 const CustomerReels = () => {
   return (
-    <section className="py-20 md:py-28 bg-neutral-950 overflow-hidden">
-      <div className="container">
+    <section className="py-20 md:py-28 bg-[#111D3C] overflow-hidden">
+      {/* Subtle dot pattern */}
+      <div className="absolute inset-0 opacity-[0.025]" style={{backgroundImage: 'radial-gradient(white 1px, transparent 1px)', backgroundSize: '24px 24px'}} />
+      <div className="container relative z-10">
         {/* Section header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -118,13 +120,13 @@ const CustomerReels = () => {
           transition={{ duration: 0.5 }}
           className="mb-12"
         >
-          <p className="text-xs font-semibold text-emerald-400 tracking-[0.15em] uppercase mb-3">
+          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-400/10 border border-amber-400/25 text-amber-400 text-xs font-semibold tracking-widest uppercase mb-4">
             Real Founders, Real Results
-          </p>
-          <h2 className="font-display text-3xl md:text-4xl font-bold text-white leading-tight tracking-tight max-w-lg">
+          </span>
+          <h2 className="font-display text-3xl md:text-4xl font-bold text-white leading-tight tracking-tight max-w-lg mt-4">
             Hear from founders who set up in the UAE
           </h2>
-          <p className="text-white/45 mt-4 text-base max-w-md leading-relaxed">
+          <p className="text-white/50 mt-4 text-base max-w-md leading-relaxed">
             Watch short stories from entrepreneurs who navigated the UAE business setup process with GuidePoint.
           </p>
         </motion.div>
@@ -148,7 +150,7 @@ const CustomerReels = () => {
         >
           <a
             href="#"
-            className="inline-flex items-center gap-2 text-sm text-emerald-400 hover:text-emerald-300 font-medium transition-colors"
+            className="inline-flex items-center gap-2 text-sm text-amber-400 hover:text-amber-300 font-medium transition-colors"
           >
             View all customer stories
             <ExternalLink className="h-3.5 w-3.5" />

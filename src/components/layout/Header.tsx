@@ -51,24 +51,27 @@ const Header = () => {
   }, []);
 
   const navLinkClass = scrolled
-    ? "text-muted-foreground hover:text-foreground hover:bg-secondary"
-    : "text-white/75 hover:text-white hover:bg-white/10";
+    ? "text-foreground/70 hover:text-foreground hover:bg-secondary"
+    : "text-white/80 hover:text-white hover:bg-white/10";
 
   return (
     <header
       className={`sticky top-0 z-50 transition-all duration-300 ${
         scrolled
-          ? "bg-background/95 backdrop-blur-xl border-b border-border shadow-sm"
+          ? "bg-white/95 backdrop-blur-xl border-b border-border shadow-sm"
           : "bg-transparent border-b border-white/10"
       }`}
     >
       <div className="container flex h-16 items-center justify-between lg:h-[72px]">
+        {/* Brand */}
         <Link to={lp("/")} className="flex items-center gap-2 group">
           <span className={`font-display text-xl font-bold tracking-tight transition-colors duration-300 ${scrolled ? "text-foreground" : "text-white"}`}>
-            Incorporate<span className="gradient-text">UAE</span>
+            Incorporate
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-amber-500 to-orange-500">UAE</span>
           </span>
         </Link>
 
+        {/* Desktop nav */}
         <nav className="hidden lg:flex items-center gap-0.5">
           {navItems.map((item) => (
             <div key={item.label} className="relative group">
@@ -87,12 +90,12 @@ const Header = () => {
               )}
               {item.children && (
                 <div className="invisible group-hover:visible opacity-0 group-hover:opacity-100 transition-all duration-200 absolute top-full left-0 pt-2 z-50">
-                  <div className="glass-card rounded-xl shadow-xl p-2 min-w-[240px]">
+                  <div className="bg-white border border-border rounded-xl shadow-xl p-2 min-w-[240px]">
                     {item.children.map((child) => (
                       <Link
                         key={child.label}
                         to={child.href}
-                        className="block px-3.5 py-2.5 text-sm text-muted-foreground hover:text-foreground hover:bg-secondary rounded-lg transition-colors"
+                        className="block px-3.5 py-2.5 text-sm text-foreground/70 hover:text-foreground hover:bg-secondary rounded-lg transition-colors"
                       >
                         {child.label}
                       </Link>
@@ -104,7 +107,9 @@ const Header = () => {
           ))}
         </nav>
 
+        {/* Desktop actions */}
         <div className="hidden lg:flex items-center gap-3">
+          {/* Language switcher */}
           <div className="relative group">
             <button className={`flex items-center gap-1.5 px-3 py-1.5 text-sm font-medium transition-colors rounded-lg ${navLinkClass}`}>
               <Globe className="h-3.5 w-3.5" />
@@ -112,12 +117,12 @@ const Header = () => {
               <ChevronDown className="h-3 w-3 transition-transform group-hover:rotate-180" />
             </button>
             <div className="invisible group-hover:visible opacity-0 group-hover:opacity-100 transition-all duration-200 absolute top-full right-0 pt-2 z-50">
-              <div className="glass-card rounded-xl shadow-xl p-1.5 min-w-[160px]">
+              <div className="bg-white border border-border rounded-xl shadow-xl p-1.5 min-w-[160px]">
                 {locales.map((loc) => (
                   <button
                     key={loc}
                     onClick={() => switchLocale(loc)}
-                    className={`w-full text-left flex items-center gap-2 px-3 py-2 text-sm rounded-lg transition-colors ${loc === locale ? "bg-accent/10 text-accent font-medium" : "text-muted-foreground hover:text-foreground hover:bg-secondary"}`}
+                    className={`w-full text-left flex items-center gap-2 px-3 py-2 text-sm rounded-lg transition-colors ${loc === locale ? "bg-amber-50 text-amber-700 font-medium" : "text-foreground/70 hover:text-foreground hover:bg-secondary"}`}
                   >
                     <span>{localeConfig[loc].flag}</span>
                     <span>{localeConfig[loc].name}</span>
@@ -126,19 +131,26 @@ const Header = () => {
               </div>
             </div>
           </div>
+
           <Button
             asChild
             variant="ghost"
             size="sm"
-            className={`transition-colors ${scrolled ? "text-muted-foreground hover:text-foreground" : "text-white/75 hover:text-white hover:bg-white/10"}`}
+            className={`transition-colors ${scrolled ? "text-foreground/70 hover:text-foreground" : "text-white/80 hover:text-white hover:bg-white/10"}`}
           >
             <Link to={lp("/compare")}>{t.common.compareOptions}</Link>
           </Button>
-          <Button asChild size="sm" className="bg-emerald-400 text-black hover:bg-emerald-300 rounded-full px-5 font-semibold shadow-lg shadow-emerald-500/20 transition-all">
+
+          <Button
+            asChild
+            size="sm"
+            className="bg-amber-400 text-gray-900 hover:bg-amber-300 rounded-full px-5 font-bold shadow-md shadow-amber-400/20 transition-all"
+          >
             <Link to={lp("/tools/cost-estimator")}>{t.common.getStarted}</Link>
           </Button>
         </div>
 
+        {/* Mobile hamburger */}
         <button
           onClick={() => setMobileOpen(!mobileOpen)}
           className={`lg:hidden p-2 rounded-lg transition-colors ${scrolled ? "text-foreground hover:bg-secondary" : "text-white hover:bg-white/10"}`}
@@ -148,6 +160,7 @@ const Header = () => {
         </button>
       </div>
 
+      {/* Mobile menu */}
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
@@ -155,7 +168,7 @@ const Header = () => {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.2 }}
-            className="lg:hidden border-t border-border bg-background/95 backdrop-blur-xl overflow-hidden"
+            className="lg:hidden border-t border-border bg-white/98 backdrop-blur-xl overflow-hidden"
           >
             <nav className="container py-6 space-y-1">
               {navItems.map((item) => (
@@ -169,7 +182,7 @@ const Header = () => {
                       {item.label}
                     </Link>
                   ) : (
-                    <span className="block px-4 py-3 text-sm font-medium text-foreground">
+                    <span className="block px-4 py-3 text-sm font-semibold text-foreground">
                       {item.label}
                     </span>
                   )}
@@ -202,7 +215,7 @@ const Header = () => {
                 <Button asChild variant="outline" size="sm" className="w-full rounded-full">
                   <Link to={lp("/compare")} onClick={() => setMobileOpen(false)}>{t.common.compareOptions}</Link>
                 </Button>
-                <Button asChild size="sm" className="w-full bg-emerald-400 text-black hover:bg-emerald-300 rounded-full font-semibold">
+                <Button asChild size="sm" className="w-full bg-amber-400 text-gray-900 hover:bg-amber-300 rounded-full font-bold">
                   <Link to={lp("/tools/cost-estimator")} onClick={() => setMobileOpen(false)}>{t.common.getStarted}</Link>
                 </Button>
               </div>
