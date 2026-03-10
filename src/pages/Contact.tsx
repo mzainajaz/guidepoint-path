@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { supabase } from "@/integrations/supabase/client";
+import { trackLeadSubmission, trackFormStep } from "@/lib/analytics";
 import { useT } from "@/i18n/context";
 import { countryCodes, type CountryCode } from "@/data/countryCodes";
 import { ChevronDown } from "lucide-react";
@@ -102,8 +103,8 @@ const Contact = () => {
   }, [businessType, contactPref, setupPref, lg]);
 
   const handleNext = useCallback(() => {
-    if (step === 0 && validateStep0()) setStep(1);
-    else if (step === 1 && validateStep1()) setStep(2);
+    if (step === 0 && validateStep0()) { trackFormStep(0, 3); setStep(1); }
+    else if (step === 1 && validateStep1()) { trackFormStep(1, 3); setStep(2); }
   }, [step, validateStep0, validateStep1]);
 
   const handleSubmit = useCallback(() => {
@@ -129,6 +130,15 @@ const Contact = () => {
       landing_page: window.location.pathname,
       user_agent: navigator.userAgent,
     } as any).then(() => {});
+
+    trackLeadSubmission({
+      business_type: businessType,
+      setup_preference: setupPref,
+      budget: budget || undefined,
+      country: country.trim(),
+      source: "contact_page",
+    });
+
     setSubmitted(true);
   }, [name, email, phone, selectedCountry, country, businessType, contactPref, setupPref, budget, additionalServices]);
 
