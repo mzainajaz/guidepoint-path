@@ -26,12 +26,10 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const [loading, setLoading] = useState(true);
 
   const checkAdmin = useCallback(async (uid: string) => {
-    const { data } = await supabase
-      .from("user_roles")
-      .select("role")
-      .eq("user_id", uid)
-      .eq("role", "admin")
-      .maybeSingle();
+    const { data } = await supabase.rpc("has_role", {
+      _user_id: uid,
+      _role: "admin",
+    });
     setIsAdmin(!!data);
   }, []);
 
