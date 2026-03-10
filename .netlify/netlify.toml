@@ -1,8 +1,6 @@
-[[redirects]]
-  from = "/sitemap.xml"
-  to = "https://vaskeddeopmufygsvxej.supabase.co/functions/v1/sitemap"
-  status = 200
-  force = true
+plugins = []
+headers = []
+redirects = []
 
 [functions]
 
