@@ -10,6 +10,13 @@ declare global {
   interface Window {
     gtag?: (...args: unknown[]) => void;
     dataLayer?: unknown[];
+    fbq?: (...args: unknown[]) => void;
+  }
+}
+
+function fbq(...args: unknown[]) {
+  if (typeof window !== "undefined" && window.fbq) {
+    window.fbq(...args);
   }
 }
 
