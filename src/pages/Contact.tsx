@@ -130,6 +130,15 @@ const Contact = () => {
       landing_page: window.location.pathname,
       user_agent: navigator.userAgent,
     } as any).then(() => {});
+
+    trackLeadSubmission({
+      business_type: businessType,
+      setup_preference: setupPref,
+      budget: budget || undefined,
+      country: country.trim(),
+      source: "contact_page",
+    });
+
     setSubmitted(true);
   }, [name, email, phone, selectedCountry, country, businessType, contactPref, setupPref, budget, additionalServices]);
 

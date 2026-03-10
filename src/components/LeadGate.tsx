@@ -149,6 +149,14 @@ const LeadGate = ({ children }: LeadGateProps) => {
       user_agent: navigator.userAgent,
     } as any).then(() => {});
 
+    trackLeadSubmission({
+      business_type: businessType,
+      setup_preference: setupPref,
+      budget: budget || undefined,
+      country: country.trim(),
+      source: "leadgate",
+    });
+
     markSubmitted();
     setSubmitted(true);
   }, [name, email, phone, selectedCountry, country, businessType, contactPref, setupPref, budget, additionalServices]);
