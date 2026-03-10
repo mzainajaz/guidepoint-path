@@ -62,6 +62,9 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
       setUser(sess?.user ?? null);
       if (sess?.user) await checkAdmin(sess.user.id);
       setLoading(false);
+    }).catch((err) => {
+      console.error("getSession error:", err);
+      setLoading(false);
     });
 
     return () => subscription.unsubscribe();
