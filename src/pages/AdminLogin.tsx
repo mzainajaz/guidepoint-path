@@ -68,8 +68,11 @@ const AdminLogin = () => {
             </div>
             {error && <p className="text-sm text-destructive">{error}</p>}
             <Button type="submit" className="w-full" disabled={loading}>
-              {loading ? "Signing in…" : "Sign In"}
+              {loading ? "Please wait…" : isSignUp ? "Create Account" : "Sign In"}
             </Button>
+            <button type="button" className="w-full text-xs text-muted-foreground hover:text-foreground transition-colors" onClick={() => { setIsSignUp(!isSignUp); setError(null); }}>
+              {isSignUp ? "Already have an account? Sign in" : "Need an account? Sign up"}
+            </button>
           </form>
         </div>
       </div>
