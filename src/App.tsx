@@ -33,6 +33,7 @@ import HowToIndex from "./pages/HowToIndex";
 import HowToArticle from "./pages/HowToArticle";
 import Contact from "./pages/Contact";
 import AdminLogin from "./pages/AdminLogin";
+import ResetPassword from "./pages/ResetPassword";
 import AdminLayout from "./components/admin/AdminLayout";
 import ProtectedRoute from "./components/admin/ProtectedRoute";
 import AdminDashboard from "./pages/admin/AdminDashboard";
