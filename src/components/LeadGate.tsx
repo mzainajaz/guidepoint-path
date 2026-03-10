@@ -119,8 +119,8 @@ const LeadGate = ({ children }: LeadGateProps) => {
   }, [businessType, contactPref, setupPref, lg]);
 
   const handleNext = useCallback(() => {
-    if (step === 0 && validateStep0()) setStep(1);
-    else if (step === 1 && validateStep1()) setStep(2);
+    if (step === 0 && validateStep0()) { trackFormStep(0, 3); setStep(1); }
+    else if (step === 1 && validateStep1()) { trackFormStep(1, 3); setStep(2); }
   }, [step, validateStep0, validateStep1]);
 
   const handleSubmit = useCallback(() => {
