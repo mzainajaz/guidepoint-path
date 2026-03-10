@@ -102,6 +102,7 @@ const App = () => (
                   <Route path="blog" element={<AdminBlog />} />
                   <Route path="content" element={<AdminContent />} />
                   <Route path="seo" element={<AdminSEO />} />
+                  <Route path="howto-import" element={<AdminHowToImport />} />
                 </Route>
                 {appRoutes.map((r) => (
                   <Route key={r.path} path={r.path} element={r.element} />
