@@ -33,6 +33,7 @@ import HowToIndex from "./pages/HowToIndex";
 import HowToArticle from "./pages/HowToArticle";
 import Contact from "./pages/Contact";
 import AdminLogin from "./pages/AdminLogin";
+import ResetPassword from "./pages/ResetPassword";
 import AdminLayout from "./components/admin/AdminLayout";
 import ProtectedRoute from "./components/admin/ProtectedRoute";
 import AdminDashboard from "./pages/admin/AdminDashboard";
@@ -95,6 +96,7 @@ const App = () => (
               <Routes>
                 {/* Admin routes — must come before locale patterns */}
                 <Route path="/admin/login" element={<AdminLogin />} />
+                <Route path="/reset-password" element={<ResetPassword />} />
                 <Route path="/admin" element={<ProtectedRoute><AdminLayout /></ProtectedRoute>}>
                   <Route index element={<AdminDashboard />} />
                   <Route path="leads" element={<AdminLeads />} />
