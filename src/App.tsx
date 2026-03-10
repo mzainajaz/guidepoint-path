@@ -72,6 +72,8 @@ const appRoutes = [
   { path: "/blog/:slug", element: <BlogPost /> },
   { path: "/guides", element: <GuidesIndex /> },
   { path: "/guides/:slug", element: <GuideDetail /> },
+  { path: "/how-to/uae-business-setup", element: <HowToIndex /> },
+  { path: "/how-to/uae-business-setup/:slug", element: <HowToArticle /> },
   { path: "/contact", element: <Contact /> },
 ];
 
