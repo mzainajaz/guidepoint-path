@@ -155,29 +155,92 @@ const AdminHowToImport = () => {
         </p>
       </div>
 
-      <div className="border border-dashed border-border rounded-xl p-10 text-center bg-card">
+      <div className="border border-dashed border-border rounded-xl p-10 text-center bg-card space-y-4">
         <Upload className="h-10 w-10 text-muted-foreground mx-auto mb-4" />
         <p className="text-sm text-muted-foreground mb-4">
           Expected columns: language, language_code, text_direction, article_number, slug, page_title, meta_description, primary_keyword, word_count, content_html, content_markdown
         </p>
-        <label className="inline-block">
-          <input
-            type="file"
-            accept=".csv"
-            onChange={handleFileUpload}
-            className="hidden"
+        <div className="flex items-center justify-center gap-4 flex-wrap">
+          <label className="inline-block">
+            <input
+              type="file"
+              accept=".csv"
+              onChange={handleFileUpload}
+              className="hidden"
+              disabled={importing}
+            />
+            <Button variant="default" disabled={importing} asChild>
+              <span>
+                {importing ? (
+                  <><Loader2 className="h-4 w-4 mr-2 animate-spin" /> Importing…</>
+                ) : (
+                  <><Upload className="h-4 w-4 mr-2" /> Select CSV File</>
+                )}
+              </span>
+            </Button>
+          </label>
+          <Button
+            variant="outline"
             disabled={importing}
-          />
-          <Button variant="default" disabled={importing} asChild>
-            <span>
-              {importing ? (
-                <><Loader2 className="h-4 w-4 mr-2 animate-spin" /> Importing…</>
-              ) : (
-                <><Upload className="h-4 w-4 mr-2" /> Select CSV File</>
-              )}
-            </span>
+            onClick={async () => {
+              setImporting(true);
+              setStats(null);
+              try {
+                const res = await fetch("/imports/howto-articles.csv");
+                const text = await res.text();
+                const rows = parseCSV(text);
+                if (rows.length === 0) {
+                  toast.error("No valid rows found in bundled CSV");
+                  setImporting(false);
+                  return;
+                }
+                let success = 0;
+                let errors = 0;
+                const BATCH_SIZE = 20;
+                for (let i = 0; i < rows.length; i += BATCH_SIZE) {
+                  const batch = rows.slice(i, i + BATCH_SIZE).map((r) => ({
+                    language: r.language || "english",
+                    language_code: r.language_code || "en",
+                    text_direction: r.text_direction || "ltr",
+                    article_number: r.article_number || "00",
+                    slug: r.slug,
+                    page_title: r.page_title,
+                    meta_description: r.meta_description || null,
+                    primary_keyword: r.primary_keyword || null,
+                    word_count: parseInt(r.word_count) || 0,
+                    content_html: r.content_html || "",
+                    content_markdown: r.content_markdown || "",
+                    published: true,
+                  }));
+                  const { error } = await supabase
+                    .from("howto_articles")
+                    .upsert(batch, { onConflict: "language_code,slug" });
+                  if (error) {
+                    console.error("Batch insert error:", error);
+                    errors += batch.length;
+                  } else {
+                    success += batch.length;
+                  }
+                  setStats({ total: rows.length, success, errors });
+                }
+                setStats({ total: rows.length, success, errors });
+                if (errors === 0) toast.success(`Imported ${success} articles!`);
+                else toast.warning(`Imported ${success}, ${errors} failed.`);
+              } catch (err) {
+                console.error("Import error:", err);
+                toast.error("Failed to fetch bundled CSV");
+              } finally {
+                setImporting(false);
+              }
+            }}
+          >
+            {importing ? (
+              <><Loader2 className="h-4 w-4 mr-2 animate-spin" /> Importing…</>
+            ) : (
+              <>📦 Import Bundled CSV</>
+            )}
           </Button>
-        </label>
+        </div>
       </div>
 
       {stats && (
