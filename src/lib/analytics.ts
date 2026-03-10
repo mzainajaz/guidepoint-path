@@ -33,6 +33,7 @@ export function trackPageView(path: string, title?: string) {
     page_title: title || document.title,
     page_location: window.location.href,
   });
+  fbq("track", "PageView");
 }
 
 // ─── Lead conversion ───
