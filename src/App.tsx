@@ -41,6 +41,7 @@ import AdminAnalytics from "./pages/admin/AdminAnalytics";
 import AdminBlog from "./pages/admin/AdminBlog";
 import AdminContent from "./pages/admin/AdminContent";
 import AdminSEO from "./pages/admin/AdminSEO";
+import AdminHowToImport from "./pages/admin/AdminHowToImport";
 import NotFound from "./pages/NotFound";
 import ScrollToTop from "./components/ScrollToTop";
 import React from "react";
