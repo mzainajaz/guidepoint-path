@@ -54,8 +54,8 @@ const AdminLogin = () => {
             <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-primary/10 mb-4">
               <Lock className="h-5 w-5 text-primary" />
             </div>
-            <h1 className="font-display text-xl font-bold text-foreground">Admin Login</h1>
-            <p className="text-sm text-muted-foreground mt-1">Sign in to access the dashboard</p>
+            <h1 className="font-display text-xl font-bold text-foreground">{isSignUp ? "Create Admin Account" : "Admin Login"}</h1>
+            <p className="text-sm text-muted-foreground mt-1">{isSignUp ? "Create your account first" : "Sign in to access the dashboard"}</p>
           </div>
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
