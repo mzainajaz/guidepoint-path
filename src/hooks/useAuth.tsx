@@ -1,4 +1,4 @@
-import { useState, useEffect, createContext, useContext, useCallback } from "react";
+import { useState, useEffect, createContext, useContext, useCallback, useRef } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import type { User, Session } from "@supabase/supabase-js";
 
@@ -24,13 +24,22 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const [session, setSession] = useState<Session | null>(null);
   const [isAdmin, setIsAdmin] = useState(false);
   const [loading, setLoading] = useState(true);
+  const adminCheckId = useRef(0);
 
-  const checkAdmin = useCallback(async (uid: string) => {
+  const checkAdmin = useCallback(async (uid: string | null) => {
+    const thisCheck = ++adminCheckId.current;
+    if (!uid) {
+      setIsAdmin(false);
+      setLoading(false);
+      return;
+    }
     try {
       const { data, error } = await supabase.rpc("has_role", {
         _user_id: uid,
         _role: "admin",
       });
+      // Only apply if this is still the latest check
+      if (thisCheck !== adminCheckId.current) return;
       if (error) {
         console.error("checkAdmin error:", error);
         setIsAdmin(false);
@@ -38,36 +47,45 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         setIsAdmin(!!data);
       }
     } catch (err) {
+      if (thisCheck !== adminCheckId.current) return;
       console.error("checkAdmin exception:", err);
       setIsAdmin(false);
     }
+    setLoading(false);
   }, []);
 
   useEffect(() => {
+    let mounted = true;
+
+    // 1. Set up listener first (Supabase best practice)
     const { data: { subscription } } = supabase.auth.onAuthStateChange(
-      async (_event, sess) => {
+      (_event, sess) => {
+        if (!mounted) return;
         setSession(sess);
         setUser(sess?.user ?? null);
-        if (sess?.user) {
-          await checkAdmin(sess.user.id);
-        } else {
-          setIsAdmin(false);
-        }
-        setLoading(false);
+        // Defer admin check to avoid blocking auth state change
+        // Use setTimeout(0) to break out of the onAuthStateChange callback
+        setTimeout(() => {
+          if (mounted) checkAdmin(sess?.user?.id ?? null);
+        }, 0);
       }
     );
 
-    supabase.auth.getSession().then(async ({ data: { session: sess } }) => {
+    // 2. Get initial session
+    supabase.auth.getSession().then(({ data: { session: sess } }) => {
+      if (!mounted) return;
       setSession(sess);
       setUser(sess?.user ?? null);
-      if (sess?.user) await checkAdmin(sess.user.id);
-      setLoading(false);
+      checkAdmin(sess?.user?.id ?? null);
     }).catch((err) => {
       console.error("getSession error:", err);
-      setLoading(false);
+      if (mounted) setLoading(false);
     });
 
-    return () => subscription.unsubscribe();
+    return () => {
+      mounted = false;
+      subscription.unsubscribe();
+    };
   }, [checkAdmin]);
 
   const signIn = async (email: string, password: string) => {
