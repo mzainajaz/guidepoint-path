@@ -166,7 +166,7 @@ const BlogPost = () => {
         >
           <div
             className="blog-prose"
-            dangerouslySetInnerHTML={{ __html: post.content }}
+            dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(post.content) }}
           />
         </motion.article>
 
