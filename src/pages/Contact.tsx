@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { supabase } from "@/integrations/supabase/client";
+import { trackLeadSubmission, trackFormStep } from "@/lib/analytics";
 import { useT } from "@/i18n/context";
 import { countryCodes, type CountryCode } from "@/data/countryCodes";
 import { ChevronDown } from "lucide-react";
