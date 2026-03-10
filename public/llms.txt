@@ -1,0 +1,67 @@
+# IncorporateUAE
+
+> UAE business setup advisory platform. Compare free zones, mainland options, and setup routes with transparent cost estimates and expert guidance.
+
+## About
+
+IncorporateUAE helps entrepreneurs, founders, and businesses set up in the United Arab Emirates. The platform provides independent, research-backed guidance across free zone selection, mainland licensing, tax compliance, visa processes, and corporate banking — without hidden fees or commission bias.
+
+## Core Services
+
+- **Free Zone Comparison**: 31 UAE free zones profiled with pricing, visa policies, banking realities, and activity fit. URL: /free-zones
+- **Mainland Setup**: DED licensing, Ejari office requirements, and compliance obligations. URL: /mainland
+- **Cost Estimator Tool**: Interactive calculator covering licence, visa, office, and compliance costs. URL: /tools/cost-estimator
+- **Zone Picker Tool**: Guided questionnaire matching business needs to optimal free zones. URL: /tools/zone-picker
+- **VAT Helper Tool**: Quick assessment of VAT registration obligations. URL: /tools/vat-helper
+
+## Content Hubs
+
+- **Setup Guides**: 17-chapter comprehensive guide covering UAE company formation from architecture to compliance. URL: /guides
+- **Tax & Compliance**: VAT and Corporate Tax guides with thresholds, filing deadlines, and free zone qualifying rules. URL: /taxes
+- **Comparisons**: Head-to-head analyses of free zones and setup routes (e.g., IFZA vs DMCC, Mainland vs Free Zone). URL: /compare
+- **Business Activities**: Activity-specific guidance for consulting, marketing, e-commerce, and IT services. URL: /activities
+- **Blog**: Deep-dive articles on UAE business setup topics, updated regularly. URL: /blog
+- **How-To Library**: ~195 instructional articles across 10 languages on UAE business setup procedures. URL: /how-to/uae-business-setup
+
+## Relocation Guides
+
+Country-specific guidance for entrepreneurs relocating to the UAE:
+- United Kingdom: /relocation/uk
+- United States: /relocation/us
+- India: /relocation/india
+- Egypt: /relocation/egypt
+- Europe: /relocation/europe
+
+## Languages
+
+The platform is available in 10 languages with SEO-friendly URL prefixes:
+- English (default): /
+- French: /fr
+- German: /de
+- Spanish: /es
+- Arabic: /ar (RTL supported)
+- Italian: /it
+- Russian: /ru
+- Ukrainian: /uk
+- Chinese: /zh
+- Portuguese: /pt
+
+## Free Zones Covered
+
+IFZA, DMCC, Meydan, Dubai South, RAKEZ, Shams, SPC, DIFC, ADGM, Masdar City, Dubai Silicon Oasis, DAFZA, JAFZA, DWTC, Dubai CommerCity, KEZAD, SRTIP, SAIF Zone, Hamriyah, Ajman FZ, Ajman Media City, UAQ FTZ, Fujairah FZ, Creative City Fujairah, RAK ICC, RAK DAO, DDA Clusters, DHCC, Sharjah Publishing City, ADAFZ, twofour54.
+
+## Key Facts
+
+- Location focus: United Arab Emirates (all 7 emirates)
+- Target audience: International entrepreneurs, SME founders, digital nomads, e-commerce sellers
+- Methodology: Independent research, no commission-based recommendations
+- Data currency: All pricing and regulations verified against 2025–2026 sources
+- Contact: /contact
+
+## Sitemap
+
+XML Sitemap: https://incorporateuae.com/sitemap.xml
+
+## Crawling Policy
+
+All AI crawlers and LLM training bots are welcome. See /robots.txt for details.
