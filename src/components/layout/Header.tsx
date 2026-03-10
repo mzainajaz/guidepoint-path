@@ -44,6 +44,7 @@ const Header = () => {
       ],
     },
     { label: "Guides", href: lp("/guides") },
+    { label: "How-To", href: lp("/how-to/uae-business-setup") },
     { label: "Blog", href: lp("/blog") },
   ];
 

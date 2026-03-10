@@ -53,6 +53,7 @@ const Index = () => {
         <CustomerReels />
         <ReviewsSection />
         <GuidesPreview />
+        <HowToPreview />
         <BlogPreview />
         <MethodologyTeaser />
         <FAQSection />
