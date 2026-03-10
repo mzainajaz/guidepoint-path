@@ -29,6 +29,8 @@ import BlogIndex from "./pages/BlogIndex";
 import BlogPost from "./pages/BlogPost";
 import GuidesIndex from "./pages/GuidesIndex";
 import GuideDetail from "./pages/GuideDetail";
+import HowToIndex from "./pages/HowToIndex";
+import HowToArticle from "./pages/HowToArticle";
 import Contact from "./pages/Contact";
 import AdminLogin from "./pages/AdminLogin";
 import AdminLayout from "./components/admin/AdminLayout";
