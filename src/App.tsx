@@ -96,6 +96,7 @@ const App = () => (
               <Routes>
                 {/* Admin routes — must come before locale patterns */}
                 <Route path="/admin/login" element={<AdminLogin />} />
+                <Route path="/reset-password" element={<ResetPassword />} />
                 <Route path="/admin" element={<ProtectedRoute><AdminLayout /></ProtectedRoute>}>
                   <Route index element={<AdminDashboard />} />
                   <Route path="leads" element={<AdminLeads />} />
