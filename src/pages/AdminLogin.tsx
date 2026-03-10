@@ -7,23 +7,42 @@ import { Label } from "@/components/ui/label";
 import { Lock } from "lucide-react";
 
 const AdminLogin = () => {
-  const { signIn } = useAuth();
+  const { signIn, signUp } = useAuth();
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
+  const [isSignUp, setIsSignUp] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
     setError(null);
-    const result = await signIn(email, password);
-    if (result.error) {
-      setError(result.error);
-      setLoading(false);
+    if (isSignUp) {
+      const result = await signUp(email, password);
+      if (result.error) {
+        setError(result.error);
+        setLoading(false);
+      } else {
+        // After signup, sign in immediately
+        const loginResult = await signIn(email, password);
+        if (loginResult.error) {
+          setError("Account created! Please sign in.");
+          setIsSignUp(false);
+          setLoading(false);
+        } else {
+          navigate("/admin");
+        }
+      }
     } else {
-      navigate("/admin");
+      const result = await signIn(email, password);
+      if (result.error) {
+        setError(result.error);
+        setLoading(false);
+      } else {
+        navigate("/admin");
+      }
     }
   };
 
@@ -35,8 +54,8 @@ const AdminLogin = () => {
             <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-primary/10 mb-4">
               <Lock className="h-5 w-5 text-primary" />
             </div>
-            <h1 className="font-display text-xl font-bold text-foreground">Admin Login</h1>
-            <p className="text-sm text-muted-foreground mt-1">Sign in to access the dashboard</p>
+            <h1 className="font-display text-xl font-bold text-foreground">{isSignUp ? "Create Admin Account" : "Admin Login"}</h1>
+            <p className="text-sm text-muted-foreground mt-1">{isSignUp ? "Create your account first" : "Sign in to access the dashboard"}</p>
           </div>
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
@@ -49,8 +68,11 @@ const AdminLogin = () => {
             </div>
             {error && <p className="text-sm text-destructive">{error}</p>}
             <Button type="submit" className="w-full" disabled={loading}>
-              {loading ? "Signing in…" : "Sign In"}
+              {loading ? "Please wait…" : isSignUp ? "Create Account" : "Sign In"}
             </Button>
+            <button type="button" className="w-full text-xs text-muted-foreground hover:text-foreground transition-colors" onClick={() => { setIsSignUp(!isSignUp); setError(null); }}>
+              {isSignUp ? "Already have an account? Sign in" : "Need an account? Sign up"}
+            </button>
           </form>
         </div>
       </div>

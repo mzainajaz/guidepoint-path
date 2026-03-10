@@ -8,12 +8,13 @@ interface AuthContext {
   isAdmin: boolean;
   loading: boolean;
   signIn: (email: string, password: string) => Promise<{ error: string | null }>;
+  signUp: (email: string, password: string) => Promise<{ error: string | null }>;
   signOut: () => Promise<void>;
 }
 
 const AuthCtx = createContext<AuthContext>({
   user: null, session: null, isAdmin: false, loading: true,
-  signIn: async () => ({ error: null }), signOut: async () => {},
+  signIn: async () => ({ error: null }), signUp: async () => ({ error: null }), signOut: async () => {},
 });
 
 export const useAuth = () => useContext(AuthCtx);
@@ -63,13 +64,18 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     return { error: error?.message ?? null };
   };
 
+  const signUp = async (email: string, password: string) => {
+    const { error } = await supabase.auth.signUp({ email, password });
+    return { error: error?.message ?? null };
+  };
+
   const signOut = async () => {
     await supabase.auth.signOut();
     setIsAdmin(false);
   };
 
   return (
-    <AuthCtx.Provider value={{ user, session, isAdmin, loading, signIn, signOut }}>
+    <AuthCtx.Provider value={{ user, session, isAdmin, loading, signIn, signUp, signOut }}>
       {children}
     </AuthCtx.Provider>
   );
