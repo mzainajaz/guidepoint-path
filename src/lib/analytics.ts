@@ -47,11 +47,18 @@ export function trackLeadSubmission(params: {
   // Primary conversion event
   gtag("event", "generate_lead", {
     currency: "AED",
-    value: 1, // placeholder value for ROAS tracking
+    value: 1,
     ...params,
   });
 
-  // Also push to dataLayer for GTM compatibility
+  // Meta Pixel lead event
+  fbq("track", "Lead", {
+    content_name: params.business_type || "general",
+    content_category: params.setup_preference || "unknown",
+    currency: "AED",
+    value: 1,
+  });
+
   pushToDataLayer("lead_submission", params);
 }
 
