@@ -7,23 +7,42 @@ import { Label } from "@/components/ui/label";
 import { Lock } from "lucide-react";
 
 const AdminLogin = () => {
-  const { signIn } = useAuth();
+  const { signIn, signUp } = useAuth();
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
+  const [isSignUp, setIsSignUp] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
     setError(null);
-    const result = await signIn(email, password);
-    if (result.error) {
-      setError(result.error);
-      setLoading(false);
+    if (isSignUp) {
+      const result = await signUp(email, password);
+      if (result.error) {
+        setError(result.error);
+        setLoading(false);
+      } else {
+        // After signup, sign in immediately
+        const loginResult = await signIn(email, password);
+        if (loginResult.error) {
+          setError("Account created! Please sign in.");
+          setIsSignUp(false);
+          setLoading(false);
+        } else {
+          navigate("/admin");
+        }
+      }
     } else {
-      navigate("/admin");
+      const result = await signIn(email, password);
+      if (result.error) {
+        setError(result.error);
+        setLoading(false);
+      } else {
+        navigate("/admin");
+      }
     }
   };
 
