@@ -10,6 +10,13 @@ declare global {
   interface Window {
     gtag?: (...args: unknown[]) => void;
     dataLayer?: unknown[];
+    fbq?: (...args: unknown[]) => void;
+  }
+}
+
+function fbq(...args: unknown[]) {
+  if (typeof window !== "undefined" && window.fbq) {
+    window.fbq(...args);
   }
 }
 
@@ -26,6 +33,7 @@ export function trackPageView(path: string, title?: string) {
     page_title: title || document.title,
     page_location: window.location.href,
   });
+  fbq("track", "PageView");
 }
 
 // ─── Lead conversion ───
@@ -39,11 +47,18 @@ export function trackLeadSubmission(params: {
   // Primary conversion event
   gtag("event", "generate_lead", {
     currency: "AED",
-    value: 1, // placeholder value for ROAS tracking
+    value: 1,
     ...params,
   });
 
-  // Also push to dataLayer for GTM compatibility
+  // Meta Pixel lead event
+  fbq("track", "Lead", {
+    content_name: params.business_type || "general",
+    content_category: params.setup_preference || "unknown",
+    currency: "AED",
+    value: 1,
+  });
+
   pushToDataLayer("lead_submission", params);
 }
 
@@ -71,6 +86,7 @@ export function trackCTAClick(
     cta_text,
     cta_location: location || "unknown",
   });
+  fbq("trackCustom", "CTAClick", { cta_id, cta_text });
 }
 
 // ─── Content engagement ───
@@ -81,6 +97,10 @@ export function trackContentView(
   gtag("event", "content_view", {
     content_type,
     content_id: slug,
+  });
+  fbq("track", "ViewContent", {
+    content_type,
+    content_ids: [slug],
   });
 }
 
@@ -99,6 +119,7 @@ export function trackFormStep(step: number, totalSteps: number) {
     form_step: step + 1,
     form_total_steps: totalSteps,
   });
+  fbq("trackCustom", "FormProgress", { step: step + 1, totalSteps });
 }
 
 // ─── Generic dataLayer push (for GTM) ───
