@@ -119,6 +119,7 @@ export function trackFormStep(step: number, totalSteps: number) {
     form_step: step + 1,
     form_total_steps: totalSteps,
   });
+  fbq("trackCustom", "FormProgress", { step: step + 1, totalSteps });
 }
 
 // ─── Generic dataLayer push (for GTM) ───
