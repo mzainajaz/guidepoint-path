@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import DOMPurify from "dompurify";
 import { useParams, Link } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import Header from "@/components/layout/Header";
@@ -221,7 +222,7 @@ const HowToArticle = () => {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.4, delay: 0.2 }}
             className="max-w-3xl prose prose-invert prose-headings:font-display prose-headings:font-semibold prose-h2:text-xl prose-h2:mt-10 prose-h2:mb-4 prose-p:text-[#c0c0c0] prose-p:leading-relaxed prose-table:text-sm prose-th:text-left prose-th:bg-muted/30 prose-th:px-3 prose-th:py-2 prose-td:px-3 prose-td:py-2 prose-td:border-b prose-td:border-border prose-li:text-[#c0c0c0] prose-strong:text-foreground prose-a:text-primary prose-a:no-underline hover:prose-a:underline"
-            dangerouslySetInnerHTML={{ __html: article.content_html }}
+            dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(article.content_html) }}
           />
         </section>
 
