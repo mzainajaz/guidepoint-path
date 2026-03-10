@@ -65,6 +65,60 @@ export type Database = {
         }
         Relationships: []
       }
+      howto_articles: {
+        Row: {
+          article_number: string
+          content_html: string
+          content_markdown: string
+          created_at: string
+          id: string
+          language: string
+          language_code: string
+          meta_description: string | null
+          page_title: string
+          primary_keyword: string | null
+          published: boolean
+          slug: string
+          text_direction: string
+          updated_at: string
+          word_count: number | null
+        }
+        Insert: {
+          article_number: string
+          content_html?: string
+          content_markdown?: string
+          created_at?: string
+          id?: string
+          language?: string
+          language_code?: string
+          meta_description?: string | null
+          page_title: string
+          primary_keyword?: string | null
+          published?: boolean
+          slug: string
+          text_direction?: string
+          updated_at?: string
+          word_count?: number | null
+        }
+        Update: {
+          article_number?: string
+          content_html?: string
+          content_markdown?: string
+          created_at?: string
+          id?: string
+          language?: string
+          language_code?: string
+          meta_description?: string | null
+          page_title?: string
+          primary_keyword?: string | null
+          published?: boolean
+          slug?: string
+          text_direction?: string
+          updated_at?: string
+          word_count?: number | null
+        }
+        Relationships: []
+      }
       leads: {
         Row: {
           additional_services: string[] | null
