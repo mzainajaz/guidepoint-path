@@ -8,12 +8,13 @@ interface AuthContext {
   isAdmin: boolean;
   loading: boolean;
   signIn: (email: string, password: string) => Promise<{ error: string | null }>;
+  signUp: (email: string, password: string) => Promise<{ error: string | null }>;
   signOut: () => Promise<void>;
 }
 
 const AuthCtx = createContext<AuthContext>({
   user: null, session: null, isAdmin: false, loading: true,
-  signIn: async () => ({ error: null }), signOut: async () => {},
+  signIn: async () => ({ error: null }), signUp: async () => ({ error: null }), signOut: async () => {},
 });
 
 export const useAuth = () => useContext(AuthCtx);
