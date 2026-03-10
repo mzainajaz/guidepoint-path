@@ -11,6 +11,12 @@ const Footer = () => {
       { label: t.nav.businessActivities, href: lp("/activities") },
       { label: t.nav.compare, href: lp("/compare") },
     ],
+    "How-To Library": [
+      { label: "All Articles", href: lp("/how-to/uae-business-setup") },
+      { label: "Business Structures", href: lp("/how-to/uae-business-setup/02_business_structures") },
+      { label: "Free Zones", href: lp("/how-to/uae-business-setup/04_free_zones_comparison") },
+      { label: "Visas & Residency", href: lp("/how-to/uae-business-setup/11_investor_golden_visa") },
+    ],
     [t.footer.tools]: [
       { label: t.nav.costEstimator, href: lp("/tools/cost-estimator") },
       { label: t.nav.freeZonePicker, href: lp("/tools/zone-picker") },

@@ -29,6 +29,8 @@ import BlogIndex from "./pages/BlogIndex";
 import BlogPost from "./pages/BlogPost";
 import GuidesIndex from "./pages/GuidesIndex";
 import GuideDetail from "./pages/GuideDetail";
+import HowToIndex from "./pages/HowToIndex";
+import HowToArticle from "./pages/HowToArticle";
 import Contact from "./pages/Contact";
 import AdminLogin from "./pages/AdminLogin";
 import AdminLayout from "./components/admin/AdminLayout";
@@ -39,6 +41,7 @@ import AdminAnalytics from "./pages/admin/AdminAnalytics";
 import AdminBlog from "./pages/admin/AdminBlog";
 import AdminContent from "./pages/admin/AdminContent";
 import AdminSEO from "./pages/admin/AdminSEO";
+import AdminHowToImport from "./pages/admin/AdminHowToImport";
 import NotFound from "./pages/NotFound";
 import ScrollToTop from "./components/ScrollToTop";
 import React from "react";
@@ -69,6 +72,8 @@ const appRoutes = [
   { path: "/blog/:slug", element: <BlogPost /> },
   { path: "/guides", element: <GuidesIndex /> },
   { path: "/guides/:slug", element: <GuideDetail /> },
+  { path: "/how-to/uae-business-setup", element: <HowToIndex /> },
+  { path: "/how-to/uae-business-setup/:slug", element: <HowToArticle /> },
   { path: "/contact", element: <Contact /> },
 ];
 
@@ -97,16 +102,17 @@ const App = () => (
                   <Route path="blog" element={<AdminBlog />} />
                   <Route path="content" element={<AdminContent />} />
                   <Route path="seo" element={<AdminSEO />} />
+                  <Route path="howto-import" element={<AdminHowToImport />} />
                 </Route>
                 {appRoutes.map((r) => (
                   <Route key={r.path} path={r.path} element={r.element} />
                 ))}
-                {["fr", "de", "es", "ar", "it", "ru", "uk"].map((loc) =>
+                {["fr", "de", "es", "ar", "it", "ru", "uk", "zh", "pt"].map((loc) =>
                   appRoutes.map((r) => (
                     <Route key={`${loc}-${r.path}`} path={`/${loc}${r.path === "/" ? "" : r.path}`} element={r.element} />
                   ))
                 )}
-                {["fr", "de", "es", "ar", "it", "ru", "uk"].map((loc) => (
+                {["fr", "de", "es", "ar", "it", "ru", "uk", "zh", "pt"].map((loc) => (
                   <Route key={`${loc}-root`} path={`/${loc}`} element={<Index />} />
                 ))}
                 <Route path="*" element={<NotFound />} />
