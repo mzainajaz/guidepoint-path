@@ -86,6 +86,7 @@ export function trackCTAClick(
     cta_text,
     cta_location: location || "unknown",
   });
+  fbq("trackCustom", "CTAClick", { cta_id, cta_text });
 }
 
 // ─── Content engagement ───
