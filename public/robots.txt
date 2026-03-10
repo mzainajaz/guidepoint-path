@@ -37,5 +37,4 @@ Allow: /
 User-agent: *
 Allow: /
 
-Sitemap: https://vaskeddeopmufygsvxej.supabase.co/functions/v1/sitemap
 Sitemap: https://incorporateuae.com/sitemap.xml
