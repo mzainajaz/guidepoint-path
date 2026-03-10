@@ -97,6 +97,10 @@ export function trackContentView(
     content_type,
     content_id: slug,
   });
+  fbq("track", "ViewContent", {
+    content_type,
+    content_ids: [slug],
+  });
 }
 
 // ─── Scroll depth (call at thresholds) ───
