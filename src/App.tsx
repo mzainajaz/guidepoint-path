@@ -106,6 +106,10 @@ const App = () => (
                   <Route path="seo" element={<AdminSEO />} />
                   <Route path="howto-import" element={<AdminHowToImport />} />
                 </Route>
+                {/* Redirects for legacy/crawled URLs */}
+                <Route path="/pricing" element={<Navigate to="/tools/cost-estimator" replace />} />
+                <Route path="/about" element={<Navigate to="/contact" replace />} />
+                <Route path="/questions" element={<Navigate to="/contact" replace />} />
                 {appRoutes.map((r) => (
                   <Route key={r.path} path={r.path} element={r.element} />
                 ))}
