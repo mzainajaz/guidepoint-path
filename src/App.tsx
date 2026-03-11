@@ -2,7 +2,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { LanguageProvider } from "@/i18n/context";
 import { AuthProvider } from "@/hooks/useAuth";
 import { useAnalyticsTracker } from "@/hooks/useAnalyticsTracker";
@@ -106,6 +106,10 @@ const App = () => (
                   <Route path="seo" element={<AdminSEO />} />
                   <Route path="howto-import" element={<AdminHowToImport />} />
                 </Route>
+                {/* Redirects for legacy/crawled URLs */}
+                <Route path="/pricing" element={<Navigate to="/tools/cost-estimator" replace />} />
+                <Route path="/about" element={<Navigate to="/contact" replace />} />
+                <Route path="/questions" element={<Navigate to="/contact" replace />} />
                 {appRoutes.map((r) => (
                   <Route key={r.path} path={r.path} element={r.element} />
                 ))}
