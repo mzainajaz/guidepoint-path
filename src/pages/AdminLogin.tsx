@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "@/hooks/useAuth";
 import { supabase } from "@/integrations/supabase/client";
@@ -9,6 +9,14 @@ import { Lock } from "lucide-react";
 import { toast } from "sonner";
 
 const AdminLogin = () => {
+  useEffect(() => {
+    const meta = document.createElement("meta");
+    meta.name = "robots";
+    meta.content = "noindex, nofollow";
+    document.head.appendChild(meta);
+    return () => { document.head.removeChild(meta); };
+  }, []);
+
   const { signIn, signUp } = useAuth();
   const navigate = useNavigate();
   const [email, setEmail] = useState("");

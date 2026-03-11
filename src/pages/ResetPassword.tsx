@@ -8,6 +8,14 @@ import { Lock, CheckCircle } from "lucide-react";
 import { toast } from "sonner";
 
 const ResetPassword = () => {
+  useEffect(() => {
+    const meta = document.createElement("meta");
+    meta.name = "robots";
+    meta.content = "noindex, nofollow";
+    document.head.appendChild(meta);
+    return () => { document.head.removeChild(meta); };
+  }, []);
+
   const navigate = useNavigate();
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
