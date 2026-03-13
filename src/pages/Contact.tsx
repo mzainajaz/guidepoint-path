@@ -110,26 +110,28 @@ const Contact = () => {
   const handleSubmit = useCallback(() => {
     const fullPhone = `${selectedCountry.dial} ${phone.trim()}`;
     const sp = new URLSearchParams(window.location.search);
-    supabase.from("leads").insert({
-      name: name.trim(),
-      email: email.trim(),
-      phone: fullPhone,
-      country: country.trim(),
-      business_type: businessType,
-      contact_preference: contactPref,
-      setup_preference: setupPref,
-      budget: budget || null,
-      additional_services: additionalServices.length ? additionalServices : null,
-      source_url: window.location.href,
-      utm_source: sp.get("utm_source") || null,
-      utm_medium: sp.get("utm_medium") || null,
-      utm_campaign: sp.get("utm_campaign") || null,
-      utm_term: sp.get("utm_term") || null,
-      utm_content: sp.get("utm_content") || null,
-      referrer: document.referrer || null,
-      landing_page: window.location.pathname,
-      user_agent: navigator.userAgent,
-    } as any).then(() => {});
+    supabase.functions.invoke("submit-lead", {
+      body: {
+        name: name.trim(),
+        email: email.trim(),
+        phone: fullPhone,
+        country: country.trim(),
+        business_type: businessType,
+        contact_preference: contactPref,
+        setup_preference: setupPref,
+        budget: budget || null,
+        additional_services: additionalServices.length ? additionalServices : null,
+        source_url: window.location.href,
+        utm_source: sp.get("utm_source") || null,
+        utm_medium: sp.get("utm_medium") || null,
+        utm_campaign: sp.get("utm_campaign") || null,
+        utm_term: sp.get("utm_term") || null,
+        utm_content: sp.get("utm_content") || null,
+        referrer: document.referrer || null,
+        landing_page: window.location.pathname,
+        user_agent: navigator.userAgent,
+      },
+    }).then(() => {});
 
     trackLeadSubmission({
       business_type: businessType,
