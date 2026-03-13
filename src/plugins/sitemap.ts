@@ -3,7 +3,7 @@ import { writeFileSync } from "fs";
 import { resolve } from "path";
 
 const ORIGIN = "https://incorporateuae.com";
-const LOCALES = ["fr", "de", "es", "ar", "it", "ru", "uk", "zh", "pt"];
+const LOCALES = ["fr", "de", "es", "ar", "it", "ru", "uk"];
 
 const STATIC_ROUTES = [
   "/", "/free-zones", "/relocation", "/mainland", "/mainland/licensing",

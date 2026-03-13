@@ -55,15 +55,15 @@ export const LanguageProvider = ({ children }: { children: React.ReactNode }) =>
 
   // Set hreflang tags + dir
   useEffect(() => {
-    const origin = window.location.origin;
+    const ORIGIN = "https://incorporateuae.com";
 
     // Clean up old hreflang links
     document.querySelectorAll('link[rel="alternate"][hreflang]').forEach(el => el.remove());
 
     for (const loc of locales) {
       const href = loc === "en"
-        ? `${origin}${basePath}`
-        : `${origin}/${loc}${basePath === "/" ? "" : basePath}`;
+        ? `${ORIGIN}${basePath}`
+        : `${ORIGIN}/${loc}${basePath === "/" ? "" : basePath}`;
       const link = document.createElement("link");
       link.rel = "alternate";
       link.hreflang = loc;
@@ -75,7 +75,7 @@ export const LanguageProvider = ({ children }: { children: React.ReactNode }) =>
     const defaultLink = document.createElement("link");
     defaultLink.rel = "alternate";
     defaultLink.hreflang = "x-default";
-    defaultLink.href = `${origin}${basePath}`;
+    defaultLink.href = `${ORIGIN}${basePath}`;
     document.head.appendChild(defaultLink);
 
     document.documentElement.lang = locale;
