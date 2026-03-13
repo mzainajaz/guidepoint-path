@@ -17,13 +17,13 @@ const AdminLogin = () => {
     return () => { document.head.removeChild(meta); };
   }, []);
 
-  const { signIn, signUp } = useAuth();
+  const { signIn } = useAuth();
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
-  const [mode, setMode] = useState<"login" | "signup" | "reset">("login");
+  const [mode, setMode] = useState<"login" | "reset">("login");
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -44,34 +44,13 @@ const AdminLogin = () => {
       return;
     }
 
-    if (mode === "signup") {
-      const result = await signUp(email, password);
-      if (result.error) {
-        // If user already exists, suggest login instead
-        if (result.error.toLowerCase().includes("already")) {
-          setError("Account already exists. Try signing in or resetting your password.");
-        } else {
-          setError(result.error);
-        }
-        setLoading(false);
-      } else {
-        const loginResult = await signIn(email, password);
-        if (loginResult.error) {
-          setError("Account created! Please sign in.");
-          setMode("login");
-          setLoading(false);
-        } else {
-          navigate("/admin");
-        }
-      }
+    const result = await signIn(email, password);
+    if (result.error) {
+      // Generic error to prevent email enumeration
+      setError("Invalid email or password.");
+      setLoading(false);
     } else {
-      const result = await signIn(email, password);
-      if (result.error) {
-        setError(result.error);
-        setLoading(false);
-      } else {
-        navigate("/admin");
-      }
+      navigate("/admin");
     }
   };
 
@@ -84,10 +63,10 @@ const AdminLogin = () => {
               <Lock className="h-5 w-5 text-primary" />
             </div>
             <h1 className="font-display text-xl font-bold text-foreground">
-              {mode === "signup" ? "Create Account" : mode === "reset" ? "Reset Password" : "Admin Login"}
+              {mode === "reset" ? "Reset Password" : "Admin Login"}
             </h1>
             <p className="text-sm text-muted-foreground mt-1">
-              {mode === "signup" ? "Create your admin account" : mode === "reset" ? "Enter your email to receive a reset link" : "Sign in to access the dashboard"}
+              {mode === "reset" ? "Enter your email to receive a reset link" : "Sign in to access the dashboard"}
             </p>
           </div>
           <form onSubmit={handleSubmit} className="space-y-4">
@@ -103,18 +82,13 @@ const AdminLogin = () => {
             )}
             {error && <p className="text-sm text-destructive">{error}</p>}
             <Button type="submit" className="w-full" disabled={loading}>
-              {loading ? "Please wait…" : mode === "signup" ? "Create Account" : mode === "reset" ? "Send Reset Link" : "Sign In"}
+              {loading ? "Please wait…" : mode === "reset" ? "Send Reset Link" : "Sign In"}
             </Button>
             <div className="flex flex-col gap-1 items-center">
               {mode === "login" && (
-                <>
-                  <button type="button" className="text-xs text-muted-foreground hover:text-foreground transition-colors" onClick={() => { setMode("reset"); setError(null); }}>
-                    Forgot password?
-                  </button>
-                  <button type="button" className="text-xs text-muted-foreground hover:text-foreground transition-colors" onClick={() => { setMode("signup"); setError(null); }}>
-                    Need an account? Sign up
-                  </button>
-                </>
+                <button type="button" className="text-xs text-muted-foreground hover:text-foreground transition-colors" onClick={() => { setMode("reset"); setError(null); }}>
+                  Forgot password?
+                </button>
               )}
               {mode !== "login" && (
                 <button type="button" className="text-xs text-muted-foreground hover:text-foreground transition-colors" onClick={() => { setMode("login"); setError(null); }}>
