@@ -1,7 +1,7 @@
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 
 const ORIGIN = "https://incorporateuae.com";
-const LOCALES = ["fr", "de", "es", "ar", "it", "ru", "uk", "zh", "pt"];
+const LOCALES = ["fr", "de", "es", "ar", "it", "ru", "uk"];
 const ALL_LANGS = ["en", ...LOCALES];
 
 // Static routes (no dynamic slug)

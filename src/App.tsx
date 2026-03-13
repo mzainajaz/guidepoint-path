@@ -122,12 +122,12 @@ const App = () => (
                   {appRoutes.map((r) => (
                     <Route key={r.path} path={r.path} element={r.element} />
                   ))}
-                  {["fr", "de", "es", "ar", "it", "ru", "uk", "zh", "pt"].map((loc) =>
+                  {["fr", "de", "es", "ar", "it", "ru", "uk"].map((loc) =>
                     appRoutes.map((r) => (
                       <Route key={`${loc}-${r.path}`} path={`/${loc}${r.path === "/" ? "" : r.path}`} element={r.element} />
                     ))
                   )}
-                  {["fr", "de", "es", "ar", "it", "ru", "uk", "zh", "pt"].map((loc) => (
+                  {["fr", "de", "es", "ar", "it", "ru", "uk"].map((loc) => (
                     <Route key={`${loc}-root`} path={`/${loc}`} element={<Index />} />
                   ))}
                   <Route path="*" element={<NotFound />} />
