@@ -49,6 +49,7 @@ const tocSections = [
 const FreeZoneDetail = () => {
   const { slug } = useParams<{ slug: string }>();
   const zone = slug ? getFreeZoneById(slug) : undefined;
+  const t = useT();
   const [activeSection, setActiveSection] = useState("overview");
 
   useEffect(() => {
