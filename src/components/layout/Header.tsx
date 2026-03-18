@@ -13,18 +13,33 @@ const Header = () => {
   const isHome = location.pathname === "/" || location.pathname === "/en/" || location.pathname === "/ar/";
 
   const navItems = [
+    { label: t.nav.startHere || "Start Here", href: lp("/start-here") },
     {
-      label: t.nav.setupOptions,
+      label: t.nav.freeZones,
+      href: lp("/free-zones"),
       children: [
-        { label: t.nav.freeZones, href: lp("/free-zones") },
+        { label: t.nav.compare || "Compare", href: lp("/compare") },
+        { label: t.nav.freeZonePicker, href: lp("/tools/zone-picker") },
+      ],
+    },
+    {
+      label: t.nav.mainlandOverview || "Mainland",
+      children: [
         { label: t.nav.mainlandOverview, href: lp("/mainland") },
         { label: t.nav.licensingBasics, href: lp("/mainland/licensing") },
         { label: t.nav.officeEjari, href: lp("/mainland/office-ejari") },
         { label: t.nav.complianceBasics, href: lp("/mainland/compliance") },
-        { label: t.nav.businessActivities, href: lp("/activities") },
       ],
     },
-    { label: t.nav.compare, href: lp("/compare") },
+    { label: t.nav.businessActivities, href: lp("/activities") },
+    {
+      label: t.nav.taxes,
+      children: [
+        { label: t.nav.overview, href: lp("/taxes") },
+        { label: t.nav.vatGuide, href: lp("/taxes/vat") },
+        { label: t.nav.corporateTax, href: lp("/taxes/corporate-tax") },
+      ],
+    },
     {
       label: t.nav.tools,
       href: lp("/tools"),
@@ -34,17 +49,8 @@ const Header = () => {
         { label: t.nav.vatHelper, href: lp("/tools/vat-helper") },
       ],
     },
-    { label: t.nav.relocation, href: lp("/relocation") },
-    {
-      label: t.nav.taxes,
-      children: [
-        { label: t.nav.overview, href: lp("/taxes") },
-        { label: t.nav.vatGuide, href: lp("/taxes/vat") },
-        { label: t.nav.corporateTax, href: lp("/taxes/corporate-tax") },
-      ],
-    },
+    { label: t.nav.relocation || "Relocation", href: lp("/relocation") },
     { label: "Guides", href: lp("/guides") },
-    { label: "How-To", href: lp("/how-to/uae-business-setup") },
     { label: "Blog", href: lp("/blog") },
   ];
 

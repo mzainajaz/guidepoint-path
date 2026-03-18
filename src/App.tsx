@@ -54,6 +54,7 @@ const queryClient = new QueryClient();
 
 const appRoutes = [
   { path: "/", element: <Index /> },
+  { path: "/start-here", element: <StartHere /> },
   { path: "/free-zones", element: <FreeZones /> },
   { path: "/free-zones/:slug", element: <FreeZoneDetail /> },
   { path: "/relocation", element: <RelocationHub /> },
