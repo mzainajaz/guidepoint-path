@@ -161,8 +161,11 @@ const BankReadiness = () => {
               <h2 className="font-display text-xl font-semibold text-foreground">{currentQuestion.question}</h2>
 
               <RadioGroup
-                value={selectedRisk?.toString() || ""}
-                onValueChange={(v) => handleSelect(Number(v))}
+                value={selectedAnswer?.index.toString() || ""}
+                onValueChange={(v) => {
+                  const idx = Number(v);
+                  handleSelect(currentQuestion.options[idx].risk, idx);
+                }}
                 className="space-y-3"
               >
                 {currentQuestion.options.map((opt, i) => (
