@@ -79,21 +79,24 @@ const Header = () => {
         <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-10 h-[64px] lg:h-[72px] flex items-center justify-between lg:grid lg:grid-cols-[1fr_auto_1fr]">
 
           {/* Left nav (desktop) */}
-          <nav className="hidden lg:flex items-center gap-5">
+          <nav className="hidden lg:flex items-center gap-3 xl:gap-4">
             {navItems.slice(0, 5).map((item) => (
               <div key={item.label} className="relative group">
-                {item.href && !item.children ? (
+                {item.children ? (
                   <Link
-                    to={item.href}
-                    className="text-[11px] font-medium tracking-[0.14em] uppercase text-white/50 hover:text-white transition-colors duration-200"
+                    to={item.href || "#"}
+                    className="flex items-center gap-1 text-[10.5px] xl:text-[11px] font-medium tracking-[0.12em] uppercase text-white/50 hover:text-white transition-colors duration-200 whitespace-nowrap"
+                  >
+                    {item.label}
+                    <ChevronDown className="h-3 w-3 opacity-50 transition-transform group-hover:rotate-180" />
+                  </Link>
+                ) : (
+                  <Link
+                    to={item.href!}
+                    className="text-[10.5px] xl:text-[11px] font-medium tracking-[0.12em] uppercase text-white/50 hover:text-white transition-colors duration-200 whitespace-nowrap"
                   >
                     {item.label}
                   </Link>
-                ) : (
-                  <button className="flex items-center gap-1 text-[11px] font-medium tracking-[0.14em] uppercase text-white/50 hover:text-white transition-colors duration-200">
-                    {item.label}
-                    {item.children && <ChevronDown className="h-3 w-3 transition-transform group-hover:rotate-180" />}
-                  </button>
                 )}
                 {item.children && (
                   <div className="invisible group-hover:visible opacity-0 group-hover:opacity-100 transition-all duration-200 absolute top-full left-0 pt-3 z-50">
