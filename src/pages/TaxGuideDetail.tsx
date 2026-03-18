@@ -6,6 +6,7 @@ import BestAnswerBlock from "@/components/BestAnswerBlock";
 import { Button } from "@/components/ui/button";
 import { getTaxGuideById, taxGuides, type TaxGuide } from "@/data/taxCompliance";
 import SEOHead, { breadcrumbSchema, faqSchema, articleSchema } from "@/components/SEOHead";
+import { useT } from "@/i18n/context";
 import {
   ChevronRight,
   ArrowRight,
