@@ -152,8 +152,12 @@ const StartHere = () => {
       <Header />
       <main className="page-offset min-h-screen bg-background">
         {/* Hero */}
-        <section className="border-b border-border bg-secondary/30">
-          <div className="container py-16 md:py-24 max-w-3xl">
+        <section className="relative border-b border-border overflow-hidden">
+          <div className="absolute inset-0">
+            <img src="/images/section-start-here.jpg" alt="" className="w-full h-full object-cover" />
+            <div className="absolute inset-0 bg-gradient-to-r from-background via-background/90 to-background/70" />
+          </div>
+          <div className="container py-20 md:py-28 max-w-3xl relative z-10">
             <span className="inline-block text-xs font-semibold tracking-widest uppercase text-accent mb-4">
               Founder Decision Hub
             </span>

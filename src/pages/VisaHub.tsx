@@ -25,8 +25,12 @@ const VisaHub = () => {
       />
       <Header />
       <main className="page-offset min-h-screen bg-background">
-        <section className="border-b border-border bg-secondary/30">
-          <div className="container py-16 md:py-24 text-center">
+        <section className="relative border-b border-border overflow-hidden">
+          <div className="absolute inset-0">
+            <img src="/images/section-visas.jpg" alt="" className="w-full h-full object-cover" />
+            <div className="absolute inset-0 bg-gradient-to-t from-background via-background/85 to-background/60" />
+          </div>
+          <div className="container py-20 md:py-28 text-center relative z-10">
             <span className="inline-block text-xs font-semibold tracking-widest uppercase text-accent mb-4">
               Visa Guide
             </span>
