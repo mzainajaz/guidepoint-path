@@ -6,10 +6,12 @@ const ORIGIN = "https://incorporateuae.com";
 const LOCALES = ["fr", "de", "es", "ar", "it", "ru", "uk"];
 
 const STATIC_ROUTES = [
-  "/", "/free-zones", "/relocation", "/mainland", "/mainland/licensing",
+  "/", "/start-here", "/free-zones", "/relocation", "/mainland", "/mainland/licensing",
   "/mainland/office-ejari", "/mainland/compliance", "/compare", "/activities",
   "/taxes", "/tools", "/tools/cost-estimator", "/tools/zone-picker",
-  "/tools/vat-helper", "/blog", "/guides", "/how-to/uae-business-setup", "/contact",
+  "/tools/vat-helper", "/tools/bank-readiness", "/tools/founder-readiness",
+  "/tools/relocation-calculator", "/visas",
+  "/blog", "/guides", "/how-to/uae-business-setup", "/contact",
 ];
 
 const SLUGGED_ROUTES: [string, string[]][] = [
