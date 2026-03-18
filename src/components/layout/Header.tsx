@@ -78,8 +78,8 @@ const Header = () => {
         <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-10 h-[64px] lg:h-[72px] flex items-center justify-between lg:grid lg:grid-cols-[1fr_auto_1fr]">
 
           {/* Left nav (desktop) */}
-          <nav className="hidden lg:flex items-center gap-7">
-            {navItems.slice(0, 2).map((item) => (
+          <nav className="hidden lg:flex items-center gap-5">
+            {navItems.slice(0, 4).map((item) => (
               <div key={item.label} className="relative group">
                 {item.href && !item.children ? (
                   <Link
