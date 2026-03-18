@@ -19,11 +19,13 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 
-const MainlandHub = () => (
+const MainlandHub = () => {
+  const t = useT();
+  return (
   <div className="min-h-screen bg-background">
     <SEOHead
-      title="UAE Mainland Setup — DED Licensing, Ejari & Compliance"
-      description="Complete guide to UAE mainland company setup. Covers DED licensing, Ejari requirements, local sponsor structures, and compliance obligations."
+      title={t.seo.mainland.title}
+      description={t.seo.mainland.description}
       schema={[breadcrumbSchema([{ name: "Home", url: "/" }, { name: "Mainland", url: "/mainland" }])]}
     />
     <Header />
