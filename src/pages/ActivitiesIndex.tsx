@@ -34,11 +34,13 @@ const iconMap: Record<string, React.ElementType> = {
   Home,
 };
 
-const ActivitiesIndex = () => (
+const ActivitiesIndex = () => {
+  const t = useT();
+  return (
   <div className="min-h-screen bg-background">
     <SEOHead
-      title="UAE Business Activities — Find the Right Licence"
-      description="Browse UAE business activities to find the right licence type, free zone, and setup route. Each guide covers costs, timelines, and common mistakes."
+      title={t.seo.activities.title}
+      description={t.seo.activities.description}
       schema={[breadcrumbSchema([{ name: "Home", url: "/" }, { name: "Business Activities", url: "/activities" }])]}
     />
     <Header />
