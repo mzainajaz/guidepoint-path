@@ -50,6 +50,7 @@ const uk: TranslationSet = {
     compliance: "Відповідність",
   },
   nav: {
+    startHere: "Почніть тут",
     setupOptions: "Варіанти реєстрації",
     freeZones: "Вільні зони",
     mainlandOverview: "Огляд Mainland",

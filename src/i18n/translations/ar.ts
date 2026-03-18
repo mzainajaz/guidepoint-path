@@ -50,6 +50,7 @@ const ar: TranslationSet = {
     compliance: "الامتثال",
   },
   nav: {
+    startHere: "ابدأ هنا",
     setupOptions: "خيارات التأسيس",
     freeZones: "المناطق الحرة",
     mainlandOverview: "نظرة عامة على الماينلاند",

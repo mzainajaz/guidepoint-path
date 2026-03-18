@@ -50,6 +50,7 @@ const ru: TranslationSet = {
     compliance: "Соответствие",
   },
   nav: {
+    startHere: "Начать здесь",
     setupOptions: "Варианты регистрации",
     freeZones: "Свободные зоны",
     mainlandOverview: "Обзор Mainland",

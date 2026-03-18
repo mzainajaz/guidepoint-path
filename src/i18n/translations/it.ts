@@ -50,6 +50,7 @@ const it: TranslationSet = {
     compliance: "Conformità",
   },
   nav: {
+    startHere: "Inizia qui",
     setupOptions: "Opzioni di costituzione",
     freeZones: "Zone franche",
     mainlandOverview: "Panoramica Mainland",
