@@ -3,7 +3,7 @@ import { ArrowLeft, ArrowRight, CheckCircle2, AlertTriangle, ChevronRight, Clock
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import SEOHead, { breadcrumbSchema, faqSchema } from "@/components/SEOHead";
-import { useLocalePath } from "@/i18n/context";
+import { useLocalePath, useT } from "@/i18n/context";
 import { visaGuides } from "@/data/visaGuides";
 
 const VisaDetail = () => {
