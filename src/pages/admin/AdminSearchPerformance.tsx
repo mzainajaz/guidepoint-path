@@ -96,42 +96,14 @@ const AdminSearchPerformance = () => {
       .catch(() => setLoading(false));
   }, [session, callFunction]);
 
-  // Load saved settings and list all properties
+  // Hardcoded properties — no API calls needed
   useEffect(() => {
-    if (!connected || !session) return;
-
-    const loadSettings = async () => {
-      const { data: settings } = await supabase
-        .from("admin_settings")
-        .select("setting_key, setting_value")
-        .eq("user_id", session.user.id)
-        .in("setting_key", ["gsc_site", "ga_property"]);
-
-      const savedSite = settings?.find((s: any) => s.setting_key === "gsc_site")?.setting_value;
-      const savedProperty = settings?.find((s: any) => s.setting_key === "ga_property")?.setting_value;
-
-      // Fetch all available sites & properties
-      const [sitesRes, propsRes] = await Promise.all([
-        callFunction("google-search-console", { action: "list_sites" }),
-        callFunction("google-analytics", { action: "list_properties" }),
-      ]);
-
-      const siteList = (sitesRes.siteEntry || []).map((s: any) => s.siteUrl);
-      setSites(siteList);
-      setSelectedSite(savedSite && siteList.includes(savedSite) ? savedSite : siteList[0] || "");
-
-      const props: { id: string; name: string }[] = [];
-      (propsRes.accountSummaries || []).forEach((acct: any) => {
-        (acct.propertySummaries || []).forEach((p: any) => {
-          props.push({ id: p.property, name: p.displayName || p.property });
-        });
-      });
-      setGaProperties(props);
-      setSelectedProperty(savedProperty && props.some((p) => p.id === savedProperty) ? savedProperty : props[0]?.id || "");
-    };
-
-    loadSettings();
-  }, [connected, session, callFunction]);
+    if (!connected) return;
+    setSites(["sc-domain:incorporateuae.com"]);
+    setSelectedSite("sc-domain:incorporateuae.com");
+    setGaProperties([{ id: "properties/523055023", name: "inc-uae" }]);
+    setSelectedProperty("properties/523055023");
+  }, [connected]);
 
   // Save selection to database when changed
   const saveSelection = useCallback(
