@@ -128,7 +128,7 @@ const Header = () => {
 
           {/* Right nav + CTA (desktop) */}
           <div className="hidden lg:flex items-center justify-end gap-5">
-            {navItems.slice(4).map((item) => (
+            {navItems.slice(5).map((item) => (
               <div key={item.label} className="relative group">
                 {item.href && !item.children ? (
                   <Link
