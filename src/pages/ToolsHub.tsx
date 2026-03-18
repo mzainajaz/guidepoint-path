@@ -58,8 +58,8 @@ const tools = [
 const ToolsHub = () => (
   <>
     <SEOHead
-      title="UAE Business Setup Tools — Cost Estimator, Zone Picker, VAT Helper"
-      description="Interactive tools for UAE business setup. Estimate costs, match free zones, and understand VAT obligations with transparent methodology."
+      title="UAE Business Setup Tools — Cost Estimator, Zone Picker, VAT & Banking"
+      description="Interactive tools for UAE business setup. Estimate costs, match free zones, check VAT obligations, assess banking readiness, and gauge founder preparedness."
       schema={[breadcrumbSchema([{ name: "Home", url: "/" }, { name: "Tools", url: "/tools" }])]}
     />
     <Header />
