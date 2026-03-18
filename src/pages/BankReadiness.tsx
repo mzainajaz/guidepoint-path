@@ -168,17 +168,17 @@ const BankReadiness = () => {
                 }}
                 className="space-y-3"
               >
-                {currentQuestion.options.map((opt, i) => (
+                  {currentQuestion.options.map((opt, i) => (
                   <Label
                     key={i}
                     htmlFor={`${currentQuestion.id}-${i}`}
                     className={`flex items-center gap-3 border rounded-lg p-4 cursor-pointer transition-all ${
-                      selectedRisk === opt.risk && answers[currentQuestion.id] !== undefined
+                      selectedAnswer?.index === i
                         ? "border-accent bg-accent/5"
                         : "border-border hover:border-accent/30"
                     }`}
                   >
-                    <RadioGroupItem value={opt.risk.toString()} id={`${currentQuestion.id}-${i}`} />
+                    <RadioGroupItem value={i.toString()} id={`${currentQuestion.id}-${i}`} />
                     <span className="text-sm font-medium text-foreground">{opt.label}</span>
                   </Label>
                 ))}
