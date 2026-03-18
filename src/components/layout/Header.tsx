@@ -144,7 +144,7 @@ const Header = () => {
                 ) : (
                   <Link
                     to={item.href!}
-                    className="text-[10.5px] xl:text-[11px] font-medium tracking-[0.12em] uppercase text-white/50 hover:text-white transition-colors duration-200 whitespace-nowrap"
+                    className="text-[10px] xl:text-[11px] font-medium tracking-[0.1em] uppercase text-white/50 hover:text-white transition-colors duration-200 whitespace-nowrap"
                   >
                     {item.label}
                   </Link>
