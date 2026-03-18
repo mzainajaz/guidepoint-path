@@ -132,8 +132,13 @@ const BankReadiness = () => {
       />
       <Header />
       <main className="page-offset min-h-screen bg-background">
-        <div className="container py-12 max-w-3xl">
-          <Link to={lp("/tools")} className="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground mb-8">
+        <div className="relative h-48 md:h-56 overflow-hidden">
+          <img src="/images/section-banking.jpg" alt="" className="w-full h-full object-cover" />
+          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-transparent" />
+        </div>
+
+        <div className="container py-8 max-w-3xl -mt-16 relative z-10">
+          <Link to={lp("/tools")} className="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground mb-6">
             <ArrowLeft className="h-4 w-4" /> Back to Tools
           </Link>
 
