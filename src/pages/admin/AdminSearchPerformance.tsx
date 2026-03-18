@@ -469,18 +469,7 @@ const AdminSearchPerformance = () => {
           <h2 className="text-lg font-semibold text-foreground flex items-center gap-2">
             <TrendingUp className="h-5 w-5" /> Google Analytics
           </h2>
-          {gaProperties.length > 0 && (
-            <Select value={selectedProperty} onValueChange={handlePropertyChange}>
-              <SelectTrigger className="w-[260px] h-8 text-xs">
-                <SelectValue />
-              </SelectTrigger>
-              <SelectContent>
-                {gaProperties.map((p) => (
-                  <SelectItem key={p.id} value={p.id} className="text-xs">{p.name}</SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-          )}
+          <span className="text-xs text-muted-foreground">inc-uae</span>
         </div>
 
         {/* Traffic chart */}
