@@ -102,11 +102,13 @@ const faqs = [
   },
 ];
 
-const MainlandEjari = () => (
+const MainlandEjari = () => {
+  const t = useT();
+  return (
   <div className="min-h-screen bg-background">
     <SEOHead
-      title="Ejari & Office Requirements for UAE Mainland Setup"
-      description="Understand Ejari registration, office types, costs, and requirements for UAE mainland business setup. Flexi desks, serviced offices, and physical lease options compared."
+      title={t.seo.mainlandEjari.title}
+      description={t.seo.mainlandEjari.description}
       schema={breadcrumbSchema([
         { name: "Home", url: "/" },
         { name: "Mainland", url: "/mainland" },
