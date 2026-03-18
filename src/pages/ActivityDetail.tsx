@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { getActivityById, businessActivities, type BusinessActivity } from "@/data/businessActivities";
 import { freeZones } from "@/data/freeZones";
 import SEOHead, { breadcrumbSchema, faqSchema, articleSchema } from "@/components/SEOHead";
+import { useT } from "@/i18n/context";
 import {
   ChevronRight,
   ArrowRight,
@@ -52,6 +53,7 @@ const ActivityDetail = () => {
   const { slug } = useParams<{ slug: string }>();
   const activity = slug ? getActivityById(slug) : undefined;
   const [activeSection, setActiveSection] = useState("overview");
+  const t = useT();
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -90,13 +92,13 @@ const ActivityDetail = () => {
   return (
     <div className="min-h-screen bg-background">
       <SEOHead
-        title={activity.meta.title}
-        description={activity.meta.description}
+        title={t.seoDetail.activityTitle(activity.shortName)}
+        description={t.seoDetail.activityDesc(activity.meta.description)}
         type="article"
         schema={[
           breadcrumbSchema([
-            { name: "Home", url: "/" },
-            { name: "Business Activities", url: "/activities" },
+            { name: t.seoDetail.breadcrumbHome, url: "/" },
+            { name: t.seoDetail.breadcrumbActivities, url: "/activities" },
             { name: activity.shortName, url: `/activities/${activity.id}` },
           ]),
           faqSchema(activity.faqs),

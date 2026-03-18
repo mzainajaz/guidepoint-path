@@ -5,6 +5,7 @@ import BestAnswerBlock from "@/components/BestAnswerBlock";
 import { Button } from "@/components/ui/button";
 import { getComparisonById } from "@/data/comparisons";
 import SEOHead, { breadcrumbSchema, faqSchema, articleSchema } from "@/components/SEOHead";
+import { useT } from "@/i18n/context";
 import {
   ChevronRight,
   ArrowRight,
@@ -27,6 +28,7 @@ import {
 const ComparisonDetail = () => {
   const { slug } = useParams<{ slug: string }>();
   const comp = slug ? getComparisonById(slug) : undefined;
+  const t = useT();
 
   if (!comp) {
     return (
@@ -45,8 +47,8 @@ const ComparisonDetail = () => {
   return (
     <div className="min-h-screen bg-background">
       <SEOHead
-        title={`${comp.title} — UAE Setup Comparison`}
-        description={comp.summaryVerdict.slice(0, 155)}
+        title={t.seoDetail.comparisonTitle(comp.title)}
+        description={t.seoDetail.comparisonDesc(comp.summaryVerdict.slice(0, 155))}
         type="article"
         schema={[
           breadcrumbSchema([

@@ -7,11 +7,13 @@ import { ChevronRight, ArrowLeft, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { motion } from "framer-motion";
+import { useT } from "@/i18n/context";
 import NotFound from "./NotFound";
 
 const GuideDetail = () => {
   const { slug } = useParams<{ slug: string }>();
   const chapter = guideChapters.find(c => c.slug === slug);
+  const t = useT();
 
   if (!chapter) return <NotFound />;
 
@@ -24,11 +26,11 @@ const GuideDetail = () => {
   return (
     <div className="min-h-screen bg-background">
       <SEOHead
-        title={`${chapter.title} — UAE Setup Guide`}
-        description={chapter.summary}
+        title={t.seoDetail.guideTitle(chapter.title)}
+        description={t.seoDetail.guideDesc(chapter.summary)}
         schema={[breadcrumbSchema([
-          { name: "Home", url: "/" },
-          { name: "Guides", url: "/guides" },
+          { name: t.seoDetail.breadcrumbHome, url: "/" },
+          { name: t.seoDetail.breadcrumbGuides, url: "/guides" },
           { name: chapter.title, url: `/guides/${chapter.slug}` },
         ])]}
       />

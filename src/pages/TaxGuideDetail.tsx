@@ -6,6 +6,7 @@ import BestAnswerBlock from "@/components/BestAnswerBlock";
 import { Button } from "@/components/ui/button";
 import { getTaxGuideById, taxGuides, type TaxGuide } from "@/data/taxCompliance";
 import SEOHead, { breadcrumbSchema, faqSchema, articleSchema } from "@/components/SEOHead";
+import { useT } from "@/i18n/context";
 import {
   ChevronRight,
   ArrowRight,
@@ -32,6 +33,7 @@ const TaxGuideDetail = () => {
   const { slug } = useParams<{ slug: string }>();
   const guide = slug ? getTaxGuideById(slug) : undefined;
   const [activeSection, setActiveSection] = useState("thresholds");
+  const t = useT();
 
   const tocSections = guide
     ? [
@@ -81,13 +83,13 @@ const TaxGuideDetail = () => {
   return (
     <div className="min-h-screen bg-background">
       <SEOHead
-        title={guide.meta.title}
-        description={guide.meta.description}
+        title={t.seoDetail.taxTitle(guide.shortName)}
+        description={t.seoDetail.taxDesc(guide.meta.description)}
         type="article"
         schema={[
           breadcrumbSchema([
-            { name: "Home", url: "/" },
-            { name: "Taxes & Compliance", url: "/taxes" },
+            { name: t.seoDetail.breadcrumbHome, url: "/" },
+            { name: t.seoDetail.breadcrumbTaxes, url: "/taxes" },
             { name: guide.shortName, url: `/taxes/${guide.slug}` },
           ]),
           faqSchema(guide.faqs),

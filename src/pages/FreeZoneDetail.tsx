@@ -8,6 +8,7 @@ import { getFreeZoneById, freeZones, type FreeZoneData } from "@/data/freeZones"
 import { getZoneActivities } from "@/data/zoneActivities";
 import ZoneActivityListComponent from "@/components/ZoneActivityList";
 import SEOHead, { breadcrumbSchema, faqSchema, articleSchema } from "@/components/SEOHead";
+import { useT } from "@/i18n/context";
 import {
   ChevronRight,
   ArrowRight,
@@ -48,6 +49,7 @@ const tocSections = [
 const FreeZoneDetail = () => {
   const { slug } = useParams<{ slug: string }>();
   const zone = slug ? getFreeZoneById(slug) : undefined;
+  const t = useT();
   const [activeSection, setActiveSection] = useState("overview");
 
   useEffect(() => {
@@ -92,13 +94,13 @@ const FreeZoneDetail = () => {
   return (
     <div className="min-h-screen bg-background">
       <SEOHead
-        title={`${zone.name} — Free Zone Guide & Pricing`}
-        description={`${zone.bestAnswer.slice(0, 150)}…`}
+        title={t.seoDetail.freeZoneTitle(zone.name)}
+        description={t.seoDetail.freeZoneDesc(zone.name)}
         type="article"
         schema={[
           breadcrumbSchema([
-            { name: "Home", url: "/" },
-            { name: "Free Zones", url: "/free-zones" },
+            { name: t.seoDetail.breadcrumbHome, url: "/" },
+            { name: t.seoDetail.breadcrumbFreeZones, url: "/free-zones" },
             { name: zone.shortName, url: `/free-zones/${zone.id}` },
           ]),
           faqSchema(zone.faqs),

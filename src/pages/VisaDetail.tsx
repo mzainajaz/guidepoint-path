@@ -3,12 +3,13 @@ import { ArrowLeft, ArrowRight, CheckCircle2, AlertTriangle, ChevronRight, Clock
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import SEOHead, { breadcrumbSchema, faqSchema } from "@/components/SEOHead";
-import { useLocalePath } from "@/i18n/context";
+import { useLocalePath, useT } from "@/i18n/context";
 import { visaGuides } from "@/data/visaGuides";
 
 const VisaDetail = () => {
   const { slug } = useParams<{ slug: string }>();
   const lp = useLocalePath();
+  const t = useT();
   const visa = visaGuides.find((v) => v.id === slug);
 
   if (!visa) return <Navigate to="/visas" replace />;
@@ -16,12 +17,12 @@ const VisaDetail = () => {
   return (
     <>
       <SEOHead
-        title={visa.metaTitle}
-        description={visa.metaDescription}
+        title={t.seoDetail.visaTitle(visa.title)}
+        description={t.seoDetail.visaDesc(visa.subtitle)}
         schema={[
           breadcrumbSchema([
-            { name: "Home", url: "/" },
-            { name: "Visa Guide", url: "/visas" },
+            { name: t.seoDetail.breadcrumbHome, url: "/" },
+            { name: t.seoDetail.breadcrumbVisas, url: "/visas" },
             { name: visa.title, url: `/visas/${visa.id}` },
           ]),
           faqSchema(visa.faqs),

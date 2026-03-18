@@ -38,6 +38,7 @@ import {
 } from "lucide-react";
 import { countryRelocationData } from "@/data/countryRelocation";
 import SEOHead, { breadcrumbSchema, articleSchema } from "@/components/SEOHead";
+import { useT } from "@/i18n/context";
 
 const qualificationSchema = z.object({
   name: z.string().trim().min(1, "Name is required").max(100),
@@ -54,6 +55,7 @@ const CountryRelocation = () => {
   const { countryCode } = useParams<{ countryCode: string }>();
   const country = countryCode ? countryRelocationData[countryCode] : undefined;
   const [submitted, setSubmitted] = useState(false);
+  const t = useT();
 
   const {
     register,
@@ -73,13 +75,13 @@ const CountryRelocation = () => {
   return (
     <div className="min-h-screen bg-background">
       <SEOHead
-        title={country.meta.title}
-        description={country.meta.description}
+        title={t.seoDetail.relocationTitle(country.name)}
+        description={t.seoDetail.relocationDesc(country.name)}
         type="article"
         schema={[
           breadcrumbSchema([
-            { name: "Home", url: "/" },
-            { name: "Relocation", url: "/relocation" },
+            { name: t.seoDetail.breadcrumbHome, url: "/" },
+            { name: t.seoDetail.breadcrumbRelocation, url: "/relocation" },
             { name: country.name, url: `/relocation/${countryCode}` },
           ]),
           articleSchema({
