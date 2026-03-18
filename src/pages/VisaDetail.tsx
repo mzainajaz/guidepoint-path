@@ -9,6 +9,7 @@ import { visaGuides } from "@/data/visaGuides";
 const VisaDetail = () => {
   const { slug } = useParams<{ slug: string }>();
   const lp = useLocalePath();
+  const t = useT();
   const visa = visaGuides.find((v) => v.id === slug);
 
   if (!visa) return <Navigate to="/visas" replace />;
