@@ -50,6 +50,7 @@ const de: TranslationSet = {
     compliance: "Compliance",
   },
   nav: {
+    startHere: "Hier starten",
     setupOptions: "Gründungsoptionen",
     freeZones: "Freizonen",
     mainlandOverview: "Mainland-Überblick",
