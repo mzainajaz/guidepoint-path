@@ -22,11 +22,13 @@ const iconMap: Record<string, React.ElementType> = {
   Building2,
 };
 
-const TaxComplianceHub = () => (
+const TaxComplianceHub = () => {
+  const t = useT();
+  return (
   <div className="min-h-screen bg-background">
     <SEOHead
-      title="UAE Taxes & Compliance — VAT, Corporate Tax & Obligations"
-      description="Practical guides to UAE tax obligations for founders. Covers VAT registration, corporate tax, filing deadlines, and free zone compliance requirements."
+      title={t.seo.taxes.title}
+      description={t.seo.taxes.description}
       schema={[breadcrumbSchema([{ name: "Home", url: "/" }, { name: "Taxes & Compliance", url: "/taxes" }])]}
     />
     <Header />
