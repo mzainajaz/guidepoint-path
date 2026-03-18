@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
+import SEOHead, { breadcrumbSchema } from "@/components/SEOHead";
 import BestAnswerBlock from "@/components/BestAnswerBlock";
 import { Button } from "@/components/ui/button";
 import {
@@ -102,6 +103,15 @@ const faqs = [
 
 const MainlandEjari = () => (
   <div className="min-h-screen bg-background">
+    <SEOHead
+      title="Ejari & Office Requirements for UAE Mainland Setup"
+      description="Understand Ejari registration, office types, costs, and requirements for UAE mainland business setup. Flexi desks, serviced offices, and physical lease options compared."
+      schema={breadcrumbSchema([
+        { name: "Home", url: "/" },
+        { name: "Mainland", url: "/mainland" },
+        { name: "Office & Ejari", url: "/mainland/office-ejari" },
+      ])}
+    />
     <Header />
     <main className="page-offset">
       {/* Hero Image */}

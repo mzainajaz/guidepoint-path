@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
+import SEOHead, { breadcrumbSchema } from "@/components/SEOHead";
 import BestAnswerBlock from "@/components/BestAnswerBlock";
 import { Button } from "@/components/ui/button";
 import {
@@ -105,6 +106,15 @@ const faqs = [
 
 const MainlandLicensing = () => (
   <div className="min-h-screen bg-background">
+    <SEOHead
+      title="UAE Mainland Licence Types — Commercial, Professional & Industrial"
+      description="Compare UAE mainland licence types: commercial, professional, industrial, and tourism. Costs, requirements, and step-by-step DED/DET licensing process."
+      schema={breadcrumbSchema([
+        { name: "Home", url: "/" },
+        { name: "Mainland", url: "/mainland" },
+        { name: "Licensing", url: "/mainland/licensing" },
+      ])}
+    />
     <Header />
     <main className="page-offset">
       {/* Hero Image */}

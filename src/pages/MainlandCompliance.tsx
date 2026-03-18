@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
+import SEOHead, { breadcrumbSchema } from "@/components/SEOHead";
 import BestAnswerBlock from "@/components/BestAnswerBlock";
 import { Button } from "@/components/ui/button";
 import {
@@ -134,6 +135,15 @@ const faqs = [
 
 const MainlandCompliance = () => (
   <div className="min-h-screen bg-background">
+    <SEOHead
+      title="UAE Mainland Compliance — Annual Obligations & Deadlines"
+      description="Complete guide to UAE mainland compliance: VAT returns, corporate tax filing, ESR notifications, UBO registers, and licence renewal deadlines."
+      schema={breadcrumbSchema([
+        { name: "Home", url: "/" },
+        { name: "Mainland", url: "/mainland" },
+        { name: "Compliance", url: "/mainland/compliance" },
+      ])}
+    />
     <Header />
     <main className="page-offset">
       {/* Hero Image */}

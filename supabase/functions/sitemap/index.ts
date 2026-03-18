@@ -7,6 +7,7 @@ const ALL_LANGS = ["en", ...LOCALES];
 // Static routes (no dynamic slug)
 const STATIC_ROUTES = [
   "/",
+  "/start-here",
   "/free-zones",
   "/relocation",
   "/mainland",
@@ -20,6 +21,10 @@ const STATIC_ROUTES = [
   "/tools/cost-estimator",
   "/tools/zone-picker",
   "/tools/vat-helper",
+  "/tools/bank-readiness",
+  "/tools/founder-readiness",
+  "/tools/relocation-calculator",
+  "/visas",
   "/blog",
   "/guides",
   "/how-to/uae-business-setup",
@@ -56,6 +61,8 @@ const GUIDE_SLUGS = [
 ];
 
 const COUNTRY_CODES = ["uk", "us", "india", "egypt", "europe"];
+
+const VISA_SLUGS = ["investor-visa", "employee-visa", "partner-visa", "family-visa"];
 
 function hreflangBlock(path: string): string {
   const enUrl = `${ORIGIN}${path}`;
@@ -131,6 +138,11 @@ Deno.serve(async () => {
   // Relocation countries
   for (const code of COUNTRY_CODES) {
     urls.push(urlEntry(`/relocation/${code}`, "0.7", "monthly", today));
+  }
+
+  // Visa guides
+  for (const slug of VISA_SLUGS) {
+    urls.push(urlEntry(`/visas/${slug}`, "0.7", "monthly", today));
   }
 
   // Dynamic DB content: blog posts
