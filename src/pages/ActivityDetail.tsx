@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { getActivityById, businessActivities, type BusinessActivity } from "@/data/businessActivities";
 import { freeZones } from "@/data/freeZones";
 import SEOHead, { breadcrumbSchema, faqSchema, articleSchema } from "@/components/SEOHead";
+import { useT } from "@/i18n/context";
 import {
   ChevronRight,
   ArrowRight,
