@@ -196,7 +196,7 @@ const Header = () => {
 
             <Link
               to={lp("/contact")}
-              className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-white text-black text-[11px] font-medium tracking-[0.1em] uppercase hover:bg-white/88 transition-all duration-200"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white text-black text-[10px] xl:text-[11px] font-medium tracking-[0.1em] uppercase hover:bg-white/88 transition-all duration-200 whitespace-nowrap"
             >
               {t.common.getStarted}
             </Link>
