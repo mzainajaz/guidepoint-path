@@ -7,6 +7,7 @@ import { ChevronRight, ArrowLeft, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { motion } from "framer-motion";
+import { useT } from "@/i18n/context";
 import NotFound from "./NotFound";
 
 const GuideDetail = () => {
