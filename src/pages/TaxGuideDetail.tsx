@@ -33,6 +33,7 @@ const TaxGuideDetail = () => {
   const { slug } = useParams<{ slug: string }>();
   const guide = slug ? getTaxGuideById(slug) : undefined;
   const [activeSection, setActiveSection] = useState("thresholds");
+  const t = useT();
 
   const tocSections = guide
     ? [
