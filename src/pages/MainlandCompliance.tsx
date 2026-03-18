@@ -134,11 +134,13 @@ const faqs = [
   },
 ];
 
-const MainlandCompliance = () => (
+const MainlandCompliance = () => {
+  const t = useT();
+  return (
   <div className="min-h-screen bg-background">
     <SEOHead
-      title="UAE Mainland Compliance — Annual Obligations & Deadlines"
-      description="Complete guide to UAE mainland compliance: VAT returns, corporate tax filing, ESR notifications, UBO registers, and licence renewal deadlines."
+      title={t.seo.mainlandCompliance.title}
+      description={t.seo.mainlandCompliance.description}
       schema={breadcrumbSchema([
         { name: "Home", url: "/" },
         { name: "Mainland", url: "/mainland" },
