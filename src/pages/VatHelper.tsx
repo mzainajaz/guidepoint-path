@@ -1,4 +1,5 @@
 import { useState, useMemo } from "react";
+import { useT } from "@/i18n/context";
 import { Link } from "react-router-dom";
 import { ArrowLeft, ArrowRight, Check, AlertTriangle, CheckCircle2, XCircle, Info } from "lucide-react";
 import Header from "@/components/layout/Header";
