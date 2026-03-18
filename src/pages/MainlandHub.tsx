@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { useT } from "@/i18n/context";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import BestAnswerBlock from "@/components/BestAnswerBlock";
