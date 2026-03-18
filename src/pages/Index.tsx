@@ -26,8 +26,8 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background">
       <SEOHead
-        title="IncorporateUAE — UAE Business Setup Advisory"
-        description="Compare UAE free zones, mainland options, and business setup routes. Get transparent cost estimates, expert guidance, and a personalised setup snapshot."
+        title={t.seo.home.title}
+        description={t.seo.home.description}
         schema={[websiteSchema(), orgSchema()]}
       />
       <Header />
