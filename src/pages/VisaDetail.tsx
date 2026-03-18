@@ -17,12 +17,12 @@ const VisaDetail = () => {
   return (
     <>
       <SEOHead
-        title={visa.metaTitle}
-        description={visa.metaDescription}
+        title={t.seoDetail.visaTitle(visa.title)}
+        description={t.seoDetail.visaDesc(visa.subtitle)}
         schema={[
           breadcrumbSchema([
-            { name: "Home", url: "/" },
-            { name: "Visa Guide", url: "/visas" },
+            { name: t.seoDetail.breadcrumbHome, url: "/" },
+            { name: t.seoDetail.breadcrumbVisas, url: "/visas" },
             { name: visa.title, url: `/visas/${visa.id}` },
           ]),
           faqSchema(visa.faqs),

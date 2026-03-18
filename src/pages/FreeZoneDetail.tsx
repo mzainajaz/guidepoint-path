@@ -94,13 +94,13 @@ const FreeZoneDetail = () => {
   return (
     <div className="min-h-screen bg-background">
       <SEOHead
-        title={`${zone.name} — Free Zone Guide & Pricing`}
-        description={`${zone.bestAnswer.slice(0, 150)}…`}
+        title={t.seoDetail.freeZoneTitle(zone.name)}
+        description={t.seoDetail.freeZoneDesc(zone.name)}
         type="article"
         schema={[
           breadcrumbSchema([
-            { name: "Home", url: "/" },
-            { name: "Free Zones", url: "/free-zones" },
+            { name: t.seoDetail.breadcrumbHome, url: "/" },
+            { name: t.seoDetail.breadcrumbFreeZones, url: "/free-zones" },
             { name: zone.shortName, url: `/free-zones/${zone.id}` },
           ]),
           faqSchema(zone.faqs),

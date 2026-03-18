@@ -26,11 +26,11 @@ const GuideDetail = () => {
   return (
     <div className="min-h-screen bg-background">
       <SEOHead
-        title={`${chapter.title} — UAE Setup Guide`}
-        description={chapter.summary}
+        title={t.seoDetail.guideTitle(chapter.title)}
+        description={t.seoDetail.guideDesc(chapter.summary)}
         schema={[breadcrumbSchema([
-          { name: "Home", url: "/" },
-          { name: "Guides", url: "/guides" },
+          { name: t.seoDetail.breadcrumbHome, url: "/" },
+          { name: t.seoDetail.breadcrumbGuides, url: "/guides" },
           { name: chapter.title, url: `/guides/${chapter.slug}` },
         ])]}
       />

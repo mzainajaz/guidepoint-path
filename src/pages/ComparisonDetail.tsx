@@ -48,8 +48,8 @@ const ComparisonDetail = () => {
   return (
     <div className="min-h-screen bg-background">
       <SEOHead
-        title={`${comp.title} — UAE Setup Comparison`}
-        description={comp.summaryVerdict.slice(0, 155)}
+        title={t.seoDetail.comparisonTitle(comp.title)}
+        description={t.seoDetail.comparisonDesc(comp.summaryVerdict.slice(0, 155))}
         type="article"
         schema={[
           breadcrumbSchema([

@@ -75,13 +75,13 @@ const CountryRelocation = () => {
   return (
     <div className="min-h-screen bg-background">
       <SEOHead
-        title={country.meta.title}
-        description={country.meta.description}
+        title={t.seoDetail.relocationTitle(country.name)}
+        description={t.seoDetail.relocationDesc(country.name)}
         type="article"
         schema={[
           breadcrumbSchema([
-            { name: "Home", url: "/" },
-            { name: "Relocation", url: "/relocation" },
+            { name: t.seoDetail.breadcrumbHome, url: "/" },
+            { name: t.seoDetail.breadcrumbRelocation, url: "/relocation" },
             { name: country.name, url: `/relocation/${countryCode}` },
           ]),
           articleSchema({
