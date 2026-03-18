@@ -76,6 +76,7 @@ const getCategory = (score: number) => {
 
 const FounderReadiness = () => {
   const lp = useLocalePath();
+  const t = useT();
   const [currentQ, setCurrentQ] = useState(0);
   const [answers, setAnswers] = useState<Record<string, number>>({});
   const [showResult, setShowResult] = useState(false);
