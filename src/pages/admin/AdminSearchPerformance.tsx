@@ -96,14 +96,64 @@ const AdminSearchPerformance = () => {
       .catch(() => setLoading(false));
   }, [session, callFunction]);
 
-  // Set fixed properties for this website
+  // Load saved settings and list all properties
   useEffect(() => {
-    if (!connected) return;
-    setSites(["sc-domain:incorporateuae.com"]);
-    if (!selectedSite) setSelectedSite("sc-domain:incorporateuae.com");
-    setGaProperties([{ id: "properties/523055023", name: "inc-uae" }]);
-    if (!selectedProperty) setSelectedProperty("properties/523055023");
-  }, [connected]);
+    if (!connected || !session) return;
+
+    const loadSettings = async () => {
+      const { data: settings } = await supabase
+        .from("admin_settings")
+        .select("setting_key, setting_value")
+        .eq("user_id", session.user.id)
+        .in("setting_key", ["gsc_site", "ga_property"]);
+
+      const savedSite = settings?.find((s: any) => s.setting_key === "gsc_site")?.setting_value;
+      const savedProperty = settings?.find((s: any) => s.setting_key === "ga_property")?.setting_value;
+
+      // Fetch all available sites & properties
+      const [sitesRes, propsRes] = await Promise.all([
+        callFunction("google-search-console", { action: "list_sites" }),
+        callFunction("google-analytics", { action: "list_properties" }),
+      ]);
+
+      const siteList = (sitesRes.siteEntry || []).map((s: any) => s.siteUrl);
+      setSites(siteList);
+      setSelectedSite(savedSite && siteList.includes(savedSite) ? savedSite : siteList[0] || "");
+
+      const props: { id: string; name: string }[] = [];
+      (propsRes.accountSummaries || []).forEach((acct: any) => {
+        (acct.propertySummaries || []).forEach((p: any) => {
+          props.push({ id: p.property, name: p.displayName || p.property });
+        });
+      });
+      setGaProperties(props);
+      setSelectedProperty(savedProperty && props.some((p) => p.id === savedProperty) ? savedProperty : props[0]?.id || "");
+    };
+
+    loadSettings();
+  }, [connected, session, callFunction]);
+
+  // Save selection to database when changed
+  const saveSelection = useCallback(
+    async (key: string, value: string) => {
+      if (!session) return;
+      await supabase.from("admin_settings").upsert(
+        { user_id: session.user.id, setting_key: key, setting_value: value, updated_at: new Date().toISOString() },
+        { onConflict: "user_id,setting_key" }
+      );
+    },
+    [session]
+  );
+
+  const handleSiteChange = (val: string) => {
+    setSelectedSite(val);
+    saveSelection("gsc_site", val);
+  };
+
+  const handlePropertyChange = (val: string) => {
+    setSelectedProperty(val);
+    saveSelection("ga_property", val);
+  };
 
   const startDate = format(dateFrom, "yyyy-MM-dd");
   const endDate = format(dateTo, "yyyy-MM-dd");
@@ -365,7 +415,7 @@ const AdminSearchPerformance = () => {
             <Search className="h-5 w-5" /> Search Console
           </h2>
           {sites.length > 0 && (
-            <Select value={selectedSite} onValueChange={setSelectedSite}>
+            <Select value={selectedSite} onValueChange={handleSiteChange}>
               <SelectTrigger className="w-[260px] h-8 text-xs">
                 <SelectValue />
               </SelectTrigger>
@@ -480,7 +530,7 @@ const AdminSearchPerformance = () => {
             <TrendingUp className="h-5 w-5" /> Google Analytics
           </h2>
           {gaProperties.length > 0 && (
-            <Select value={selectedProperty} onValueChange={setSelectedProperty}>
+            <Select value={selectedProperty} onValueChange={handlePropertyChange}>
               <SelectTrigger className="w-[260px] h-8 text-xs">
                 <SelectValue />
               </SelectTrigger>
