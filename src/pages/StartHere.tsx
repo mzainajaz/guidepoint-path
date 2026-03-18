@@ -146,7 +146,7 @@ const StartHere = () => {
             { name: "Home", url: "/" },
             { name: "Start Here", url: "/start-here" },
           ]),
-          faqSchema(faqItems),
+          faqSchema(faqItems.map(f => ({ q: f.question, a: f.answer }))),
         ]}
       />
       <Header />
