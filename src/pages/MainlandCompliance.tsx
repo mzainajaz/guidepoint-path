@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import SEOHead, { breadcrumbSchema } from "@/components/SEOHead";
+import { useT } from "@/i18n/context";
 import BestAnswerBlock from "@/components/BestAnswerBlock";
 import { Button } from "@/components/ui/button";
 import {
@@ -133,11 +134,13 @@ const faqs = [
   },
 ];
 
-const MainlandCompliance = () => (
+const MainlandCompliance = () => {
+  const t = useT();
+  return (
   <div className="min-h-screen bg-background">
     <SEOHead
-      title="UAE Mainland Compliance — Annual Obligations & Deadlines"
-      description="Complete guide to UAE mainland compliance: VAT returns, corporate tax filing, ESR notifications, UBO registers, and licence renewal deadlines."
+      title={t.seo.mainlandCompliance.title}
+      description={t.seo.mainlandCompliance.description}
       schema={breadcrumbSchema([
         { name: "Home", url: "/" },
         { name: "Mainland", url: "/mainland" },
@@ -334,5 +337,6 @@ const MainlandCompliance = () => (
     <Footer />
   </div>
 );
+};
 
 export default MainlandCompliance;

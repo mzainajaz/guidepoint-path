@@ -149,8 +149,8 @@ const Contact = () => {
   return (
     <>
       <SEOHead
-        title="Contact Us — IncorpUAE"
-        description="Get in touch with our UAE business setup experts. Share your details and we'll provide a personalised recommendation."
+        title={t.seo.contact.title}
+        description={t.seo.contact.description}
       />
       <Header />
       <main className="page-offset min-h-screen bg-background">

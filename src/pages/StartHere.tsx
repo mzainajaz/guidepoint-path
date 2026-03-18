@@ -14,7 +14,7 @@ import {
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import SEOHead, { breadcrumbSchema, faqSchema } from "@/components/SEOHead";
-import { useLocalePath } from "@/i18n/context";
+import { useLocalePath, useT } from "@/i18n/context";
 
 const decisionCards = [
   {
@@ -135,12 +135,13 @@ const faqItems = [
 
 const StartHere = () => {
   const lp = useLocalePath();
+  const t = useT();
 
   return (
     <>
       <SEOHead
-        title="Start Here — UAE Business Setup for Founders"
-        description="Everything you need to know before setting up a company in the UAE. Ownership rules, costs, visa requirements, banking, and taxes — explained clearly."
+        title={t.seo.startHere.title}
+        description={t.seo.startHere.description}
         schema={[
           breadcrumbSchema([
             { name: "Home", url: "/" },

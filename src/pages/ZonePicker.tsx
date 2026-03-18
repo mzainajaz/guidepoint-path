@@ -1,4 +1,5 @@
 import { useState, useMemo } from "react";
+import { useT } from "@/i18n/context";
 import { Link } from "react-router-dom";
 import { ArrowLeft, ArrowRight, Check, MapPin, Star, ChevronRight } from "lucide-react";
 import Header from "@/components/layout/Header";
@@ -54,6 +55,7 @@ const priorities = [
 ];
 
 const ZonePicker = () => {
+  const t = useT();
   const [step, setStep] = useState(0);
   const [answers, setAnswers] = useState<Record<string, string>>({});
   const [selectedPriorities, setSelectedPriorities] = useState<string[]>([]);
@@ -103,8 +105,8 @@ const ZonePicker = () => {
   return (
     <>
       <SEOHead
-        title="UAE Free Zone Picker — Find Your Best Match"
-        description="Answer a few questions and get matched with the UAE free zones most likely to suit your business activity, budget, and visa needs."
+        title={t.seo.zonePicker.title}
+        description={t.seo.zonePicker.description}
         schema={[serviceSchema({ name: "Free Zone Picker", description: "Interactive zone matching tool for UAE business setup", url: "/tools/zone-picker" })]}
       />
       <Header />

@@ -1,4 +1,5 @@
 import { Calculator, Search, FileCheck, MapPin, Target, Shield, ArrowRight } from "lucide-react";
+import { useT } from "@/i18n/context";
 import { Link } from "react-router-dom";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
@@ -55,11 +56,13 @@ const tools = [
   },
 ];
 
-const ToolsHub = () => (
+const ToolsHub = () => {
+  const t = useT();
+  return (
   <>
     <SEOHead
-      title="UAE Business Setup Tools — Cost Estimator, Zone Picker, VAT & Banking"
-      description="Interactive tools for UAE business setup. Estimate costs, match free zones, check VAT obligations, assess banking readiness, and gauge founder preparedness."
+      title={t.seo.tools.title}
+      description={t.seo.tools.description}
       schema={[breadcrumbSchema([{ name: "Home", url: "/" }, { name: "Tools", url: "/tools" }])]}
     />
     <Header />
@@ -128,5 +131,6 @@ const ToolsHub = () => (
     <Footer />
   </>
 );
+};
 
 export default ToolsHub;

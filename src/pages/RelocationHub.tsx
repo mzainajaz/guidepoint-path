@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { useT } from "@/i18n/context";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import BestAnswerBlock from "@/components/BestAnswerBlock";
@@ -208,11 +209,13 @@ const faqs = [
   },
 ];
 
-const RelocationHub = () => (
+const RelocationHub = () => {
+  const t = useT();
+  return (
   <div className="min-h-screen bg-background">
     <SEOHead
-      title="Relocating to the UAE — Country-Specific Guides"
-      description="Practical relocation guides for UK, US, India, Egypt, and European founders moving to the UAE. Covers visas, banking, housing, tax, and settlement timelines."
+      title={t.seo.relocation.title}
+      description={t.seo.relocation.description}
       schema={[breadcrumbSchema([{ name: "Home", url: "/" }, { name: "Relocation", url: "/relocation" }])]}
     />
     <Header />
@@ -449,5 +452,6 @@ const RelocationHub = () => (
     <Footer />
   </div>
 );
+};
 
 export default RelocationHub;

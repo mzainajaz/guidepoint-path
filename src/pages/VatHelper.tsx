@@ -1,4 +1,5 @@
 import { useState, useMemo } from "react";
+import { useT } from "@/i18n/context";
 import { Link } from "react-router-dom";
 import { ArrowLeft, ArrowRight, Check, AlertTriangle, CheckCircle2, XCircle, Info } from "lucide-react";
 import Header from "@/components/layout/Header";
@@ -64,6 +65,7 @@ const vatQuestions: VatQuestion[] = [
 type Verdict = "mandatory" | "voluntary" | "not-required" | "review";
 
 const VatHelper = () => {
+  const t = useT();
   const [step, setStep] = useState(0);
   const [answers, setAnswers] = useState<Record<string, string>>({});
 
@@ -115,8 +117,8 @@ const VatHelper = () => {
   return (
     <>
       <SEOHead
-        title="UAE VAT Decision Helper — Do You Need to Register?"
-        description="Answer four questions to understand your likely UAE VAT registration status. Covers mandatory and voluntary thresholds with clear next steps."
+        title={t.seo.vatHelper.title}
+        description={t.seo.vatHelper.description}
         schema={[serviceSchema({ name: "VAT Decision Helper", description: "Interactive VAT registration assessment tool", url: "/tools/vat-helper" })]}
       />
       <Header />

@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
 import SEOHead, { serviceSchema } from "@/components/SEOHead";
-import { useLocalePath } from "@/i18n/context";
+import { useLocalePath, useT } from "@/i18n/context";
 
 interface Question {
   id: string;
@@ -97,6 +97,7 @@ const getRiskLevel = (score: number) => {
 
 const BankReadiness = () => {
   const lp = useLocalePath();
+  const t = useT();
   const [currentQ, setCurrentQ] = useState(0);
   const [answers, setAnswers] = useState<Record<string, { risk: number; index: number }>>({});
   const [showResult, setShowResult] = useState(false);
@@ -126,8 +127,8 @@ const BankReadiness = () => {
   return (
     <>
       <SEOHead
-        title="Bank Account Readiness Tool — UAE Banking Risk Assessment"
-        description="Assess your chances of opening a UAE bank account. Check how your nationality, industry, and documentation affect banking approval odds."
+        title={t.seo.bankReadiness.title}
+        description={t.seo.bankReadiness.description}
         schema={[serviceSchema({ name: "Bank Account Readiness Tool", description: "Assess UAE banking approval likelihood based on your profile", url: "/tools/bank-readiness" })]}
       />
       <Header />

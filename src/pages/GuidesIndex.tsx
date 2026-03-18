@@ -1,4 +1,5 @@
 import { useState, useMemo } from "react";
+import { useT } from "@/i18n/context";
 import { Link } from "react-router-dom";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
@@ -17,6 +18,7 @@ const iconMap: Record<string, React.ElementType> = {
 };
 
 const GuidesIndex = () => {
+  const t = useT();
   const [query, setQuery] = useState("");
   const [activePart, setActivePart] = useState<string | null>(null);
 
@@ -46,8 +48,8 @@ const GuidesIndex = () => {
   return (
     <div className="min-h-screen bg-background">
       <SEOHead
-        title="UAE Business Setup Guides — The Complete Reference"
-        description="50+ chapter reference covering UAE setup architecture, free zones, mainland, visas, tax, banking, and startup strategy. Built from official sources."
+        title={t.seo.guides.title}
+        description={t.seo.guides.description}
         schema={[breadcrumbSchema([{ name: "Home", url: "/" }, { name: "Guides", url: "/guides" }])]}
       />
       <Header />

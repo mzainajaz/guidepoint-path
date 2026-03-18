@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useT } from "@/i18n/context";
 import { Link } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import Header from "@/components/layout/Header";
@@ -25,6 +26,7 @@ function estimateReadTime(html: string) {
 }
 
 const BlogIndex = () => {
+  const t = useT();
   const [posts, setPosts] = useState<Post[]>([]);
 
   useEffect(() => {
@@ -42,8 +44,8 @@ const BlogIndex = () => {
   return (
     <>
       <SEOHead
-        title="Blog – UAE Business Setup Insights & Guides"
-        description="Expert insights, practical guides, and updates on UAE business setup, free zones, corporate tax, licensing, and relocation for entrepreneurs."
+        title={t.seo.blog.title}
+        description={t.seo.blog.description}
         schema={breadcrumbSchema([
           { name: "Home", url: "/" },
           { name: "Blog", url: "/blog" },

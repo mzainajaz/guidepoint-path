@@ -1,4 +1,5 @@
 import { useState, useMemo } from "react";
+import { useT } from "@/i18n/context";
 import { Link } from "react-router-dom";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
@@ -51,6 +52,7 @@ const sortOptions = [
 ];
 
 const FreeZones = () => {
+  const t = useT();
   const [search, setSearch] = useState("");
   const [industry, setIndustry] = useState("all");
   const [cost, setCost] = useState("all");
@@ -78,8 +80,8 @@ const FreeZones = () => {
   return (
     <div className="min-h-screen bg-background">
       <SEOHead
-        title="UAE Free Zones — Compare by Cost, Activity & Visas"
-        description="Compare 30+ UAE free zones by cost, business activity, visa options, and office requirements. Transparent data with verified pricing and honest assessments."
+        title={t.seo.freeZones.title}
+        description={t.seo.freeZones.description}
         schema={[breadcrumbSchema([{ name: "Home", url: "/" }, { name: "Free Zones", url: "/free-zones" }])]}
       />
       <Header />

@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import SEOHead, { breadcrumbSchema } from "@/components/SEOHead";
+import { useT } from "@/i18n/context";
 import BestAnswerBlock from "@/components/BestAnswerBlock";
 import { Button } from "@/components/ui/button";
 import {
@@ -104,11 +105,13 @@ const faqs = [
   },
 ];
 
-const MainlandLicensing = () => (
+const MainlandLicensing = () => {
+  const t = useT();
+  return (
   <div className="min-h-screen bg-background">
     <SEOHead
-      title="UAE Mainland Licence Types — Commercial, Professional & Industrial"
-      description="Compare UAE mainland licence types: commercial, professional, industrial, and tourism. Costs, requirements, and step-by-step DED/DET licensing process."
+      title={t.seo.mainlandLicensing.title}
+      description={t.seo.mainlandLicensing.description}
       schema={breadcrumbSchema([
         { name: "Home", url: "/" },
         { name: "Mainland", url: "/mainland" },
@@ -297,5 +300,6 @@ const MainlandLicensing = () => (
     <Footer />
   </div>
 );
+};
 
 export default MainlandLicensing;

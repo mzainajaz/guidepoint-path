@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
 import SEOHead, { serviceSchema } from "@/components/SEOHead";
-import { useLocalePath } from "@/i18n/context";
+import { useLocalePath, useT } from "@/i18n/context";
 
 interface Question {
   id: string;
@@ -76,6 +76,7 @@ const getCategory = (score: number) => {
 
 const FounderReadiness = () => {
   const lp = useLocalePath();
+  const t = useT();
   const [currentQ, setCurrentQ] = useState(0);
   const [answers, setAnswers] = useState<Record<string, number>>({});
   const [showResult, setShowResult] = useState(false);
@@ -106,8 +107,8 @@ const FounderReadiness = () => {
   return (
     <>
       <SEOHead
-        title="Founder Readiness Score — Are You Ready to Set Up in UAE?"
-        description="Take a 2-minute assessment to gauge your readiness for UAE company formation. Get a personalised score across business model, capital, compliance, and banking."
+        title={t.seo.founderReadiness.title}
+        description={t.seo.founderReadiness.description}
         schema={[serviceSchema({ name: "Founder Readiness Score", description: "Assessment tool for UAE business setup readiness", url: "/tools/founder-readiness" })]}
       />
       <Header />

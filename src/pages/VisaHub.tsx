@@ -3,7 +3,7 @@ import { ArrowRight, Briefcase, Users, Handshake, Heart } from "lucide-react";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import SEOHead, { breadcrumbSchema } from "@/components/SEOHead";
-import { useLocalePath } from "@/i18n/context";
+import { useLocalePath, useT } from "@/i18n/context";
 import { visaGuides } from "@/data/visaGuides";
 
 const iconMap: Record<string, React.ElementType> = {
@@ -15,12 +15,13 @@ const iconMap: Record<string, React.ElementType> = {
 
 const VisaHub = () => {
   const lp = useLocalePath();
+  const t = useT();
 
   return (
     <>
       <SEOHead
-        title="UAE Visa Guide — Investor, Employee, Partner & Family Visas"
-        description="Complete guide to UAE visa types for business owners. Understand investor, employee, partner, and family visa requirements, costs, and processing times."
+        title={t.seo.visas.title}
+        description={t.seo.visas.description}
         schema={[breadcrumbSchema([{ name: "Home", url: "/" }, { name: "Visa Guide", url: "/visas" }])]}
       />
       <Header />

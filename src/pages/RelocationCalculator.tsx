@@ -8,7 +8,7 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
 import { Slider } from "@/components/ui/slider";
 import SEOHead, { serviceSchema } from "@/components/SEOHead";
-import { useLocalePath } from "@/i18n/context";
+import { useLocalePath, useT } from "@/i18n/context";
 
 const housingOptions = [
   { value: "studio", label: "Studio / 1BR apartment", monthly: 4500 },
@@ -33,6 +33,7 @@ const lifestyleOptions = [
 
 const RelocationCalculator = () => {
   const lp = useLocalePath();
+  const t = useT();
   const [step, setStep] = useState(0);
   const [familySize, setFamilySize] = useState([2]);
   const [housing, setHousing] = useState("2br");
@@ -66,8 +67,8 @@ const RelocationCalculator = () => {
   return (
     <>
       <SEOHead
-        title="UAE Relocation Cost Calculator"
-        description="Estimate your monthly and first-year relocation costs for moving to the UAE — housing, schooling, lifestyle, and visa fees included."
+        title={t.seo.relocationCalc.title}
+        description={t.seo.relocationCalc.description}
         schema={[serviceSchema({ name: "UAE Relocation Cost Calculator", description: "Estimate monthly and first-year relocation costs to the UAE", url: "/tools/relocation-calculator" })]}
       />
       <Header />

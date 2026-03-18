@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { useT } from "@/i18n/context";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import BestAnswerBlock from "@/components/BestAnswerBlock";
@@ -19,11 +20,13 @@ const typeLabels: Record<string, string> = {
   market: "Market / Use-case",
 };
 
-const ComparisonsIndex = () => (
+const ComparisonsIndex = () => {
+  const t = useT();
+  return (
   <div className="min-h-screen bg-background">
     <SEOHead
-      title="Compare UAE Setup Options — Free Zones, Mainland & Structures"
-      description="Side-by-side comparisons of UAE free zones, mainland options, and entity structures. Transparent criteria, honest trade-offs, and clear methodology."
+      title={t.seo.compare.title}
+      description={t.seo.compare.description}
       schema={[breadcrumbSchema([{ name: "Home", url: "/" }, { name: "Compare", url: "/compare" }])]}
     />
     <Header />
@@ -83,5 +86,6 @@ const ComparisonsIndex = () => (
     <Footer />
   </div>
 );
+};
 
 export default ComparisonsIndex;
