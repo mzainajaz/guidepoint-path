@@ -13,44 +13,44 @@ const Header = () => {
   const isHome = location.pathname === "/" || location.pathname === "/en/" || location.pathname === "/ar/";
 
   const navItems = [
-    { label: t.nav.startHere || "Start Here", href: lp("/start-here") },
+    { label: "Start Here", href: lp("/start-here") },
     {
-      label: t.nav.freeZones,
+      label: "Free Zones",
       href: lp("/free-zones"),
       children: [
-        { label: t.nav.compare || "Compare", href: lp("/compare") },
-        { label: t.nav.freeZonePicker, href: lp("/tools/zone-picker") },
+        { label: "Compare", href: lp("/compare") },
+        { label: "Zone Picker", href: lp("/tools/zone-picker") },
       ],
     },
     {
-      label: t.nav.mainlandOverview || "Mainland",
+      label: "Mainland",
+      href: lp("/mainland"),
       children: [
-        { label: t.nav.mainlandOverview, href: lp("/mainland") },
-        { label: t.nav.licensingBasics, href: lp("/mainland/licensing") },
-        { label: t.nav.officeEjari, href: lp("/mainland/office-ejari") },
-        { label: t.nav.complianceBasics, href: lp("/mainland/compliance") },
+        { label: "Licensing Basics", href: lp("/mainland/licensing") },
+        { label: "Office & Ejari", href: lp("/mainland/office-ejari") },
+        { label: "Compliance", href: lp("/mainland/compliance") },
       ],
     },
-    { label: t.nav.businessActivities, href: lp("/activities") },
-    { label: "Visa Guide", href: lp("/visas") },
+    { label: "Activities", href: lp("/activities") },
+    { label: "Visas", href: lp("/visas") },
     {
-      label: t.nav.taxes,
+      label: "Tax & VAT",
+      href: lp("/taxes"),
       children: [
-        { label: t.nav.overview, href: lp("/taxes") },
-        { label: t.nav.vatGuide, href: lp("/taxes/vat") },
-        { label: t.nav.corporateTax, href: lp("/taxes/corporate-tax") },
+        { label: "VAT Guide", href: lp("/taxes/vat") },
+        { label: "Corporate Tax", href: lp("/taxes/corporate-tax") },
       ],
     },
     {
-      label: t.nav.tools,
+      label: "Tools",
       href: lp("/tools"),
       children: [
-        { label: t.nav.costEstimator, href: lp("/tools/cost-estimator") },
-        { label: t.nav.freeZonePicker, href: lp("/tools/zone-picker") },
-        { label: t.nav.vatHelper, href: lp("/tools/vat-helper") },
+        { label: "Cost Estimator", href: lp("/tools/cost-estimator") },
+        { label: "Zone Picker", href: lp("/tools/zone-picker") },
+        { label: "VAT Helper", href: lp("/tools/vat-helper") },
       ],
     },
-    { label: t.nav.relocation || "Relocation", href: lp("/relocation") },
+    { label: "Relocation", href: lp("/relocation") },
     { label: "Guides", href: lp("/guides") },
     { label: "Blog", href: lp("/blog") },
   ];
@@ -79,21 +79,24 @@ const Header = () => {
         <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-10 h-[64px] lg:h-[72px] flex items-center justify-between lg:grid lg:grid-cols-[1fr_auto_1fr]">
 
           {/* Left nav (desktop) */}
-          <nav className="hidden lg:flex items-center gap-5">
+          <nav className="hidden lg:flex items-center gap-3 xl:gap-4">
             {navItems.slice(0, 5).map((item) => (
               <div key={item.label} className="relative group">
-                {item.href && !item.children ? (
+                {item.children ? (
                   <Link
-                    to={item.href}
-                    className="text-[11px] font-medium tracking-[0.14em] uppercase text-white/50 hover:text-white transition-colors duration-200"
+                    to={item.href || "#"}
+                    className="flex items-center gap-1 text-[10.5px] xl:text-[11px] font-medium tracking-[0.12em] uppercase text-white/50 hover:text-white transition-colors duration-200 whitespace-nowrap"
+                  >
+                    {item.label}
+                    <ChevronDown className="h-3 w-3 opacity-50 transition-transform group-hover:rotate-180" />
+                  </Link>
+                ) : (
+                  <Link
+                    to={item.href!}
+                    className="text-[10.5px] xl:text-[11px] font-medium tracking-[0.12em] uppercase text-white/50 hover:text-white transition-colors duration-200 whitespace-nowrap"
                   >
                     {item.label}
                   </Link>
-                ) : (
-                  <button className="flex items-center gap-1 text-[11px] font-medium tracking-[0.14em] uppercase text-white/50 hover:text-white transition-colors duration-200">
-                    {item.label}
-                    {item.children && <ChevronDown className="h-3 w-3 transition-transform group-hover:rotate-180" />}
-                  </button>
                 )}
                 {item.children && (
                   <div className="invisible group-hover:visible opacity-0 group-hover:opacity-100 transition-all duration-200 absolute top-full left-0 pt-3 z-50">
@@ -127,21 +130,24 @@ const Header = () => {
           </Link>
 
           {/* Right nav + CTA (desktop) */}
-          <div className="hidden lg:flex items-center justify-end gap-5">
+          <div className="hidden lg:flex items-center justify-end gap-3 xl:gap-4">
             {navItems.slice(5).map((item) => (
               <div key={item.label} className="relative group">
-                {item.href && !item.children ? (
+                {item.children ? (
                   <Link
-                    to={item.href}
-                    className="text-[11px] font-medium tracking-[0.14em] uppercase text-white/50 hover:text-white transition-colors duration-200"
+                    to={item.href || "#"}
+                    className="flex items-center gap-1 text-[10.5px] xl:text-[11px] font-medium tracking-[0.12em] uppercase text-white/50 hover:text-white transition-colors duration-200 whitespace-nowrap"
+                  >
+                    {item.label}
+                    <ChevronDown className="h-3 w-3 opacity-50 transition-transform group-hover:rotate-180" />
+                  </Link>
+                ) : (
+                  <Link
+                    to={item.href!}
+                    className="text-[10.5px] xl:text-[11px] font-medium tracking-[0.12em] uppercase text-white/50 hover:text-white transition-colors duration-200 whitespace-nowrap"
                   >
                     {item.label}
                   </Link>
-                ) : (
-                  <button className="flex items-center gap-1 text-[11px] font-medium tracking-[0.14em] uppercase text-white/50 hover:text-white transition-colors duration-200">
-                    {item.label}
-                    {item.children && <ChevronDown className="h-3 w-3 transition-transform group-hover:rotate-180" />}
-                  </button>
                 )}
                 {item.children && (
                   <div className="invisible group-hover:visible opacity-0 group-hover:opacity-100 transition-all duration-200 absolute top-full right-0 pt-3 z-50">
