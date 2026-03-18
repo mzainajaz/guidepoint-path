@@ -76,16 +76,16 @@ const Header = () => {
             : "bg-transparent"
         }`}
       >
-        <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-10 h-[64px] lg:h-[72px] flex items-center justify-between lg:grid lg:grid-cols-[1fr_auto_1fr]">
+        <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-6 xl:px-10 h-[64px] lg:h-[72px] flex items-center justify-between lg:grid lg:grid-cols-[1fr_auto_1fr]">
 
           {/* Left nav (desktop) */}
-          <nav className="hidden lg:flex items-center gap-3 xl:gap-4">
+          <nav className="hidden lg:flex items-center gap-2 xl:gap-3">
             {navItems.slice(0, 5).map((item) => (
               <div key={item.label} className="relative group">
                 {item.children ? (
                   <Link
                     to={item.href || "#"}
-                    className="flex items-center gap-1 text-[10.5px] xl:text-[11px] font-medium tracking-[0.12em] uppercase text-white/50 hover:text-white transition-colors duration-200 whitespace-nowrap"
+                    className="flex items-center gap-1 text-[10px] xl:text-[11px] font-medium tracking-[0.1em] uppercase text-white/50 hover:text-white transition-colors duration-200 whitespace-nowrap"
                   >
                     {item.label}
                     <ChevronDown className="h-3 w-3 opacity-50 transition-transform group-hover:rotate-180" />
@@ -93,7 +93,7 @@ const Header = () => {
                 ) : (
                   <Link
                     to={item.href!}
-                    className="text-[10.5px] xl:text-[11px] font-medium tracking-[0.12em] uppercase text-white/50 hover:text-white transition-colors duration-200 whitespace-nowrap"
+                    className="text-[10px] xl:text-[11px] font-medium tracking-[0.1em] uppercase text-white/50 hover:text-white transition-colors duration-200 whitespace-nowrap"
                   >
                     {item.label}
                   </Link>
@@ -130,13 +130,13 @@ const Header = () => {
           </Link>
 
           {/* Right nav + CTA (desktop) */}
-          <div className="hidden lg:flex items-center justify-end gap-3 xl:gap-4">
+          <div className="hidden lg:flex items-center justify-end gap-2 xl:gap-3">
             {navItems.slice(5).map((item) => (
               <div key={item.label} className="relative group">
                 {item.children ? (
                   <Link
                     to={item.href || "#"}
-                    className="flex items-center gap-1 text-[10.5px] xl:text-[11px] font-medium tracking-[0.12em] uppercase text-white/50 hover:text-white transition-colors duration-200 whitespace-nowrap"
+                    className="flex items-center gap-1 text-[10px] xl:text-[11px] font-medium tracking-[0.1em] uppercase text-white/50 hover:text-white transition-colors duration-200 whitespace-nowrap"
                   >
                     {item.label}
                     <ChevronDown className="h-3 w-3 opacity-50 transition-transform group-hover:rotate-180" />
@@ -144,7 +144,7 @@ const Header = () => {
                 ) : (
                   <Link
                     to={item.href!}
-                    className="text-[10.5px] xl:text-[11px] font-medium tracking-[0.12em] uppercase text-white/50 hover:text-white transition-colors duration-200 whitespace-nowrap"
+                    className="text-[10px] xl:text-[11px] font-medium tracking-[0.1em] uppercase text-white/50 hover:text-white transition-colors duration-200 whitespace-nowrap"
                   >
                     {item.label}
                   </Link>
@@ -196,7 +196,7 @@ const Header = () => {
 
             <Link
               to={lp("/contact")}
-              className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-white text-black text-[11px] font-medium tracking-[0.1em] uppercase hover:bg-white/88 transition-all duration-200"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white text-black text-[10px] xl:text-[11px] font-medium tracking-[0.1em] uppercase hover:bg-white/88 transition-all duration-200 whitespace-nowrap"
             >
               {t.common.getStarted}
             </Link>
