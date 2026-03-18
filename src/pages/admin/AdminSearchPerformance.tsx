@@ -288,7 +288,78 @@ const AdminSearchPerformance = () => {
       {/* Header */}
       <div className="flex items-center justify-between flex-wrap gap-3">
         <h1 className="font-display text-2xl font-bold text-foreground">Search Performance</h1>
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 flex-wrap">
+          {/* Date range presets */}
+          <Select
+            value={datePreset}
+            onValueChange={(val) => {
+              setDatePreset(val);
+              if (val !== "0") {
+                setDateFrom(subDays(new Date(), parseInt(val)));
+                setDateTo(new Date());
+              }
+            }}
+          >
+            <SelectTrigger className="w-[150px] h-8 text-xs">
+              <CalendarIcon className="h-3 w-3 mr-1" />
+              <SelectValue />
+            </SelectTrigger>
+            <SelectContent>
+              {DATE_PRESETS.map((p) => (
+                <SelectItem key={p.days} value={String(p.days)} className="text-xs">
+                  {p.label}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+
+          {/* Custom date pickers */}
+          {datePreset === "0" && (
+            <div className="flex items-center gap-1">
+              <Popover open={showCustomFrom} onOpenChange={setShowCustomFrom}>
+                <PopoverTrigger asChild>
+                  <Button variant="outline" size="sm" className={cn("h-8 text-xs gap-1 w-[120px] justify-start", !dateFrom && "text-muted-foreground")}>
+                    <CalendarIcon className="h-3 w-3" />
+                    {format(dateFrom, "MMM d, yyyy")}
+                  </Button>
+                </PopoverTrigger>
+                <PopoverContent className="w-auto p-0" align="start">
+                  <Calendar
+                    mode="single"
+                    selected={dateFrom}
+                    onSelect={(d) => { if (d) { setDateFrom(d); setShowCustomFrom(false); } }}
+                    disabled={(d) => d > dateTo || d > new Date()}
+                    initialFocus
+                    className={cn("p-3 pointer-events-auto")}
+                  />
+                </PopoverContent>
+              </Popover>
+              <span className="text-xs text-muted-foreground">–</span>
+              <Popover open={showCustomTo} onOpenChange={setShowCustomTo}>
+                <PopoverTrigger asChild>
+                  <Button variant="outline" size="sm" className={cn("h-8 text-xs gap-1 w-[120px] justify-start", !dateTo && "text-muted-foreground")}>
+                    <CalendarIcon className="h-3 w-3" />
+                    {format(dateTo, "MMM d, yyyy")}
+                  </Button>
+                </PopoverTrigger>
+                <PopoverContent className="w-auto p-0" align="start">
+                  <Calendar
+                    mode="single"
+                    selected={dateTo}
+                    onSelect={(d) => { if (d) { setDateTo(d); setShowCustomTo(false); } }}
+                    disabled={(d) => d < dateFrom || d > new Date()}
+                    initialFocus
+                    className={cn("p-3 pointer-events-auto")}
+                  />
+                </PopoverContent>
+              </Popover>
+            </div>
+          )}
+
+          <span className="text-xs text-muted-foreground hidden sm:inline">
+            {format(dateFrom, "MMM d")} – {format(dateTo, "MMM d, yyyy")}
+          </span>
+
           <Button variant="outline" size="sm" onClick={() => { fetchGSCData(); fetchGAData(); }} disabled={refreshing} className="gap-2">
             <RefreshCw className={`h-3.5 w-3.5 ${refreshing ? "animate-spin" : ""}`} /> Refresh
           </Button>
