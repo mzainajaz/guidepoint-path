@@ -200,5 +200,6 @@ const TaxComplianceHub = () => {
     <Footer />
   </div>
 );
+};
 
 export default TaxComplianceHub;

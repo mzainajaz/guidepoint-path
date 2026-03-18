@@ -131,5 +131,6 @@ const ToolsHub = () => {
     <Footer />
   </>
 );
+};
 
 export default ToolsHub;

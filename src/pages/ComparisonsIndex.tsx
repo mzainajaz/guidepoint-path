@@ -86,5 +86,6 @@ const ComparisonsIndex = () => {
     <Footer />
   </div>
 );
+};
 
 export default ComparisonsIndex;

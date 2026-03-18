@@ -452,5 +452,6 @@ const RelocationHub = () => {
     <Footer />
   </div>
 );
+};
 
 export default RelocationHub;

@@ -213,5 +213,6 @@ const MainlandHub = () => {
     <Footer />
   </div>
 );
+};
 
 export default MainlandHub;

@@ -152,5 +152,6 @@ const ActivitiesIndex = () => {
     <Footer />
   </div>
 );
+};
 
 export default ActivitiesIndex;
