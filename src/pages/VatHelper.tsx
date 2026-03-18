@@ -121,17 +121,22 @@ const VatHelper = () => {
       />
       <Header />
       <main className="page-offset min-h-screen bg-background">
-        <div className="container py-12 max-w-3xl">
-          <Link to="/tools" className="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground mb-8">
-            <ArrowLeft className="h-4 w-4" /> Back to Tools
-          </Link>
+        {/* Hero */}
+        <div className="relative h-48 md:h-64 overflow-hidden">
+          <img src="/images/section-vat-helper.jpg" alt="" className="absolute inset-0 w-full h-full object-cover" />
+          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-background/30" />
+          <div className="relative container max-w-3xl h-full flex flex-col justify-end pb-6">
+            <Link to="/tools" className="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground mb-4">
+              <ArrowLeft className="h-4 w-4" /> Back to Tools
+            </Link>
+            <h1 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-1">
+              VAT Decision Helper
+            </h1>
+            <p className="text-muted-foreground">Answer four questions to understand your likely VAT registration status.</p>
+          </div>
+        </div>
 
-          <h1 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-2">
-            VAT Decision Helper
-          </h1>
-          <p className="text-muted-foreground mb-10">
-            Answer four questions to understand your likely VAT registration status.
-          </p>
+        <div className="container py-10 max-w-3xl">
 
           {/* Progress */}
           
