@@ -5,6 +5,7 @@ import BestAnswerBlock from "@/components/BestAnswerBlock";
 import { Button } from "@/components/ui/button";
 import { getComparisonById } from "@/data/comparisons";
 import SEOHead, { breadcrumbSchema, faqSchema, articleSchema } from "@/components/SEOHead";
+import { useT } from "@/i18n/context";
 import {
   ChevronRight,
   ArrowRight,
