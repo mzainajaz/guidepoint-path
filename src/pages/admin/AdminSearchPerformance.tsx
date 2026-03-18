@@ -162,18 +162,26 @@ const AdminSearchPerformance = () => {
         callFunction("google-analytics", {
           action: "traffic_overview",
           property_id: selectedProperty,
+          start_date: startDate,
+          end_date: endDate,
         }),
         callFunction("google-analytics", {
           action: "top_pages",
           property_id: selectedProperty,
+          start_date: startDate,
+          end_date: endDate,
         }),
         callFunction("google-analytics", {
           action: "conversions",
           property_id: selectedProperty,
+          start_date: startDate,
+          end_date: endDate,
         }),
         callFunction("google-analytics", {
           action: "traffic_sources",
           property_id: selectedProperty,
+          start_date: startDate,
+          end_date: endDate,
         }),
       ]);
 
@@ -214,9 +222,9 @@ const AdminSearchPerformance = () => {
       console.error("GA fetch error:", e);
     }
     setRefreshing(false);
-  }, [selectedProperty, callFunction]);
+  }, [selectedProperty, startDate, endDate, callFunction]);
 
-  // Auto-fetch when site/property changes
+  // Auto-fetch when site/property/dates change
   useEffect(() => {
     if (connected && selectedSite) fetchGSCData();
   }, [connected, selectedSite, langPrefix, fetchGSCData]);
