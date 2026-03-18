@@ -13,44 +13,44 @@ const Header = () => {
   const isHome = location.pathname === "/" || location.pathname === "/en/" || location.pathname === "/ar/";
 
   const navItems = [
-    { label: t.nav.startHere || "Start Here", href: lp("/start-here") },
+    { label: "Start Here", href: lp("/start-here") },
     {
-      label: t.nav.freeZones,
+      label: "Free Zones",
       href: lp("/free-zones"),
       children: [
-        { label: t.nav.compare || "Compare", href: lp("/compare") },
-        { label: t.nav.freeZonePicker, href: lp("/tools/zone-picker") },
+        { label: "Compare", href: lp("/compare") },
+        { label: "Zone Picker", href: lp("/tools/zone-picker") },
       ],
     },
     {
-      label: t.nav.mainlandOverview || "Mainland",
+      label: "Mainland",
+      href: lp("/mainland"),
       children: [
-        { label: t.nav.mainlandOverview, href: lp("/mainland") },
-        { label: t.nav.licensingBasics, href: lp("/mainland/licensing") },
-        { label: t.nav.officeEjari, href: lp("/mainland/office-ejari") },
-        { label: t.nav.complianceBasics, href: lp("/mainland/compliance") },
+        { label: "Licensing Basics", href: lp("/mainland/licensing") },
+        { label: "Office & Ejari", href: lp("/mainland/office-ejari") },
+        { label: "Compliance", href: lp("/mainland/compliance") },
       ],
     },
-    { label: t.nav.businessActivities, href: lp("/activities") },
-    { label: "Visa Guide", href: lp("/visas") },
+    { label: "Activities", href: lp("/activities") },
+    { label: "Visas", href: lp("/visas") },
     {
-      label: t.nav.taxes,
+      label: "Tax & VAT",
+      href: lp("/taxes"),
       children: [
-        { label: t.nav.overview, href: lp("/taxes") },
-        { label: t.nav.vatGuide, href: lp("/taxes/vat") },
-        { label: t.nav.corporateTax, href: lp("/taxes/corporate-tax") },
+        { label: "VAT Guide", href: lp("/taxes/vat") },
+        { label: "Corporate Tax", href: lp("/taxes/corporate-tax") },
       ],
     },
     {
-      label: t.nav.tools,
+      label: "Tools",
       href: lp("/tools"),
       children: [
-        { label: t.nav.costEstimator, href: lp("/tools/cost-estimator") },
-        { label: t.nav.freeZonePicker, href: lp("/tools/zone-picker") },
-        { label: t.nav.vatHelper, href: lp("/tools/vat-helper") },
+        { label: "Cost Estimator", href: lp("/tools/cost-estimator") },
+        { label: "Zone Picker", href: lp("/tools/zone-picker") },
+        { label: "VAT Helper", href: lp("/tools/vat-helper") },
       ],
     },
-    { label: t.nav.relocation || "Relocation", href: lp("/relocation") },
+    { label: "Relocation", href: lp("/relocation") },
     { label: "Guides", href: lp("/guides") },
     { label: "Blog", href: lp("/blog") },
   ];
