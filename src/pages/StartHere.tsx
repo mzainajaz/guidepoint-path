@@ -135,6 +135,7 @@ const faqItems = [
 
 const StartHere = () => {
   const lp = useLocalePath();
+  const t = useT();
 
   return (
     <>
