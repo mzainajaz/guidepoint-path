@@ -530,7 +530,7 @@ const AdminSearchPerformance = () => {
             <TrendingUp className="h-5 w-5" /> Google Analytics
           </h2>
           {gaProperties.length > 0 && (
-            <Select value={selectedProperty} onValueChange={setSelectedProperty}>
+            <Select value={selectedProperty} onValueChange={handlePropertyChange}>
               <SelectTrigger className="w-[260px] h-8 text-xs">
                 <SelectValue />
               </SelectTrigger>
