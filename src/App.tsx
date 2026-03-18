@@ -11,6 +11,7 @@ import React, { Suspense, lazy } from "react";
 
 // Lazy-loaded route components for code splitting
 const Index = lazy(() => import("./pages/Index"));
+const StartHere = lazy(() => import("./pages/StartHere"));
 const FreeZones = lazy(() => import("./pages/FreeZones"));
 const FreeZoneDetail = lazy(() => import("./pages/FreeZoneDetail"));
 const RelocationHub = lazy(() => import("./pages/RelocationHub"));
