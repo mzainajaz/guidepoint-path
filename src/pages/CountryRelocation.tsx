@@ -38,6 +38,7 @@ import {
 } from "lucide-react";
 import { countryRelocationData } from "@/data/countryRelocation";
 import SEOHead, { breadcrumbSchema, articleSchema } from "@/components/SEOHead";
+import { useT } from "@/i18n/context";
 
 const qualificationSchema = z.object({
   name: z.string().trim().min(1, "Name is required").max(100),
