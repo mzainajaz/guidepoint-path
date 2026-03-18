@@ -105,27 +105,6 @@ const AdminSearchPerformance = () => {
     setSelectedProperty("properties/523055023");
   }, [connected]);
 
-  // Save selection to database when changed
-  const saveSelection = useCallback(
-    async (key: string, value: string) => {
-      if (!session) return;
-      await supabase.from("admin_settings").upsert(
-        { user_id: session.user.id, setting_key: key, setting_value: value, updated_at: new Date().toISOString() },
-        { onConflict: "user_id,setting_key" }
-      );
-    },
-    [session]
-  );
-
-  const handleSiteChange = (val: string) => {
-    setSelectedSite(val);
-    saveSelection("gsc_site", val);
-  };
-
-  const handlePropertyChange = (val: string) => {
-    setSelectedProperty(val);
-    saveSelection("ga_property", val);
-  };
 
   const startDate = format(dateFrom, "yyyy-MM-dd");
   const endDate = format(dateTo, "yyyy-MM-dd");
