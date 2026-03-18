@@ -51,6 +51,11 @@ const AdminSearchPerformance = () => {
   const [connected, setConnected] = useState(false);
   const [loading, setLoading] = useState(true);
   const [refreshing, setRefreshing] = useState(false);
+  const [dateFrom, setDateFrom] = useState<Date>(subDays(new Date(), 28));
+  const [dateTo, setDateTo] = useState<Date>(new Date());
+  const [datePreset, setDatePreset] = useState("28");
+  const [showCustomFrom, setShowCustomFrom] = useState(false);
+  const [showCustomTo, setShowCustomTo] = useState(false);
 
   // GSC state
   const [sites, setSites] = useState<string[]>([]);
