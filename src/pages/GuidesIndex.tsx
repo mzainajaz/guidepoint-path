@@ -18,6 +18,7 @@ const iconMap: Record<string, React.ElementType> = {
 };
 
 const GuidesIndex = () => {
+  const t = useT();
   const [query, setQuery] = useState("");
   const [activePart, setActivePart] = useState<string | null>(null);
 
