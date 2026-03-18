@@ -52,6 +52,7 @@ const sortOptions = [
 ];
 
 const FreeZones = () => {
+  const t = useT();
   const [search, setSearch] = useState("");
   const [industry, setIndustry] = useState("all");
   const [cost, setCost] = useState("all");
