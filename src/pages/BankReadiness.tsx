@@ -102,7 +102,7 @@ const BankReadiness = () => {
   const [showResult, setShowResult] = useState(false);
 
   const currentQuestion = questions[currentQ];
-  const selectedRisk = answers[currentQuestion?.id];
+  const selectedAnswer = answers[currentQuestion?.id];
 
   const totalRisk = useMemo(() => {
     return Object.values(answers).reduce((a, b) => a + b, 0);
