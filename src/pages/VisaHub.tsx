@@ -15,6 +15,7 @@ const iconMap: Record<string, React.ElementType> = {
 
 const VisaHub = () => {
   const lp = useLocalePath();
+  const t = useT();
 
   return (
     <>
