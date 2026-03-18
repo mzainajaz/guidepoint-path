@@ -105,7 +105,7 @@ const BankReadiness = () => {
   const selectedAnswer = answers[currentQuestion?.id];
 
   const totalRisk = useMemo(() => {
-    return Object.values(answers).reduce((a, b) => a + b, 0);
+    return Object.values(answers).reduce((a, b) => a + b.risk, 0);
   }, [answers]);
 
   const result = getRiskLevel(totalRisk);
