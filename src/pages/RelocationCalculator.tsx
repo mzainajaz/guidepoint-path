@@ -33,6 +33,7 @@ const lifestyleOptions = [
 
 const RelocationCalculator = () => {
   const lp = useLocalePath();
+  const t = useT();
   const [step, setStep] = useState(0);
   const [familySize, setFamilySize] = useState([2]);
   const [housing, setHousing] = useState("2br");
