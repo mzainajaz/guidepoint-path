@@ -8,7 +8,7 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
 import { Slider } from "@/components/ui/slider";
 import SEOHead, { serviceSchema } from "@/components/SEOHead";
-import { useLocalePath } from "@/i18n/context";
+import { useLocalePath, useT } from "@/i18n/context";
 
 const housingOptions = [
   { value: "studio", label: "Studio / 1BR apartment", monthly: 4500 },
