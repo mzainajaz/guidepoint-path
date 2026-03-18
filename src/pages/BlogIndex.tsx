@@ -26,6 +26,7 @@ function estimateReadTime(html: string) {
 }
 
 const BlogIndex = () => {
+  const t = useT();
   const [posts, setPosts] = useState<Post[]>([]);
 
   useEffect(() => {
