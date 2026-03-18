@@ -305,5 +305,6 @@ const MainlandEjari = () => {
     <Footer />
   </div>
 );
+};
 
 export default MainlandEjari;

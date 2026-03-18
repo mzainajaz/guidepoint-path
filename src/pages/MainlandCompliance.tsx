@@ -337,5 +337,6 @@ const MainlandCompliance = () => {
     <Footer />
   </div>
 );
+};
 
 export default MainlandCompliance;

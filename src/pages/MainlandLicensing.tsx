@@ -300,5 +300,6 @@ const MainlandLicensing = () => {
     <Footer />
   </div>
 );
+};
 
 export default MainlandLicensing;
