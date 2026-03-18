@@ -40,7 +40,7 @@ const LANG_LABELS: Record<string, string> = {
 };
 
 const HowToIndex = () => {
-  const { locale } = useLocale();
+  const { locale, t } = useLocale();
   const [articles, setArticles] = useState<Article[]>([]);
   const [loading, setLoading] = useState(true);
   const [query, setQuery] = useState("");
