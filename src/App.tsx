@@ -53,6 +53,8 @@ const AdminBlog = lazy(() => import("./pages/admin/AdminBlog"));
 const AdminContent = lazy(() => import("./pages/admin/AdminContent"));
 const AdminSEO = lazy(() => import("./pages/admin/AdminSEO"));
 const AdminHowToImport = lazy(() => import("./pages/admin/AdminHowToImport"));
+const AdminSearchPerformance = lazy(() => import("./pages/admin/AdminSearchPerformance"));
+const GoogleCallback = lazy(() => import("./pages/admin/GoogleCallback"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 const queryClient = new QueryClient();
@@ -126,7 +128,9 @@ const App = () => (
                     <Route path="content" element={<AdminContent />} />
                     <Route path="seo" element={<AdminSEO />} />
                     <Route path="howto-import" element={<AdminHowToImport />} />
+                    <Route path="search-performance" element={<AdminSearchPerformance />} />
                   </Route>
+                  <Route path="/admin/google-callback" element={<ProtectedRoute><GoogleCallback /></ProtectedRoute>} />
                   {/* Redirects for legacy/crawled URLs */}
                   <Route path="/pricing" element={<Navigate to="/tools/cost-estimator" replace />} />
                   <Route path="/about" element={<Navigate to="/contact" replace />} />
