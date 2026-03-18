@@ -53,6 +53,7 @@ const ActivityDetail = () => {
   const { slug } = useParams<{ slug: string }>();
   const activity = slug ? getActivityById(slug) : undefined;
   const [activeSection, setActiveSection] = useState("overview");
+  const t = useT();
 
   useEffect(() => {
     const observer = new IntersectionObserver(
