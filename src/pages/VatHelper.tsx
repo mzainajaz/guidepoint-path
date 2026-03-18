@@ -65,6 +65,7 @@ const vatQuestions: VatQuestion[] = [
 type Verdict = "mandatory" | "voluntary" | "not-required" | "review";
 
 const VatHelper = () => {
+  const t = useT();
   const [step, setStep] = useState(0);
   const [answers, setAnswers] = useState<Record<string, string>>({});
 
