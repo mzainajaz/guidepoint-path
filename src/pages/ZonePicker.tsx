@@ -55,6 +55,7 @@ const priorities = [
 ];
 
 const ZonePicker = () => {
+  const t = useT();
   const [step, setStep] = useState(0);
   const [answers, setAnswers] = useState<Record<string, string>>({});
   const [selectedPriorities, setSelectedPriorities] = useState<string[]>([]);
