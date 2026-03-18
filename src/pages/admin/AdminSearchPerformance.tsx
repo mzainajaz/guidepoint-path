@@ -116,6 +116,9 @@ const AdminSearchPerformance = () => {
     });
   }, [connected, callFunction]);
 
+  const startDate = format(dateFrom, "yyyy-MM-dd");
+  const endDate = format(dateTo, "yyyy-MM-dd");
+
   const fetchGSCData = useCallback(async () => {
     if (!selectedSite) return;
     setRefreshing(true);
@@ -125,15 +128,21 @@ const AdminSearchPerformance = () => {
           action: "index_status",
           site_url: selectedSite,
           language_prefix: langPrefix,
+          start_date: startDate,
+          end_date: endDate,
         }),
         callFunction("google-search-console", {
           action: "search_queries",
           site_url: selectedSite,
           language_prefix: langPrefix,
+          start_date: startDate,
+          end_date: endDate,
         }),
         callFunction("google-search-console", {
           action: "performance_by_country",
           site_url: selectedSite,
+          start_date: startDate,
+          end_date: endDate,
         }),
       ]);
       setIndexedPages(idx.rows || []);
@@ -143,7 +152,7 @@ const AdminSearchPerformance = () => {
       console.error("GSC fetch error:", e);
     }
     setRefreshing(false);
-  }, [selectedSite, langPrefix, callFunction]);
+  }, [selectedSite, langPrefix, startDate, endDate, callFunction]);
 
   const fetchGAData = useCallback(async () => {
     if (!selectedProperty) return;
