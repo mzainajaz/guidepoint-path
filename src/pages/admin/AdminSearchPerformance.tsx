@@ -365,18 +365,7 @@ const AdminSearchPerformance = () => {
           <h2 className="text-lg font-semibold text-foreground flex items-center gap-2">
             <Search className="h-5 w-5" /> Search Console
           </h2>
-          {sites.length > 0 && (
-            <Select value={selectedSite} onValueChange={handleSiteChange}>
-              <SelectTrigger className="w-[260px] h-8 text-xs">
-                <SelectValue />
-              </SelectTrigger>
-              <SelectContent>
-                {sites.map((s) => (
-                  <SelectItem key={s} value={s} className="text-xs">{s}</SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-          )}
+          <span className="text-xs text-muted-foreground">incorporateuae.com</span>
           <Select value={langPrefix} onValueChange={setLangPrefix}>
             <SelectTrigger className="w-[160px] h-8 text-xs">
               <Filter className="h-3 w-3 mr-1" />
