@@ -415,7 +415,7 @@ const AdminSearchPerformance = () => {
             <Search className="h-5 w-5" /> Search Console
           </h2>
           {sites.length > 0 && (
-            <Select value={selectedSite} onValueChange={setSelectedSite}>
+            <Select value={selectedSite} onValueChange={handleSiteChange}>
               <SelectTrigger className="w-[260px] h-8 text-xs">
                 <SelectValue />
               </SelectTrigger>
