@@ -211,8 +211,9 @@ const BankReadiness = () => {
                 </div>
                 <div className="divide-y divide-border">
                   {questions.map((q) => {
-                    const r = answers[q.id] || 0;
-                    const selected = q.options.find((o) => o.risk === r);
+                    const ans = answers[q.id];
+                    const r = ans?.risk ?? 0;
+                    const selected = q.options[ans?.index ?? 0];
                     return (
                       <div key={q.id} className="flex items-center justify-between px-6 py-3 gap-4">
                         <div className="flex-1 min-w-0">
