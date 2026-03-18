@@ -76,7 +76,7 @@ const Header = () => {
             : "bg-transparent"
         }`}
       >
-        <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-10 h-[64px] lg:h-[72px] flex items-center justify-between lg:grid lg:grid-cols-[1fr_auto_1fr]">
+        <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-6 xl:px-10 h-[64px] lg:h-[72px] flex items-center justify-between lg:grid lg:grid-cols-[1fr_auto_1fr]">
 
           {/* Left nav (desktop) */}
           <nav className="hidden lg:flex items-center gap-3 xl:gap-4">
