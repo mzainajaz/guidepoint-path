@@ -21,6 +21,7 @@ const SLUGGED_ROUTES: [string, string[]][] = [
   ["/taxes", ["vat","corporate-tax"]],
   ["/guides", ["uae-setup-system","mainland-vs-freezone-vs-offshore","legal-forms-uae","business-activities-codes","real-cost-of-setup","owner-employee-visas","family-sponsorship","medical-fitness-emirates-id","corporate-bank-accounts","vat-registration-filing","corporate-tax-scope","ct-penalties-deadlines","e-invoicing","ubo-aml-substance","adgm-profile","masdar-profile","kezad-profile"]],
   ["/relocation", ["uk","us","india","egypt","europe"]],
+  ["/visas", ["investor-visa","employee-visa","partner-visa","family-visa"]],
 ];
 
 function hreflang(path: string): string {

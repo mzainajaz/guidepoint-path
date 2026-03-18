@@ -140,6 +140,11 @@ Deno.serve(async () => {
     urls.push(urlEntry(`/relocation/${code}`, "0.7", "monthly", today));
   }
 
+  // Visa guides
+  for (const slug of VISA_SLUGS) {
+    urls.push(urlEntry(`/visas/${slug}`, "0.7", "monthly", today));
+  }
+
   // Dynamic DB content: blog posts
   try {
     const supabaseUrl = Deno.env.get("SUPABASE_URL")!;

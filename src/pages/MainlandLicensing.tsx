@@ -106,6 +106,15 @@ const faqs = [
 
 const MainlandLicensing = () => (
   <div className="min-h-screen bg-background">
+    <SEOHead
+      title="UAE Mainland Licence Types — Commercial, Professional & Industrial"
+      description="Compare UAE mainland licence types: commercial, professional, industrial, and tourism. Costs, requirements, and step-by-step DED/DET licensing process."
+      schema={breadcrumbSchema([
+        { name: "Home", url: "/" },
+        { name: "Mainland", url: "/mainland" },
+        { name: "Licensing", url: "/mainland/licensing" },
+      ])}
+    />
     <Header />
     <main className="page-offset">
       {/* Hero Image */}

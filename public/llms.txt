@@ -34,7 +34,7 @@ Country-specific guidance for entrepreneurs relocating to the UAE:
 
 ## Languages
 
-The platform is available in 10 languages with SEO-friendly URL prefixes:
+The platform is available in 8 languages with SEO-friendly URL prefixes:
 - English (default): /
 - French: /fr
 - German: /de
@@ -43,8 +43,6 @@ The platform is available in 10 languages with SEO-friendly URL prefixes:
 - Italian: /it
 - Russian: /ru
 - Ukrainian: /uk
-- Chinese: /zh
-- Portuguese: /pt
 
 ## Free Zones Covered
 
