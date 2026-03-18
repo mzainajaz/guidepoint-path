@@ -8,6 +8,7 @@ import { getFreeZoneById, freeZones, type FreeZoneData } from "@/data/freeZones"
 import { getZoneActivities } from "@/data/zoneActivities";
 import ZoneActivityListComponent from "@/components/ZoneActivityList";
 import SEOHead, { breadcrumbSchema, faqSchema, articleSchema } from "@/components/SEOHead";
+import { useT } from "@/i18n/context";
 import {
   ChevronRight,
   ArrowRight,
