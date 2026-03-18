@@ -62,6 +62,8 @@ const GUIDE_SLUGS = [
 
 const COUNTRY_CODES = ["uk", "us", "india", "egypt", "europe"];
 
+const VISA_SLUGS = ["investor-visa", "employee-visa", "partner-visa", "family-visa"];
+
 function hreflangBlock(path: string): string {
   const enUrl = `${ORIGIN}${path}`;
   const links = [`<xhtml:link rel="alternate" hreflang="en" href="${enUrl}"/>`];
