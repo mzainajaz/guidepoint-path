@@ -80,7 +80,7 @@ const Header = () => {
 
           {/* Left nav (desktop) */}
           <nav className="hidden lg:flex items-center gap-5">
-            {navItems.slice(0, 4).map((item) => (
+            {navItems.slice(0, 5).map((item) => (
               <div key={item.label} className="relative group">
                 {item.href && !item.children ? (
                   <Link
