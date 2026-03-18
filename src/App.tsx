@@ -30,6 +30,11 @@ const ToolsHub = lazy(() => import("./pages/ToolsHub"));
 const CostEstimator = lazy(() => import("./pages/CostEstimator"));
 const ZonePicker = lazy(() => import("./pages/ZonePicker"));
 const VatHelper = lazy(() => import("./pages/VatHelper"));
+const RelocationCalculator = lazy(() => import("./pages/RelocationCalculator"));
+const FounderReadiness = lazy(() => import("./pages/FounderReadiness"));
+const BankReadiness = lazy(() => import("./pages/BankReadiness"));
+const VisaHub = lazy(() => import("./pages/VisaHub"));
+const VisaDetail = lazy(() => import("./pages/VisaDetail"));
 const BlogIndex = lazy(() => import("./pages/BlogIndex"));
 const BlogPost = lazy(() => import("./pages/BlogPost"));
 const GuidesIndex = lazy(() => import("./pages/GuidesIndex"));
@@ -73,6 +78,11 @@ const appRoutes = [
   { path: "/tools/cost-estimator", element: <CostEstimator /> },
   { path: "/tools/zone-picker", element: <ZonePicker /> },
   { path: "/tools/vat-helper", element: <VatHelper /> },
+  { path: "/tools/relocation-calculator", element: <RelocationCalculator /> },
+  { path: "/tools/founder-readiness", element: <FounderReadiness /> },
+  { path: "/tools/bank-readiness", element: <BankReadiness /> },
+  { path: "/visas", element: <VisaHub /> },
+  { path: "/visas/:slug", element: <VisaDetail /> },
   { path: "/blog", element: <BlogIndex /> },
   { path: "/blog/:slug", element: <BlogPost /> },
   { path: "/guides", element: <GuidesIndex /> },

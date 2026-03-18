@@ -1,4 +1,4 @@
-import { Calculator, Search, FileCheck, BarChart3, ArrowRight } from "lucide-react";
+import { Calculator, Search, FileCheck, MapPin, Target, Shield, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
@@ -29,13 +29,37 @@ const tools = [
     href: "/tools/vat-helper",
     badge: "Compliance",
   },
+  {
+    icon: MapPin,
+    title: "Relocation Cost Calculator",
+    description:
+      "Estimate monthly living costs and first-year relocation budget — housing, schooling, lifestyle included.",
+    href: "/tools/relocation-calculator",
+    badge: "New",
+  },
+  {
+    icon: Target,
+    title: "Founder Readiness Score",
+    description:
+      "Take a 2-minute assessment to gauge how prepared you are for UAE company formation.",
+    href: "/tools/founder-readiness",
+    badge: "New",
+  },
+  {
+    icon: Shield,
+    title: "Bank Account Readiness",
+    description:
+      "Assess how your nationality, industry, and documentation affect UAE banking approval odds.",
+    href: "/tools/bank-readiness",
+    badge: "New",
+  },
 ];
 
 const ToolsHub = () => (
   <>
     <SEOHead
-      title="UAE Business Setup Tools — Cost Estimator, Zone Picker, VAT Helper"
-      description="Interactive tools for UAE business setup. Estimate costs, match free zones, and understand VAT obligations with transparent methodology."
+      title="UAE Business Setup Tools — Cost Estimator, Zone Picker, VAT & Banking"
+      description="Interactive tools for UAE business setup. Estimate costs, match free zones, check VAT obligations, assess banking readiness, and gauge founder preparedness."
       schema={[breadcrumbSchema([{ name: "Home", url: "/" }, { name: "Tools", url: "/tools" }])]}
     />
     <Header />
