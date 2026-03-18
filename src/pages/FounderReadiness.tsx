@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
 import SEOHead, { serviceSchema } from "@/components/SEOHead";
-import { useLocalePath } from "@/i18n/context";
+import { useLocalePath, useT } from "@/i18n/context";
 
 interface Question {
   id: string;
