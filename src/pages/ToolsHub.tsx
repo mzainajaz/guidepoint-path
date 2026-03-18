@@ -1,4 +1,5 @@
 import { Calculator, Search, FileCheck, MapPin, Target, Shield, ArrowRight } from "lucide-react";
+import { useT } from "@/i18n/context";
 import { Link } from "react-router-dom";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
