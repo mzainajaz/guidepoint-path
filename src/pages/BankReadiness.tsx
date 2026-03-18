@@ -188,7 +188,7 @@ const BankReadiness = () => {
                 <Button variant="outline" onClick={() => setCurrentQ(Math.max(0, currentQ - 1))} disabled={currentQ === 0}>
                   <ArrowLeft className="h-4 w-4" /> Back
                 </Button>
-                <Button onClick={handleNext} disabled={selectedRisk === undefined} className="bg-accent text-accent-foreground hover:bg-accent/90">
+                <Button onClick={handleNext} disabled={selectedAnswer === undefined} className="bg-accent text-accent-foreground hover:bg-accent/90">
                   {currentQ < questions.length - 1 ? "Next" : "See result"} <ArrowRight className="h-4 w-4" />
                 </Button>
               </div>
