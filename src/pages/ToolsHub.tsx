@@ -68,7 +68,7 @@ const ToolsHub = () => (
       <section className="relative border-b border-border overflow-hidden">
         <div className="absolute inset-0">
           <img src="/images/section-tools-hero.jpg" alt="" className="w-full h-full object-cover opacity-60" />
-          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-background/50" />
+          <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/50 to-transparent" />
         </div>
         <div className="container py-20 md:py-28 text-center relative z-10">
           <span className="inline-block text-xs font-semibold tracking-widest uppercase text-accent mb-4">

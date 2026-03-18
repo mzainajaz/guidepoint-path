@@ -155,7 +155,7 @@ const StartHere = () => {
         <section className="relative border-b border-border overflow-hidden">
           <div className="absolute inset-0">
             <img src="/images/section-start-here.jpg" alt="" className="w-full h-full object-cover" />
-            <div className="absolute inset-0 bg-gradient-to-r from-background via-background/90 to-background/70" />
+            <div className="absolute inset-0 bg-gradient-to-r from-background/80 via-background/40 to-transparent" />
           </div>
           <div className="container py-20 md:py-28 max-w-3xl relative z-10">
             <span className="inline-block text-xs font-semibold tracking-widest uppercase text-accent mb-4">
