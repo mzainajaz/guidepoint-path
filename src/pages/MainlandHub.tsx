@@ -27,12 +27,17 @@ const MainlandHub = () => (
     />
     <Header />
     <main className="page-offset">
-      <div className="container pt-6">
-        <nav className="flex items-center gap-1.5 text-sm text-muted-foreground">
-          <Link to="/" className="hover:text-foreground transition-colors">Home</Link>
-          <ChevronRight className="h-3.5 w-3.5" />
-          <span className="text-foreground font-medium">Mainland</span>
-        </nav>
+      {/* Hero Image */}
+      <div className="relative h-48 md:h-64 overflow-hidden">
+        <img src="/images/section-mainland.jpg" alt="" className="absolute inset-0 w-full h-full object-cover" />
+        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-background/30" />
+        <div className="relative container h-full flex items-end pb-6">
+          <nav className="flex items-center gap-1.5 text-sm text-muted-foreground">
+            <Link to="/" className="hover:text-foreground transition-colors">Home</Link>
+            <ChevronRight className="h-3.5 w-3.5" />
+            <span className="text-foreground font-medium">Mainland</span>
+          </nav>
+        </div>
       </div>
 
       <section className="container py-12">
