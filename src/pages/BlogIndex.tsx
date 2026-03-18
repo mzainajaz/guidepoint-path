@@ -53,8 +53,9 @@ const BlogIndex = () => {
       <main className="page-offset min-h-screen pb-20">
         {/* Hero header */}
         <div className="relative border-b border-border/10">
-          <div className="absolute inset-0 dot-pattern opacity-40" />
-          <div className="relative max-w-[1280px] mx-auto px-6 lg:px-10 pt-10 pb-14">
+          <img src="/images/section-blog.jpg" alt="" className="absolute inset-0 w-full h-full object-cover" />
+          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-background/30" />
+          <div className="relative max-w-[1280px] mx-auto px-6 lg:px-10 pt-16 pb-14">
             <motion.div
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
