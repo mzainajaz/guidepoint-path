@@ -96,25 +96,14 @@ const AdminSearchPerformance = () => {
       .catch(() => setLoading(false));
   }, [session, callFunction]);
 
-  // Load GSC sites when connected
+  // Set fixed properties for this website
   useEffect(() => {
     if (!connected) return;
-    callFunction("google-search-console", { action: "list_sites" }).then((d) => {
-      const siteList = (d.siteEntry || []).map((s: any) => s.siteUrl);
-      setSites(siteList);
-      if (siteList.length > 0 && !selectedSite) setSelectedSite(siteList[0]);
-    });
-    callFunction("google-analytics", { action: "list_properties" }).then((d) => {
-      const props: { id: string; name: string }[] = [];
-      (d.accountSummaries || []).forEach((acct: any) => {
-        (acct.propertySummaries || []).forEach((p: any) => {
-          props.push({ id: p.property, name: p.displayName || p.property });
-        });
-      });
-      setGaProperties(props);
-      if (props.length > 0 && !selectedProperty) setSelectedProperty(props[0].id);
-    });
-  }, [connected, callFunction]);
+    setSites(["sc-domain:incorporateuae.com"]);
+    if (!selectedSite) setSelectedSite("sc-domain:incorporateuae.com");
+    setGaProperties([{ id: "properties/523055023", name: "inc-uae" }]);
+    if (!selectedProperty) setSelectedProperty("properties/523055023");
+  }, [connected]);
 
   const startDate = format(dateFrom, "yyyy-MM-dd");
   const endDate = format(dateTo, "yyyy-MM-dd");
