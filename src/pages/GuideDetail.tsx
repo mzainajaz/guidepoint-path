@@ -13,6 +13,7 @@ import NotFound from "./NotFound";
 const GuideDetail = () => {
   const { slug } = useParams<{ slug: string }>();
   const chapter = guideChapters.find(c => c.slug === slug);
+  const t = useT();
 
   if (!chapter) return <NotFound />;
 
