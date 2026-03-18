@@ -111,8 +111,8 @@ const BankReadiness = () => {
   const result = getRiskLevel(totalRisk);
   const ResultIcon = result.icon;
 
-  const handleSelect = (risk: number) => {
-    setAnswers({ ...answers, [currentQuestion.id]: risk });
+  const handleSelect = (risk: number, index: number) => {
+    setAnswers({ ...answers, [currentQuestion.id]: { risk, index } });
   };
 
   const handleNext = () => {
