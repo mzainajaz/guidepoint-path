@@ -124,7 +124,7 @@ const VatHelper = () => {
         {/* Hero */}
         <div className="relative h-48 md:h-64 overflow-hidden">
           <img src="/images/section-vat-helper.jpg" alt="" className="absolute inset-0 w-full h-full object-cover" />
-          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-background/30" />
+          <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/50 to-transparent" />
           <div className="relative container max-w-3xl h-full flex flex-col justify-end pb-6">
             <Link to="/tools" className="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground mb-4">
               <ArrowLeft className="h-4 w-4" /> Back to Tools

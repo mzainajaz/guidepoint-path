@@ -114,7 +114,7 @@ const FounderReadiness = () => {
       <main className="page-offset min-h-screen bg-background">
         <div className="relative h-48 md:h-56 overflow-hidden">
           <img src="/images/section-founder.jpg" alt="" className="w-full h-full object-cover" />
-          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/50 to-transparent" />
         </div>
 
         <div className="container py-8 max-w-3xl -mt-16 relative z-10">
