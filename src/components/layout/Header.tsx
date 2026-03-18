@@ -32,6 +32,7 @@ const Header = () => {
       ],
     },
     { label: t.nav.businessActivities, href: lp("/activities") },
+    { label: "Visa Guide", href: lp("/visas") },
     {
       label: t.nav.taxes,
       children: [
