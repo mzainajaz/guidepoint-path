@@ -3,7 +3,7 @@ import { ArrowRight, Briefcase, Users, Handshake, Heart } from "lucide-react";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import SEOHead, { breadcrumbSchema } from "@/components/SEOHead";
-import { useLocalePath } from "@/i18n/context";
+import { useLocalePath, useT } from "@/i18n/context";
 import { visaGuides } from "@/data/visaGuides";
 
 const iconMap: Record<string, React.ElementType> = {
