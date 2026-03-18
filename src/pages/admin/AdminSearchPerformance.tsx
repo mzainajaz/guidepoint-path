@@ -1,10 +1,22 @@
 import { useEffect, useState, useCallback } from "react";
+import { format, subDays } from "date-fns";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/hooks/useAuth";
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, LineChart, Line } from "recharts";
-import { Search, Globe, TrendingUp, Link2, Unplug, ExternalLink, RefreshCw, Filter } from "lucide-react";
+import { Search, Globe, TrendingUp, Link2, Unplug, ExternalLink, RefreshCw, Filter, CalendarIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import { Calendar } from "@/components/ui/calendar";
+import { cn } from "@/lib/utils";
+
+const DATE_PRESETS = [
+  { label: "Last 7 days", days: 7 },
+  { label: "Last 28 days", days: 28 },
+  { label: "Last 90 days", days: 90 },
+  { label: "Last 6 months", days: 180 },
+  { label: "Custom", days: 0 },
+];
 
 const LANGUAGE_PREFIXES = [
   { value: "all", label: "All Languages" },
