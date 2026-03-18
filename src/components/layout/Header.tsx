@@ -130,7 +130,7 @@ const Header = () => {
           </Link>
 
           {/* Right nav + CTA (desktop) */}
-          <div className="hidden lg:flex items-center justify-end gap-3 xl:gap-4">
+          <div className="hidden lg:flex items-center justify-end gap-2 xl:gap-3">
             {navItems.slice(5).map((item) => (
               <div key={item.label} className="relative group">
                 {item.children ? (
