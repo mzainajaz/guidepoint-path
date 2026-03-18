@@ -98,7 +98,7 @@ const getRiskLevel = (score: number) => {
 const BankReadiness = () => {
   const lp = useLocalePath();
   const [currentQ, setCurrentQ] = useState(0);
-  const [answers, setAnswers] = useState<Record<string, number>>({});
+  const [answers, setAnswers] = useState<Record<string, { risk: number; index: number }>>({});
   const [showResult, setShowResult] = useState(false);
 
   const currentQuestion = questions[currentQ];
