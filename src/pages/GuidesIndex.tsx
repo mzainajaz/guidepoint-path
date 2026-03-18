@@ -48,8 +48,8 @@ const GuidesIndex = () => {
   return (
     <div className="min-h-screen bg-background">
       <SEOHead
-        title="UAE Business Setup Guides — The Complete Reference"
-        description="50+ chapter reference covering UAE setup architecture, free zones, mainland, visas, tax, banking, and startup strategy. Built from official sources."
+        title={t.seo.guides.title}
+        description={t.seo.guides.description}
         schema={[breadcrumbSchema([{ name: "Home", url: "/" }, { name: "Guides", url: "/guides" }])]}
       />
       <Header />

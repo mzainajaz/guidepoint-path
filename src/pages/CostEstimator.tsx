@@ -77,8 +77,8 @@ const CostEstimator = () => {
   return (
     <>
       <SEOHead
-        title="UAE Business Setup Cost Estimator"
-        description="Get an indicative cost breakdown for your UAE business setup — including licence, visas, office, and banking fees. Transparent methodology with verified pricing."
+        title={t.seo.costEstimator.title}
+        description={t.seo.costEstimator.description}
         schema={[serviceSchema({ name: "UAE Setup Cost Estimator", description: "Interactive tool to estimate UAE business setup costs", url: "/tools/cost-estimator" })]}
       />
       <Header />

@@ -67,8 +67,8 @@ const RelocationCalculator = () => {
   return (
     <>
       <SEOHead
-        title="UAE Relocation Cost Calculator"
-        description="Estimate your monthly and first-year relocation costs for moving to the UAE — housing, schooling, lifestyle, and visa fees included."
+        title={t.seo.relocationCalc.title}
+        description={t.seo.relocationCalc.description}
         schema={[serviceSchema({ name: "UAE Relocation Cost Calculator", description: "Estimate monthly and first-year relocation costs to the UAE", url: "/tools/relocation-calculator" })]}
       />
       <Header />

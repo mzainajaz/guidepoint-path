@@ -94,8 +94,8 @@ const HowToIndex = () => {
   return (
     <div className="min-h-screen bg-background">
       <SEOHead
-        title="UAE Business Setup: Complete How-To Library — 2026"
-        description="195 expert articles across 10 languages covering every aspect of UAE business setup. Structures, free zones, visas, tax, banking, and more."
+        title={t.seo.howTo.title}
+        description={t.seo.howTo.description}
         schema={[breadcrumbSchema([{ name: "Home", url: "/" }, { name: "How-To Library", url: "/how-to/uae-business-setup" }])]}
       />
       <Header />

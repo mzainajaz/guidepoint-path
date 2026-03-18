@@ -117,8 +117,8 @@ const VatHelper = () => {
   return (
     <>
       <SEOHead
-        title="UAE VAT Decision Helper — Do You Need to Register?"
-        description="Answer four questions to understand your likely UAE VAT registration status. Covers mandatory and voluntary thresholds with clear next steps."
+        title={t.seo.vatHelper.title}
+        description={t.seo.vatHelper.description}
         schema={[serviceSchema({ name: "VAT Decision Helper", description: "Interactive VAT registration assessment tool", url: "/tools/vat-helper" })]}
       />
       <Header />

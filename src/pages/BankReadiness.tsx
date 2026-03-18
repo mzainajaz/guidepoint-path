@@ -127,8 +127,8 @@ const BankReadiness = () => {
   return (
     <>
       <SEOHead
-        title="Bank Account Readiness Tool — UAE Banking Risk Assessment"
-        description="Assess your chances of opening a UAE bank account. Check how your nationality, industry, and documentation affect banking approval odds."
+        title={t.seo.bankReadiness.title}
+        description={t.seo.bankReadiness.description}
         schema={[serviceSchema({ name: "Bank Account Readiness Tool", description: "Assess UAE banking approval likelihood based on your profile", url: "/tools/bank-readiness" })]}
       />
       <Header />

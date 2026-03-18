@@ -80,8 +80,8 @@ const FreeZones = () => {
   return (
     <div className="min-h-screen bg-background">
       <SEOHead
-        title="UAE Free Zones — Compare by Cost, Activity & Visas"
-        description="Compare 30+ UAE free zones by cost, business activity, visa options, and office requirements. Transparent data with verified pricing and honest assessments."
+        title={t.seo.freeZones.title}
+        description={t.seo.freeZones.description}
         schema={[breadcrumbSchema([{ name: "Home", url: "/" }, { name: "Free Zones", url: "/free-zones" }])]}
       />
       <Header />

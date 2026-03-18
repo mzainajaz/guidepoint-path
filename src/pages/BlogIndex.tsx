@@ -44,8 +44,8 @@ const BlogIndex = () => {
   return (
     <>
       <SEOHead
-        title="Blog – UAE Business Setup Insights & Guides"
-        description="Expert insights, practical guides, and updates on UAE business setup, free zones, corporate tax, licensing, and relocation for entrepreneurs."
+        title={t.seo.blog.title}
+        description={t.seo.blog.description}
         schema={breadcrumbSchema([
           { name: "Home", url: "/" },
           { name: "Blog", url: "/blog" },

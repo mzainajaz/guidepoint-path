@@ -107,8 +107,8 @@ const FounderReadiness = () => {
   return (
     <>
       <SEOHead
-        title="Founder Readiness Score — Are You Ready to Set Up in UAE?"
-        description="Take a 2-minute assessment to gauge your readiness for UAE company formation. Get a personalised score across business model, capital, compliance, and banking."
+        title={t.seo.founderReadiness.title}
+        description={t.seo.founderReadiness.description}
         schema={[serviceSchema({ name: "Founder Readiness Score", description: "Assessment tool for UAE business setup readiness", url: "/tools/founder-readiness" })]}
       />
       <Header />

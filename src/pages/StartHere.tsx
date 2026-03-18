@@ -140,8 +140,8 @@ const StartHere = () => {
   return (
     <>
       <SEOHead
-        title="Start Here — UAE Business Setup for Founders"
-        description="Everything you need to know before setting up a company in the UAE. Ownership rules, costs, visa requirements, banking, and taxes — explained clearly."
+        title={t.seo.startHere.title}
+        description={t.seo.startHere.description}
         schema={[
           breadcrumbSchema([
             { name: "Home", url: "/" },

@@ -20,8 +20,8 @@ const VisaHub = () => {
   return (
     <>
       <SEOHead
-        title="UAE Visa Guide — Investor, Employee, Partner & Family Visas"
-        description="Complete guide to UAE visa types for business owners. Understand investor, employee, partner, and family visa requirements, costs, and processing times."
+        title={t.seo.visas.title}
+        description={t.seo.visas.description}
         schema={[breadcrumbSchema([{ name: "Home", url: "/" }, { name: "Visa Guide", url: "/visas" }])]}
       />
       <Header />
