@@ -28,6 +28,8 @@ import {
 const ComparisonDetail = () => {
   const { slug } = useParams<{ slug: string }>();
   const comp = slug ? getComparisonById(slug) : undefined;
+  const t = useT();
+  const comp = slug ? getComparisonById(slug) : undefined;
 
   if (!comp) {
     return (
