@@ -1,12 +1,13 @@
 import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import { useAuth } from "@/hooks/useAuth";
-import { BarChart3, Users, FileText, Settings, LogOut, LayoutDashboard, Tag } from "lucide-react";
+import { BarChart3, Users, FileText, Settings, LogOut, LayoutDashboard, Tag, Search } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const navItems = [
   { to: "/admin", icon: LayoutDashboard, label: "Dashboard", end: true },
   { to: "/admin/leads", icon: Users, label: "Leads" },
   { to: "/admin/analytics", icon: BarChart3, label: "Analytics" },
+  { to: "/admin/search-performance", icon: Search, label: "Search Performance" },
   { to: "/admin/blog", icon: FileText, label: "Blog" },
   { to: "/admin/content", icon: Settings, label: "Content" },
   { to: "/admin/seo", icon: Tag, label: "SEO / Meta" },

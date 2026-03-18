@@ -128,7 +128,9 @@ const App = () => (
                     <Route path="content" element={<AdminContent />} />
                     <Route path="seo" element={<AdminSEO />} />
                     <Route path="howto-import" element={<AdminHowToImport />} />
+                    <Route path="search-performance" element={<AdminSearchPerformance />} />
                   </Route>
+                  <Route path="/admin/google-callback" element={<ProtectedRoute><GoogleCallback /></ProtectedRoute>} />
                   {/* Redirects for legacy/crawled URLs */}
                   <Route path="/pricing" element={<Navigate to="/tools/cost-estimator" replace />} />
                   <Route path="/about" element={<Navigate to="/contact" replace />} />
