@@ -7,6 +7,7 @@ const ALL_LANGS = ["en", ...LOCALES];
 // Static routes (no dynamic slug)
 const STATIC_ROUTES = [
   "/",
+  "/start-here",
   "/free-zones",
   "/relocation",
   "/mainland",
@@ -20,6 +21,10 @@ const STATIC_ROUTES = [
   "/tools/cost-estimator",
   "/tools/zone-picker",
   "/tools/vat-helper",
+  "/tools/bank-readiness",
+  "/tools/founder-readiness",
+  "/tools/relocation-calculator",
+  "/visas",
   "/blog",
   "/guides",
   "/how-to/uae-business-setup",
