@@ -53,6 +53,8 @@ const AdminBlog = lazy(() => import("./pages/admin/AdminBlog"));
 const AdminContent = lazy(() => import("./pages/admin/AdminContent"));
 const AdminSEO = lazy(() => import("./pages/admin/AdminSEO"));
 const AdminHowToImport = lazy(() => import("./pages/admin/AdminHowToImport"));
+const AdminSearchPerformance = lazy(() => import("./pages/admin/AdminSearchPerformance"));
+const GoogleCallback = lazy(() => import("./pages/admin/GoogleCallback"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 const queryClient = new QueryClient();
