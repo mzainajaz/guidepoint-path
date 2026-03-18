@@ -55,6 +55,7 @@ const CountryRelocation = () => {
   const { countryCode } = useParams<{ countryCode: string }>();
   const country = countryCode ? countryRelocationData[countryCode] : undefined;
   const [submitted, setSubmitted] = useState(false);
+  const t = useT();
 
   const {
     register,
